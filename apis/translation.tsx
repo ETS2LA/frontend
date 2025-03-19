@@ -19,6 +19,7 @@ interface Translation {
 
 export const translations: { [key: string]: Translation } = {};
 export var currentLanguage: string = "en";
+export var isChangingLanguage: boolean = false;
 
 export const loadTranslations = async () => {
     const context = require.context('@/translations', false, /\.yaml$/);
@@ -55,5 +56,27 @@ export const translate = (key: string, ...values: any[]): string => {
 }
 
 export const changeLanguage = async (language: string) => {
-    currentLanguage = language;
+    try {
+        // 设置状态为正在切换语言，触发UI显示加载动画
+        isChangingLanguage = true;
+        
+        // 添加延迟以确保动画有足够时间显示
+        await new Promise(resolve => setTimeout(resolve, 300));
+        
+        // 更新当前语言
+        currentLanguage = language;
+        
+        // 加载新语言的翻译
+        await loadTranslations();
+        
+        // 添加延迟以确保翻译加载完成后动画有足够时间显示
+        await new Promise(resolve => setTimeout(resolve, 500));
+    } catch (error) {
+        console.error('Failed to change language:', error);
+        // 发生错误时恢复到之前的语言
+        throw error;
+    } finally {
+        // 无论成功或失败，最终都将状态设置为非切换状态
+        isChangingLanguage = false;
+    }
 };

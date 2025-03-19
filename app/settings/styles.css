@@ -1,0 +1,16 @@
+.settings-page {
+    display: flex;
+    flex-direction: row; /* 统一定义 */
+}
+
+.column {
+    flex: 1;
+    margin: 10px;
+}
+
+.loading-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
