@@ -17,8 +17,8 @@ export default function Visualization() {
 
     const map_link = "https://truckermudgeon.github.io/ets2la";
     const visualization_link = "https://visualization.ets2la.com/";
-    const map_mirror = "https://ets2la.goodnightan.com/ets2la/index.html"
-    const visualization_mirror = "https://visualization.ets2la.com/"
+    const map_mirror = "https://ets2lamap.goodnightan.com/ets2la/index.html"
+    const visualization_mirror = "https://ets2lavisualization.goodnightan.com/"
 
     const map = useMirror ? map_mirror : map_link;
     const visualization = useMirror ? visualization_mirror : visualization_link;
@@ -53,7 +53,7 @@ export default function Visualization() {
                                 <Button variant={"outline"} onClick={() => {
                                     setUseMirror(true);
                                     setIsVisualizationOpen(true)
-                                }} disabled={true} className="rounded-t-none group"><span className="text-muted-foreground text-xs group-hover:text-foreground transition-all">(mirror not available)</span></Button>
+                                }}  className="rounded-t-none group"><span className="text-muted-foreground text-xs group-hover:text-foreground transition-all">Goodnightan mirror</span></Button>
                             </div>
 
                             <div className="flex flex-col gap-2 items-center">
@@ -96,7 +96,7 @@ export default function Visualization() {
                                 <Button variant={"outline"} onClick={() => {
                                     setUseMirror(true);
                                     setIsMapOpen(true)
-                                }} className="rounded-t-none group"><span className="text-muted-foreground text-xs group-hover:text-foreground transition-all">Goodnighttan Mirror</span></Button>
+                                }} className="rounded-t-none group"><span className="text-muted-foreground text-xs group-hover:text-foreground transition-all">Goodnightan Mirror</span></Button>
                             </div>
                             <div className="flex flex-col gap-2 items-center">
                                 <p className="text-xs text-muted-foreground font-geist-mono">

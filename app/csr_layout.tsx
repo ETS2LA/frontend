@@ -23,7 +23,6 @@ import useSWR from "swr";
 import { motion } from "framer-motion";
 import Loader from "@/components/loader";
 import { translate } from "@/apis/translation";
-import { useCollapsed } from "@/contexts/collapsed";
 import { ACTIONS, EVENTS, STATUS, CallBackProps } from 'react-joyride';
 import { JoyRideNoSSR, skipAll } from "@/components/joyride-no-ssr";
 import { AnimatePresence } from "framer-motion";
@@ -31,7 +30,7 @@ import { LanguageTransition } from "@/components/language-transition";
 
 export default function CSRLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
     const { data: language, isLoading: loadingLanguage } = useSWR("language", GetCurrentLanguage, { refreshInterval: 2000 });
-    const { isCollapsed, setIsCollapsed } = useCollapsed();
+    const [isCollapsed, setIsCollapsed] = useState(true);
     const [isSnowAllowed, setIsSnowAllowed] = useState(false);
     const [areFireworksAllowed, setAreFireworksAllowed] = useState(false);
     const [loadingTranslations, setLoadingTranslations] = useState(true);
@@ -129,10 +128,6 @@ export default function CSRLayout({ children, }: Readonly<{ children: React.Reac
         setRun(true);
     }
 
-    const toggleSidebar = () => {
-        setIsCollapsed(!isCollapsed);
-    }
-
     return (
         <div className="h-screen w-screen flex overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-50">
@@ -199,14 +194,16 @@ export default function CSRLayout({ children, }: Readonly<{ children: React.Reac
                                         toast: "rounded-lg shadow-lg backdrop-blur-md backdrop-brightness-75 w-[354px] border p-4 flex gap-2 items-center text-sm",
                                     }
                                 }} />
-                                <WindowControls isCollapsed={isCollapsed} />
-                                <States />
-                                <Popups />
-                                <SidebarProvider open={!isCollapsed}>
-                                    <ETS2LASidebar toggleSidebar={toggleSidebar} />
+                                <SidebarProvider open={isCollapsed} onOpenChange={
+                                    (open) => { setIsCollapsed(open); }
+                                }>
+                                    <WindowControls />
+                                    <States />
+                                    <Popups />
+                                    <ETS2LASidebar />
                                     <SidebarInset className={`relative transition-all duration-300 overflow-hidden ${isCollapsed ? "max-h-[100vh]" : "max-h-[97.6vh]"}`}>
                                         <ProgressBar className="absolute h-2 z-20 rounded-tl-lg shadow-lg shadow-sky-500/20 bg-sky-500 top-0 left-0" />
-                                        {isMobile && <SidebarTrigger className="absolute top-2 left-2" />}
+                                        {isMobile && <SidebarTrigger className="absolute top-2 left-2 z-50" />}
                                         {children}
                                     </SidebarInset>
                                 </SidebarProvider>

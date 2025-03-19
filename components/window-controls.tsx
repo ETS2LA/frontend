@@ -9,8 +9,9 @@ import {
 import { useState, useEffect } from "react"
 import { toast } from "sonner";
 import {GetSettingByKey} from "@/apis/settings";
+import { useSidebar } from "./ui/sidebar";
 
-export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }) {
+export default function WindowControls() {
     const [lastMousePosition, setLastMousePosition] = useState({ x: 0, y: 0 });
     const [windowPosition, setWindowPosition] = useState({ x: 0, y: 0 });
     const [isMouseInDragArea, setIsMouseInDragArea] = useState(false)
@@ -18,6 +19,9 @@ export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }
     const [transparency, setTransparency] = useState(false);
     const [dragging, setDragging] = useState(false);
     const [overlayRef, setOverlayRef] = useState<HTMLDivElement | null>(null);
+    const {open, isMobile, openMobile} = useSidebar();
+
+    const sidebar_open = !isMobile ? !open : !openMobile;
 
     useEffect(() => {
         const initialWindowPosition = { x: window.screenX, y: window.screenY };
@@ -88,14 +92,14 @@ export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }
         })
     }, []);
 
-    const collapsedContainerClassName = "flex gap-1 absolute h-6 w-[59px] rounded-bl-lg top-0 right-0 items-center justify-center p-0 z-50 bg-sidebar transition-all pywebview-drag-region opacity-75 hover:opacity-100";
-    const containerClassName = "flex gap-1 absolute h-6 w-[59px] rounded-bl-lg top-0 right-0 items-center justify-center p-0 z-50 bg-sidebar transition-all pywebview-drag-region";
+    const collapsedContainerClassName = "flex gap-1 absolute h-6 w-[59px] rounded-bl-lg top-0 right-0 items-center justify-center p-0 z-50 bg-sidebar transition-all opacity-75 hover:opacity-100";
+    const containerClassName = "flex gap-1 absolute h-6 w-[59px] rounded-bl-lg top-0 right-0 items-center justify-center p-0 z-50 bg-sidebar transition-all";
 
     return (
         <>
             <div 
                 ref={setOverlayRef}
-                className="fixed top-0 left-[80px] right-0 h-[26px] z-30" // Only cover top 40px
+                className="fixed top-0 left-[80px] right-0 h-[26px] z-30"
                 style={{ backgroundColor: 'transparent' }}
                 onMouseMove={(e) => {
                     setIsMouseInDragArea(true);
@@ -105,8 +109,8 @@ export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }
                 }}
                 id="slide_area"
             />
-            <div className={isCollapsed && collapsedContainerClassName || containerClassName} onMouseDown={handleMouseDown} id="window_controls">
-                {isCollapsed && (
+            <div className={sidebar_open && collapsedContainerClassName || containerClassName} onMouseDown={handleMouseDown} id="window_controls">
+                {sidebar_open && (
                     <div className={`absolute right-0 top-0 h-6 flex items-center pl-2.5 pr-12 transition-all bg-sidebar rounded-bl-lg z-[-10] duration-150 ${isMouseInDragArea ? 'w-96 opacity-100' : 'w-0 opacity-0'}`}>
                         <div
                             className="flex-grow h-1 bg-repeat bg-center text-muted font-geist-mono text-[12px] text-center"
@@ -173,7 +177,7 @@ export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }
                     </Tooltip>
                 </TooltipProvider>
             </div>
-            {!isCollapsed && (
+            {!sidebar_open && (
                 <>
                     <div className="absolute top-0 right-0 left-[80px] h-6 z-40" onMouseDown={handleMouseDown} />
                     {/* Bottom side outer rounding */}
