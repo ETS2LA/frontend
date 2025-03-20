@@ -19,6 +19,7 @@ interface Translation {
 
 export const translations: { [key: string]: Translation } = {};
 export var currentLanguage: string = "en";
+export var isChangingLanguage: boolean = false;
 
 export const loadTranslations = async () => {
     const context = require.context('@/translations', false, /\.yaml$/);
@@ -55,5 +56,49 @@ export const translate = (key: string, ...values: any[]): string => {
 }
 
 export const changeLanguage = async (language: string) => {
-    currentLanguage = language;
+    try {
+        // 设置状态为正在切换语言，触发UI显示加载动画
+        isChangingLanguage = true;
+        
+        // 添加延迟以确保动画有足够时间显示
+        await new Promise(resolve => setTimeout(resolve, 300));
+        
+        // 调用后端API更新语言设置
+        try {
+            const response = await fetch(`http://localhost:37520/api/language`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ language })
+            });
+            
+            if (!response.ok) {
+                console.error('Failed to update language on backend');
+            }
+        } catch (apiError) {
+            console.error('API error when changing language:', apiError);
+            // 继续执行，即使后端API调用失败
+        }
+        
+        // 更新当前语言
+        currentLanguage = language;
+        
+        // 加载新语言的翻译
+        await loadTranslations();
+        
+        // 主动触发React组件重新渲染
+        const languageChangeEvent = new CustomEvent('languageChanged');
+        document.dispatchEvent(languageChangeEvent);
+        
+        // 添加延迟以确保翻译加载完成后动画有足够时间显示
+        await new Promise(resolve => setTimeout(resolve, 500));
+    } catch (error) {
+        console.error('Failed to change language:', error);
+        // 发生错误时恢复到之前的语言
+        throw error;
+    } finally {
+        // 无论成功或失败，最终都将状态设置为非切换状态
+        isChangingLanguage = false;
+    }
 };

@@ -17,7 +17,8 @@ import { Fireworks } from "@fireworks-js/react";
 import { GetSettingByKey } from "@/apis/settings";
 import { Disclaimer } from "@/components/disclaimer";
 import AccountHandler from "@/apis/account";
-import Snowfall from "react-snowfall"
+// Import Snowfall instead of SnowEffect
+import Snowfall from "react-snowfall";
 import useSWR from "swr";
 import { motion } from "framer-motion";
 import Loader from "@/components/loader";
@@ -25,6 +26,7 @@ import { translate } from "@/apis/translation";
 import { ACTIONS, EVENTS, STATUS, CallBackProps } from 'react-joyride';
 import { JoyRideNoSSR, skipAll } from "@/components/joyride-no-ssr";
 import { AnimatePresence } from "framer-motion";
+import { LanguageTransition } from "@/components/language-transition";
 
 export default function CSRLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
     const { data: language, isLoading: loadingLanguage } = useSWR("language", GetCurrentLanguage, { refreshInterval: 2000 });
@@ -45,9 +47,8 @@ export default function CSRLayout({ children, }: Readonly<{ children: React.Reac
 
     useEffect(() => {
         if (language) {
-            changeLanguage(language);
             setLoadingTranslations(true);
-            loadTranslations().then(() => {
+            changeLanguage(language).then(() => {
                 setLoadingTranslations(false);
                 setSTEPS([
                     {
@@ -118,45 +119,9 @@ export default function CSRLayout({ children, }: Readonly<{ children: React.Reac
     };
 
     useEffect(() => {
-        loadTranslations().then(() => {
-            setSTEPS([
-                {
-                    target: "#window_controls",
-                    content: translate("tutorials.main.window_controls"),
-                    disableBeacon: true,
-                },
-                {
-                    target: "#slide_area",
-                    content: translate("tutorials.main.slide_area"),
-                    disableBeacon: true,
-                    hideFooter: true,
-                },
-                {
-                    target: "#sidebar_rail",
-                    content: translate("tutorials.main.sidebar_collapse"),
-                    placement: "right",
-                    disableBeacon: true,
-                    hideFooter: true,
-                },
-                {
-                    target: "#sidebar",
-                    content: translate("tutorials.main.sidebar"),   
-                    placement: "right",
-                    disableBeacon: true,
-                    hideFooter: true,
-                },
-                {
-                    target: "#settings",
-                    content: translate("tutorials.main.settings"),   
-                    placement: "right",
-                    disableBeacon: true,
-                    hideFooter: true,
-                },
-            ]);
-            const hasDoneOnboarding = localStorage.getItem("hasDoneOnboarding");
-            setHasDoneOnboarding(hasDoneOnboarding === "true");
-            setLoadingTranslations(false);
-        });
+        // Check if user has completed onboarding
+        const hasDoneOnboarding = localStorage.getItem("hasDoneOnboarding");
+        setHasDoneOnboarding(hasDoneOnboarding === "true");
     }, []);
 
     const startOnboarding = () => {
@@ -166,7 +131,7 @@ export default function CSRLayout({ children, }: Readonly<{ children: React.Reac
     return (
         <div className="h-screen w-screen flex overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-50">
-                {isSnowing && <Snowfall snowflakeCount={50} speed={[-0.5, 0.5]} wind={[-0.5, 0.5]} radius={[0, 0.5]} />}
+                {isSnowing && <Snowfall snowflakeCount={50} speed={[0.5, 1.0]} wind={[0.5, 1.0]} radius={[0.5, 1.5]} />}
                 {isNewYear && <Fireworks className="w-full h-full" options={{
                     rocketsPoint: { min: 0, max: 100 },
                     delay: { min: 500, max: 2000 },
@@ -174,6 +139,7 @@ export default function CSRLayout({ children, }: Readonly<{ children: React.Reac
                 }
             </div>
             <AccountHandler />
+            <LanguageTransition />
             <ThemeProvider
                 attribute="class"
                 defaultTheme="dark"

@@ -1,0 +1,78 @@
+.spinner {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid #fafafa;
+    border-top-color: transparent;
+    animation: spinner 0.8s ease-in-out infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 语言切换动画样式 */
+.language-transition-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 50;
+    transition: opacity 0.3s ease;
+}
+
+.language-spinner-container {
+    background-color: rgba(24, 24, 27, 0.9);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(0);
+    animation: bounce-in 0.5s ease-out;
+}
+
+.language-change-text {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #fafafa;
+    text-align: center;
+}
+
+@keyframes bounce-in {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}

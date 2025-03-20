@@ -1,438 +1,593 @@
 Language:
-  name: "简体中文"
-  # ^ The name of the language in its own language. Example: "Suomi"
-  name_en: "Simplified Chinese"
-  # ^ The name of the language in English. Example: "Finnish"
-  iso_code: "zh-CN"
-  # ^ The ISO 639-1 code for the language. Example: "fi"
-  credits: "您正在使用官方中文。翻译：MRUIAW，晚安，Lun，DennisL，wyc-26"
-  # ^ The credits for the language show in the UI.
-  version: "2.0.0"
-  # ^ Latest compatible version. Checked by the UI for compatibility.
-
+    credits: "\u60A8\u6B63\u5728\u4F7F\u7528\u5B98\u65B9\u4E2D\u6587\u3002\u7FFB\u8BD1\
+        \uFF1AMRUIAW\uFF0C\u665A\u5B89\uFF0CLun\uFF0CDennisL\uFF0Cwyc-26"
+    iso_code: zh-CN
+    name: "\u7B80\u4F53\u4E2D\u6587"
+    name_en: Simplified Chinese
+    version: 2.0.0
 Translations:
-
-  # MARK: Globals
-
-  confirm: "确定"
-  cancel: "取消"
-  'yes': "是"
-  'no': "否"
-  continue: "继续"
-  loading: "加载中..."
-  success: "成功"
-  # ^ Usually used in a statement that says something was successful. Example: [Something was completed] 'Success!'
-  error: "错误"
-  # ^ Usually used in a statement that says something was unsuccessful. Example: [Something was not completed] 'Error!'
-  done: "完成！"
-  set: "已设置"
-  # ^ Something was set. Example: [Stay on top set to true] 'Set'
-  setting: "正在设置..."
-  # ^ The act of setting something. Example: [Setting stay on top to true] 'Setting...'
-  unknown: "未知"
-  download: "下载"
-  downloading: "下载中 {0}..."
-  # ^ {0} is the name of what is being downloaded. Example: 'Downloading model...'
-  clear: "清除"
-  search: "搜索"
-  submit: "提交"
-  install: "安装"
-  uninstall: "卸载"
-
-  # MARK: Backend
-
-  main.errors_and_warnings: "日志中的错误和警告："
-  main.errors: "错误："
-  # ^ Here the text is before a count of errors. For example a print could be 'Errors: 5'
-  main.warnings: "警告："
-  # ^ Here the text is before a count of warnings. For example a print could be 'Warnings: 5'
-  main.no_errors_or_warnings: "未发现错误或警告。"
-  main.overseer_started: "ETS2LA 管理程序已启动！"
-  # ^ Overseer in this context means the main file that monitors the rest of the program. If the program crashes the overseer will attempt to fix the issue and restart.
-  main.development_mode: "正在以开发模式运行"
-  main.restarting: "ETS2LA 正在重新启动..."
-  main.updating: "ETS2LA 正在更新..."
-  main.update_done: "更新完成... 正在重启！"
-  main.crashed: "ETS2LA 因以下错误崩溃："
-  main.legacy_traceback: "使用了旧版的错误追踪。"
-  main.send_report: "将上述错误报告发送给开发人员。"
-  main.closed: "ETS2LA 已关闭。"
-  main.press_enter: "按 Enter 键以退出..."
-  core.backend_started: "ETS2LA 服务器端已成功启动。"
-  immediate.websocket_started: "Websocket 已启动。"
-  immediate.message_error: "处理消息时发生错误。"
-  # ^ Message in this context means a transmission between the websocket client (for example the frontend) and the server.
-  immediate.empty_page: "尝试发送一个空白页面。"
-  webserver.enabling_plugin: "正在启用插件 {0}"
-  # ^ {0} is the plugin to be enabled.
-  webserver.disabling_plugin: "正在停用插件 {0}"
-  # ^ {0} is the plugin to be disabled.
-  webserver.webserver_started: "网页服务已在 {0} 上启动 ( {1} )"
-  # ^ {0} is the local network address {1} is localhost address. Example: 'Webserver started on http://192.168.1.106:37520 ( http://localhost:37520 )'
-  webserver.frontend_started: "用户界面已在 {0} 上启动 ( {1} )"
-  # ^ {0} is the local network address {1} is localhost address. Example: 'Frontend started on http://192.168.1.106:3005 ( http://localhost:3005 )'
-  godot.server_started: "Godot 已在端口 {0} 上启动"
-  # ^ {0} is the port number. Example: 'Godot serving on port 60407'
-  webpage.opened: "ETS2LA 用户界面已打开。"
-  webpage.ui_loading: "正在初始化用户界面，请稍候"
-  controls.listener_started: "控制程序已启动。"
-  # ^ Listener just means the app is listening for input from the user.
-  sounds.missing_sound: "音效库 '{0}' 缺少所需的音效 '{1}'"
-  # ^ {0} is the soundpack name {1} is the sound name Example: 'Soundpack 'default' is missing the required sound 'beep'
-  sounds.invalid_file_type: "音效库 '{0}' 包含无效的文件类型 '{1}'"
-  # ^ {0} is the soundpack name {1} is the file type Example: 'Soundpack 'default' has an invalid file type 'flac'
-  sounds.sound_not_found_in_soundpack: "尝试播放音效 '{0}'，但在音效库 '{1}' 中找不到"
-  # ^ {0} is the sound name {1} is the soundpack name Example: 'Tried to play sound 'beep', but it was not found in soundpack 'default'
-  logging.delete_log_error: "无法删除日志文件。"
-  logging.logger_initialized: "日志系统已初始化。"
-  events.vehicle_change.vehicle_change: "检测到车辆改变。"
-  events.vehicle_change.vehicle_change_description: "我们检测到了一辆新车辆。请在座舱视图中按 F4，打开座椅设置，然后输入新的 FOV 值。"
-
-  # MARK: Runner
-
-  runner.could_not_import: "无法导入插件"
-  # ^ {0} is the plugin path. Example: 'Could not import plugin 'ETS2LA.plugins.NavigationDetection.main''
-  runner.could_not_load_module: "无法加载模块"
-  # ^ {0} is the module object. Example: 'Could not load module <object>'
-  runner.initialize_error: "执行 Initialize() 时出错"
-  # ^ {0} is the plugin name or module Example: 'Error while running Initialize() for NavigationDetection
-  runner.error_calling_function: "调用函数时出错"
-  # ^ {0} is the function name {1} is the plugin name Example: 'Error while calling function 'onStart' in NavigationDetection
-  runner.plugin_crash: "插件已崩溃。"
-  # ^ {0} is the plugin name Example: 'Plugin NavigationDetection has crashed'
-
-  # MARK: Frontend
-
-  frontend.hello: "你好，{0}！"
-  # ^ {0} is the name of the user Example: 'Hello, Tumppi066'
-  frontend.disclaimer.title: "免责声明！"
-  frontend.disclaimer.description.line1: "ETS2LA 对因使用该软件提供的任何功能而导致的任何不良影响不负任何责任。请自行承担使用该软件的风险。"
-  frontend.disclaimer.description.line2: "TMP 工作人员允许在 TruckersMP 中使用 ETS2LA，但您应对因使用该软件而导致的任何封禁或警告负责。"
-  frontend.disclaimer.ok: "我明白"
-  frontend.disclaimer.dontshowagain: "不再显示"
-  frontend.disclaimer.dontshowagain.toast: "直到下一次更新前你不会再看到此消息"
-  frontend.logged_out: "已登出。"
-  frontend.states.complete: "完成！"
-  frontend.theme.dark: "深色主题"
-  frontend.theme.light: "浅色主题"
-  frontend.immediate.connected: "已连接至 ETS2LA 服务端"
-  frontend.immediate.disconnected: "与 ETS2LA 服务器端断开连接"
-  frontend.immediate.update_check_error: "错误：{0}"
-  # ^ {0} is the error message
-  frontend.immediate.checking_updates: "正在检查更新..."
-  frontend.immediate.update_available: "你已落后最新版 {0} 个更新"
-  frontend.immediate.no_updates: "没有可用的更新。"
-  frontend.immediate.up_to_date: "已是最新版本"
-  frontend.immediate.socket_connected: "已连接"
-  frontend.immediate.socket_disconnected: "已断开，请重新加载。"
-  frontend.immediate.enable_stay_on_top: "启用置顶"
-  frontend.immediate.disable_stay_on_top: "停用置顶"
-  frontend.immediate.enable_transparent: "启用半透明"
-  frontend.immediate.disable_transparent: "禁用半透明"
-  frontend.immediate.minimize: "最小化"
-  frontend.immediate.close: "关闭"
-  frontend.404.title: "您貌似进入到了我们的视野盲区"
-  # ^ You can go wild here, I'd like to see some fun jokes in the 404 page!
-  frontend.404.message: "无论如何，请点击下方按钮返回主界面，并告诉我们您是怎么到达这个页面的"
-  # ^ You can go wild here, I'd like to see some fun jokes in the 404 page!
-  frontend.404.button: "返回到主界面"
-  # ^ You can go wild here, I'd like to see some fun jokes in the 404 page! (at least make this something about the main menu)
-  frontend.settings.data_missing: "插件数据无效或缺失。"
-  frontend.settings: "设置"
-  frontend.settings.global: "全局设置"
-  frontend.settings.controls: "控制"
-  frontend.settings.global_info: "此列表仅包括支持全局设置文件的插件。"
-  frontend.settings.error: "错误：{0}"
-  # ^ {0} is the error message that happened.
-  frontend.settings.backend_no_data: "从服务器端未获取到数据。"
-  frontend.settings.string.updated: "设置已更新"
-  frontend.settings.number.updated: "设置已更新"
-  frontend.settings.boolean.updated: "设置已更新"
-  frontend.settings.array.updated_element: "项目已更新"
-  frontend.settings.array.removed_element: "项目已移除"
-  frontend.settings.array.added_element: "项目已新增"
-  frontend.settings.array.add: "新增项目"
-  frontend.settings.array.remove: "移除"
-  frontend.settings.enum.no_enum: "未提供选项值。"
-  frontend.settings.enum.updated: "设置已更新"
-  frontend.settings.unknown_data_type: "未知的数据类型：{0}"
-  # ^ {0} is the data type that was unknown. Example: 'Unknown data type: string'
-  frontend.settings.needs_restart: "插件需要重新启动才能更新设置。"
-  frontend.settings.restarted: "重新启动成功"
-  frontend.feedback: "反馈"
-  frontend.feedback.empty: "反馈为空，请提供您有的任何反馈。"
-  frontend.feedback.sending: "正在发送反馈..."
-  frontend.feedback.sent: "反馈已发送！"
-  frontend.feedback.error_sending: "发送反馈时出现错误，请稍后再试。"
-  frontend.feedback.description: "请提供您有的任何反馈意见。这将直接发送到开发人员的私人频道。"
-  frontend.feedback.disclaimer: "请勿分享任何个人信息。"
-  frontend.feedback.submit: "提交"
-  frontend.plugins.name: "名称"
-  frontend.plugins.authors: "作者"
-  frontend.plugins.tags: "标签"
-  frontend.plugins.select_tags: "搜索标签"
-  frontend.plugins.select_authors: "搜索作者"
-  frontend.plugins.selected_tags: "已选择 {0} 个标签"
-  frontend.plugins.selected_authors: "已选择 {0} 个作者"
-  frontend.plugins.end_list: "已到达列表底部"
-  frontend.plugins.enabling_plugin: "正在启用 {0}"
-  frontend.plugins.enabled_plugin: "已启用 {0}"
-  frontend.plugins.error_enabling_plugin: "启用 {0} 时出现错误"
-  frontend.plugins.enabling_all_plugins: "正在启用所有插件..."
-  frontend.plugins.enabled_all_plugins: "已启用所有插件"
-  frontend.plugins.disabling_plugin: "正在禁用 {0}"
-  frontend.plugins.disabled_plugin: "已禁用 {0}"
-  frontend.plugins.error_disabling_plugin: "禁用 {0} 时出现错误"
-  frontend.plugins.disabling_all_plugins: "正在禁用所有插件..."
-  frontend.plugins.disabled_all_plugins: "已禁用所有插件"
-  frontend.plugins.hidden: "已隐藏 {0} 个插件"
-  frontend.dialog.not_supported: "对话框中不支持 {0}。"
-  # ^ {0} is the function that is not supported. Example: 'EnabledLock is not supported in a dialog.'
-  frontend.sidebar.updates_available: "可用更新"
-  frontend.sidebar.main: "主界面"
-  frontend.sidebar.dashboard: "概览"
-  frontend.sidebar.visualization: "环境可视化"
-  frontend.sidebar.plugins: "插件"
-  frontend.sidebar.manager: "插件管理"
-  frontend.sidebar.performance: "性能"
-  frontend.sidebar.help: "帮助"
-  frontend.sidebar.wiki: "Wiki"
-  frontend.sidebar.chat: "聊天"
-  frontend.sidebar.settings: "设置"
-  frontend.sidebar.anonymous: "匿名"
-  frontend.sidebar.account: "账户"
-  frontend.sidebar.sign_out: "注销"
-  frontend.sidebar.sign_out_successful: "登出成功。"
-  frontend.sidebar.sign_out_description: "你可以随时重新登录回来。"
-  frontend.sidebar.sign_in: "登录"
-  frontend.login: "登录"
-  frontend.login.disclaimer: "我们目前仅支持通过 Discord 登录，这样我们就不必存储任何敏感信息，例如密码。"
-  frontend.login.discord: "使用 Discord 登录"
-  frontend.login.privacy_policy: "隐私政策"
-  frontend.login.already_logged_in: "注意：您已经登录，可以通过再次登录来覆盖它。"
-  frontend.login.successful: "登录成功！"
-  frontend.login.successful_description: "使用左下角用户名下的菜单进行注销。"
-
-  # MARK: Tutorials
-
-  tutorials.main.window_controls: "这些是窗口控制按钮。最左侧的按钮包含额外选项，您可以将鼠标悬停其上以查看详细提示！（在引导教程结束后）"
-  tutorials.main.slide_area: "您可以通过拖动此区域来移动窗口位置。"
-  tutorials.main.sidebar_collapse: '点击侧边栏边缘可以折叠侧边栏，以进入全屏模式。'
-  tutorials.main.sidebar: "您可以通过侧边栏轻松切换到软件的不同页面。部分页面还包含更多提示帮助您熟悉本软件！"
-  tutorials.main.settings: "现在请前往设置页面！"
-  tutorials.settings.static: "这里显示的是整个软件所需的基础设置。"
-  tutorials.settings.global: "当前显示的是全局设置，包含界面设置和其他插件运行所需的杂项配置。"
-  tutorials.settings.plugin: "这是所有带有设置页面的插件列表。点击任意插件可配置其专属设置。"
-  tutorials.settings.sdk: "最后请打开SDK设置页面并安装SDK（如果尚未安装）。注意：如果您是从V1版本升级而来，需要在此页面重新安装SDK。"
-  tutorials.plugins.options: "您可以使用搜索选项快速定位所需内容。"
-  tutorials.plugins.tags: "默认选中了base标签。您可以通过点击插件列表中的标签或在此处打开下拉菜单来添加更多筛选条件。"
-  tutorials.plugins.clear: '点击此按钮可清除当前所有搜索选项。'
-  tutorials.plugins.enable_all: "通过此复选框可批量启用/禁用当前可见的所有插件。"
-  tutorials.plugins.list: '初次使用时，建议启用除“数据收集”和“导航检测”之外的所有插件。'
-
-  # MARK: About
-
-  about.about: "关于本软件"
-  about.description: "ETS2LA 是一个旨在为 ETS2 和 ATS 提供易于使用的自动驾驶解决方案的项目，如果您想了解更多信息，可以通过侧边栏访问 GitHub 页面或 Wiki。"
-  about.statistics: "统计信息"
-  about.statistics.users_online: "当前在线用户:"
-  about.statistics.users_online_value: "{0} 位用户"
-  about.statistics.past_24h: "过去24小时:"
-  about.statistics.past_24h_value: "{0} 位去重用户"
-  about.statistics.usage_time: "您的使用时长:"
-  about.statistics.usage_time_value_hour: "{0} 小时"
-  about.statistics.usage_time_value_minute: "{0} 分钟"
-  about.statistics.usage_time_value_hour_and_minute: "{0} 小时 {1} 分钟"
-  about.statistics.logged_in: "您已登录"
-  about.statistics.not_logged_in: "您未登录"
-  about.statistics.anonymous_user_id: "您的 匿名用户ID 是: {0}"
-  about.statistics.welcome: "欢迎回来, {0}！"
-  about.developers: "开发者 / 贡献者"
-  about.translation_credits: "翻译鸣谢"
-  about.no_credits: "此语言没有鸣谢。"
-  about.support_development: "开发支持"
-  about.kofi_description: "• 如果您喜欢该项目并希望支持其开发，您可以通过 Ko-Fi 进行捐赠。"
-  about.contribute_description: "• 如果您想做出贡献，那么我建议加入 Discord 服务器并查看 GitHub 页面。"
-  about.translate_description: "• 如果您想为翻译做出贡献，请加入 Discord 服务器。"
-  about.tumppi066.description: "ETS2LA 的首席开发人员和创建者"
-  about.glas42.description: "导航检测、交通信号灯检测、ETS2LA Lite、“共同拥有者”"
-  about.cloud.description: "Linux 和 Unix 适配，各种改进和错误修复"
-  about.dyldev.description: "各种添加和改进、物体检测 AI 模型和开发"
-  about.roccovax.description: "ETS2LA 游戏端 SDK 开发者。实现了直接获取游戏内的车辆数据、交通信号灯数据、摄像头数据等实时信息。"
-  about.truckersmudgeon.description: "游戏数据提取与处理"
-  about.whytrevorwhy.description: "协助开发地图插件与导航功能"
-  about.mimi89999.description: "scs-sdk-controller 开发人员"
-  about.zhaoyj.description: "环境可视化的 3D 模型"
-  about.lun.description: "中文翻译，错误修复"
-  about.mruiaw.description: "中文翻译，错误修复"
-  about.ziakhan4505.description: "C++ 支持、Linux 和 Unix 适配、错误修复"
-  about.piotrke.description: "Game hooks"
-  about.dtheicydragon.description: "错误修复"
-  about.romansonnik.description: "错误修复"
-  about.atac_helicopter.description: "错误修复"
-  about.flexflexen.description: "错误修复"
-  about.lookatyourskill.description: "错误修复"
-  about.viszke.description: "错误修复"
-
-  # MARK: List of plugins
-
-  plugins.adaptivecruisecontrol: "主动巡航控制 (ACC)"
-  plugins.adaptivecruisecontrol.description: "会在前方有车辆时减速（如果启用了物体检测插件）。在转弯时也会减速（如果启用了导出此信息的插件）。"
-  plugins.ar: "AR (增强现实)"
-  plugins.ar.description: "开发中... 插件会在游戏画面上绘制形状，使它们看起来像是在游戏里一样。"
-  plugins.cruisecontrol: "巡航控制 (CC)"
-  plugins.cruisecontrol.description: "基于游戏内自动巡航来控制速度与保持车距。无法与ACC插件一起使用！"
-  plugins.datacollection: "数据收集"
-  plugins.datacollection.description: "用于车辆检测插件的数据收集。"
-  plugins.depthprediction: "深度预测"
-  plugins.depthprediction.description: "提供物体避让的深度预测，请注意，由于性能需求较高，此插件可能仅适用于 NVIDIA 显卡。"
-  plugins.discordrichpresence: "Discord 状态显示 (RPC)"
-  plugins.discordrichpresence.description: "适用于 ETS2LA 的 Discord 状态显示 (RPC) 插件。"
-  plugins.map: "地图"
-  plugins.map.description: "地图驾驶插件。"
-  plugins.microcontrollercontrol: "微控制器控制"
-  plugins.microcontrollercontrol.description: "允许您使用微控制器控制 ETS2LA 和 ETS2（适用于按键盒/中控盒）。"
-  plugins.navigationdetection: "导航检测"
-  plugins.navigationdetection.description: "使用游戏内的路线来跟随选择的路线。"
-  plugins.objectdetection: "物体检测"
-  plugins.objectdetection.description: "使用屏幕图像识别检测各种物体，并可在输出窗口和 3D 环境可视化中显示它们。"
-  plugins.raycastingtest: "Raycast测试"
-  plugins.raycastingtest.description: "Raycast测试插件，将射线投射到您的鼠标位置。"
-  plugins.sockets: "Sockets"
-  plugins.sockets.description: "使数据接口可用，主要用于内置的环境可视化功能。"
-  plugins.trafficlightdetection: "红绿灯检测"
-  plugins.trafficlightdetection.description: "使用计算机视觉检测红绿灯，并可在输出窗口显示它们。它与巡航控制插件连接，可在红灯时停止卡车。"
-  plugins.truckstats: "卡车数据"
-  plugins.truckstats.description: "此插件显示关于卡车、路线和游戏的一些统计数据。"
-
-  # MARK: Plugin settings
-
-  global.settings.1.title: "全局设置"
-  global.settings.1.description: "这些主要是影响整个应用程序的设置。"
-  global.settings.2.name: "音效库"
-  global.settings.2.description: "要使用的音效库。这些将改变应用程序中的所有音效。"
-  global.settings.3.name: "音量"
-  global.settings.3.description: "应用程序中音效的音量。"
-  global.settings.4.name: "连接端口"
-  global.settings.4.description: "用户端运行的端口。"
-  global.settings.5.name: "高级Traceback"
-  global.settings.5.description: "当报错时是否使用高级Traceback。"
-  global.settings.6.name: "发送崩溃报告"
-  global.settings.6.description: "是否将崩溃报告发送给开发者。"
-  global.settings.7.name: "调试模式"
-  global.settings.7.description: "是否启用调试模式。"
-  global.settings.8.name: "语言"
-  global.settings.8.description: "应用程序使用的语言。需要重新启动才能更改！"
-  global.settings.9.name: "无边框窗口"
-  global.settings.9.description: "是否使用无边框窗口。需要完全重启才能应用更改！这将修正移动应用程序窗口时的问题，并启用缩放功能。"
-  global.settings.10.name: "窗口宽度"
-  global.settings.10.description: "窗口的宽度。"
-  global.settings.11.name: "窗口高度"
-  global.settings.11.description: "窗口的高度。"
-  global.settings.12.name: "透明度"
-  global.settings.12.description: "半透明模式下窗口的透明度。1 = 完全不透明，0 = 完全透明。"
-  global.settings.13.name: "显示器ID"
-  global.settings.13.description: "用于视觉性功能（物体识别等）的显示器ID。你需要将其设置为正在运行ETS2的显示器。需要完全重启才能应用更改！"
-  global.settings.14.name: "FOV"
-  global.settings.14.description: "错过了FOV修改弹窗？在此更改您的 FOV。"
-  global.settings.15.name: "雪花"
-  global.settings.15.description: "是否在屏幕上启用雪花粒子。"
-  global.settings.16.name: "烟花"
-  global.settings.16.description: "是否在屏幕上启用烟花。"
-  global.settings.ui: "用户界面"
-  global.settings.audio: "音频"
-  global.settings.variables: "配置"
-  global.settings.misc: "杂项"
-  map.settings.1.title: "地图设置"
-  map.settings.1.description: "这些是地图插件的设置。"
-  map.settings.2.name: "计算转向"
-  map.settings.2.description: "这将计算地图转向卡车所需的必要值。"
-  map.settings.3.name: "发送数据"
-  map.settings.3.description: "这将允许其他插件使用地图的数据。请注意，如果未启用此选项，环境可视化将无法工作。此选项可以且将提高性能。"
-  map.settings.4.title: "内部可视化"
-  map.settings.5.name: "缩放"
-  map.settings.5.description: "控制内部可视化的缩放级别。"
-  map.settings.6.name: "启用"
-  map.settings.6.description: "是否渲染地图的内部可视化。如果您未发送外部数据，这很有用。"
-  map.settings.7.title: "外部可视化"
-  map.settings.8.name: "渲染距离"
-  map.settings.8.description: "这将设置发送给其他插件的数据的最大距离，前提是该插件允许。"
-  map.settings.9.name: "显示 AR 画面"
-  map.settings.9.description: "这将显示游戏中的道路，您需要启用 AR 插件。"
-  map.settings.10.title: "转向设置"
-  map.settings.11.name: "平滑度"
-  map.settings.11.description: "平滑转向的时间（以秒为单位）。值为0时，转向会非常灵敏；值大于0.5时，可能会导致左右摇摆。"
-  map.settings.12.name: "在ETS2LA上导航"
-  map.settings.12.description: "将计算出到达目的地所需的路径。免责声明：此路线不保证是最快的！"
-  object_detection.settings.1.title: "物体检测设置"
-  object_detection.settings.1.description: "这些设置将影响物体检测的质量和性能。"
-  object_detection.settings.2.name: "设备"
-  object_detection.settings.2.description: "用来运行物体检测的设备，如果选择自动，则将根据您的系统决定。（如果选择 GPU，而您没有 GPU 或未安装 CUDA，它将默认使用 CPU。）"
-  # ^ This has three options, CPU, GPU and Automatic. The others are probably self explanatory but if you think people can't understand 'Automatic' then you should explain it here.
-  object_detection.settings.3.name: "模式"
-  object_detection.settings.3.description: "您想使用的物体检测模式。请注意，质量模式需要强大的电脑才能良好运行。"
-  # ^ This two options, Performance and Quality. These cannot be translated. If you think people can't understand them then you should explain them here.
-  object_detection.settings.4.name: "YOLO 检测速度"
-  object_detection.settings.4.description: "YOLO 模型的更新速率。较高的值将更快地更新检测。在性能模式下，这是 FPS，在质量模式下，这是检测之间的帧数。请注意，性能模式下的值高于 2 可能无法按预期运作。"
-  object_detection.settings.5.name: "模型"
-  object_detection.settings.5.description: "您想使用的模型。请注意，YoloV7 需要更多的计算资源。"
-  object_detection.settings.6.name: "屏幕捕捉尺寸"
-  object_detection.settings.6.description: "用于物体检测的屏幕部分。位置 0 是 X，位置 1 是 Y，位置 2 是宽度，位置 3 是高度。此设置将在您首次启动插件后自动设置。"
-  acc.settings.1.title: "ACC - 自适应巡航控制 设置"
-  acc.settings.1.description: "此选项将影响应用程序对其他车辆的反应方式。"
-  acc.settings.2.name: "跟车时间"
-  acc.settings.2.description: "与前方车辆之间的距离应保持的秒数。(到达前方车辆当前所处位置所需要的秒数)"
-  acc.settings.3.name: "速度偏移"
-  acc.settings.3.description: "以超过限速多少去行驶。"
-  acc.settings.4.name: "距离保持"
-  acc.settings.4.description: "与前方的物体保持多远的距离。"
-  acc.settings.5.name: "速度偏移类型"
-  acc.settings.5.description: "行驶的速度是否要比限速快一定百分比，还是要快一定量？"
-  acc.settings.6.name: "显示通知/弹出窗口"
-  acc.settings.6.description: "当程序因任何障碍物而减速时显示一个弹出窗口。"
-  acc.settings.7.name: "在无限速路段时所保持的车速"
-  acc.settings.7.description: "当 API 读取到当前路段无限速时所保持的行驶速度。"
-
-  # MARK: Plugin keys
-
-  map.json_not_found: "在 GameData 文件夹中找不到 JSON 文件，请解压缩 GameData.zip 文件。"
-  map.loading.preparing: "地图正在准备加载数据..."
-  map.loading.nodes: "地图加载数据点..."
-  map.loading.roads: "地图加载道路中..."
-  map.loading.ferries: "地图加载轮渡中..."
-  map.loading.prefab_data: "地图加载预设对象数据中..."
-  map.loading.prefabs: "地图加载预设对象中..."
-  map.loading.final_calculations: "地图进行最后计算中..."
-  map.visualisation.roads.text: "道路：{0}，区块：{1}，加载中：{2}"
-  # ^ {0} is the count of roads {1} is the current tile {2} is the count of roads currently being loaded Example: 'Roads: 5, Tile: (27,13), Loading: 2'
-  map.visualisation.prefabs.prefabs: "预设对象：{0}，区块：{1}"
-  # ^ {0} is the count of prefabs {1} is the current tile Example: 'Prefabs: 5, Tile: (27,13)'
-  map.visualisation.prefabs.curves: "弯道：{0}"
-  # ^ {0} is the count of curves Example: 'Curves: 5'
-  map.extracting_data: "正在获取 GameData.zip 数据，请稍候..."
-  object_detection.loading_model: "正在加载物体检测模型..."
-  object_detection.not_found.1: "以下所需模型尚未下载。"
-  # ^ Displayed in the first line of a modal when the selected model is not found, the model name is shown below this message.
-  object_detection.not_found.2: "点击下面的按钮从以下位置下载模型"
-  # ^ The full sentence will be: {translation} Hugging Face
-  object_detection.connection_failed.1: "无法访问 Hugging Face 的服务器。"
-  # ^ Don't change Hugging Face
-  object_detection.connection_failed.2: "请检查您的互联网连接。"
-  object_detection.connection_failed.3: "注意：在中国等国家，服务器可能会被封锁。"
-  object_detection.connection_failed.4: "在这种情况下，您应该在 Discord 中寻求帮助。"
-  object_detection.screen_capture_profile: "物体检测 正在使用 屏幕捕获配置文件：{0}"
-  # ^ {0} is the profile name Example: 'Object Detection is using screen capture profile: 1080p'
-  object_detection.loaded_model: "物体检测模型已加载于 {0}"
-  object_detection.tracking_failed: "对 {0} 的跟踪失败，置信度为 {1}"
-  # ^ {0} is the class of vehicle that the tracking failed on. {1} is the confidence rating of said vehicle, this is a number from 0 to 1. Example: 'Tracking failed for car with confidence 0.5'
-  object_detection.processing_error: "处理车辆数据时出错"
-  sdk_install.title: "SDK 设置"
-  sdk_install.description: "检查您是否安装了我们与游戏进行通信所需的 DLL。"
-  sdk_install.no_games: "我们在您的系统上找不到游戏。您必须手动安装 SDK。"
-  sdk_install.games: "我们在您的系统上发现了以下游戏："
-  sdk_install.install: "安装 SDK"
-  sdk_install.install_description: "此按钮将为上面列出的所有游戏安装 SDK。安装完成后可能需要一些时间才能刷新页面。"
-  sdk_install.uninstall: "卸载 SDK"
-  sdk_install.uninstall_description: "此按钮将为上面列出的所有游戏卸载 SDK。卸载完成后，可能需要一些时间刷新页面。"
-  sdk_install.installed: "- 已安装"
-  sdk_install.not_installed: "- 未安装"
+    about.about: "\u5173\u4E8E\u672C\u8F6F\u4EF6"
+    about.atac_helicopter.description: "\u9519\u8BEF\u4FEE\u590D"
+    about.cloud.description: "Linux \u548C Unix \u9002\u914D\uFF0C\u5404\u79CD\u6539\
+        \u8FDB\u548C\u9519\u8BEF\u4FEE\u590D"
+    about.contribute_description: "\u2022 \u5982\u679C\u60A8\u60F3\u505A\u51FA\u8D21\
+        \u732E\uFF0C\u90A3\u4E48\u6211\u5EFA\u8BAE\u52A0\u5165 Discord \u670D\u52A1\
+        \u5668\u5E76\u67E5\u770B GitHub \u9875\u9762\u3002"
+    about.description: "ETS2LA \u662F\u4E00\u4E2A\u65E8\u5728\u4E3A ETS2 \u548C ATS\
+        \ \u63D0\u4F9B\u6613\u4E8E\u4F7F\u7528\u7684\u81EA\u52A8\u9A7E\u9A76\u89E3\
+        \u51B3\u65B9\u6848\u7684\u9879\u76EE\uFF0C\u5982\u679C\u60A8\u60F3\u4E86\u89E3\
+        \u66F4\u591A\u4FE1\u606F\uFF0C\u53EF\u4EE5\u901A\u8FC7\u4FA7\u8FB9\u680F\u8BBF\
+        \u95EE GitHub \u9875\u9762\u6216 Wiki\u3002"
+    about.developers: "\u5F00\u53D1\u8005 / \u8D21\u732E\u8005"
+    about.dtheicydragon.description: "\u9519\u8BEF\u4FEE\u590D"
+    about.dyldev.description: "\u5404\u79CD\u6DFB\u52A0\u548C\u6539\u8FDB\u3001\u7269\
+        \u4F53\u68C0\u6D4B AI \u6A21\u578B\u548C\u5F00\u53D1"
+    about.flexflexen.description: "\u9519\u8BEF\u4FEE\u590D"
+    about.glas42.description: "\u5BFC\u822A\u68C0\u6D4B\u3001\u4EA4\u901A\u4FE1\u53F7\
+        \u706F\u68C0\u6D4B\u3001ETS2LA Lite\u3001\u201C\u5171\u540C\u62E5\u6709\u8005\
+        \u201D"
+    about.kofi_description: "\u2022 \u5982\u679C\u60A8\u559C\u6B22\u8BE5\u9879\u76EE\
+        \u5E76\u5E0C\u671B\u652F\u6301\u5176\u5F00\u53D1\uFF0C\u60A8\u53EF\u4EE5\u901A\
+        \u8FC7 Ko-Fi \u8FDB\u884C\u6350\u8D60\u3002"
+    about.lookatyourskill.description: "\u9519\u8BEF\u4FEE\u590D"
+    about.lun.description: "\u4E2D\u6587\u7FFB\u8BD1\uFF0C\u9519\u8BEF\u4FEE\u590D"
+    about.mimi89999.description: "scs-sdk-controller \u5F00\u53D1\u4EBA\u5458"
+    about.mruiaw.description: "\u4E2D\u6587\u7FFB\u8BD1\uFF0C\u9519\u8BEF\u4FEE\u590D"
+    about.no_credits: "\u6B64\u8BED\u8A00\u6CA1\u6709\u9E23\u8C22\u3002"
+    about.piotrke.description: Game hooks
+    about.roccovax.description: "ETS2LA \u6E38\u620F\u7AEF SDK \u5F00\u53D1\u8005\u3002\
+        \u5B9E\u73B0\u4E86\u76F4\u63A5\u83B7\u53D6\u6E38\u620F\u5185\u7684\u8F66\u8F86\
+        \u6570\u636E\u3001\u4EA4\u901A\u4FE1\u53F7\u706F\u6570\u636E\u3001\u6444\u50CF\
+        \u5934\u6570\u636E\u7B49\u5B9E\u65F6\u4FE1\u606F\u3002"
+    about.romansonnik.description: "\u9519\u8BEF\u4FEE\u590D"
+    about.statistics: "\u7EDF\u8BA1\u4FE1\u606F"
+    about.statistics.anonymous_user_id: "\u60A8\u7684 \u533F\u540D\u7528\u6237ID \u662F\
+        : {0}"
+    about.statistics.logged_in: "\u60A8\u5DF2\u767B\u5F55"
+    about.statistics.not_logged_in: "\u60A8\u672A\u767B\u5F55"
+    about.statistics.past_24h: "\u8FC7\u53BB24\u5C0F\u65F6:"
+    about.statistics.past_24h_value: "{0} \u4F4D\u53BB\u91CD\u7528\u6237"
+    about.statistics.usage_time: "\u60A8\u7684\u4F7F\u7528\u65F6\u957F:"
+    about.statistics.usage_time_value_hour: "{0} \u5C0F\u65F6"
+    about.statistics.usage_time_value_hour_and_minute: "{0} \u5C0F\u65F6 {1} \u5206\
+        \u949F"
+    about.statistics.usage_time_value_minute: "{0} \u5206\u949F"
+    about.statistics.users_online: "\u5F53\u524D\u5728\u7EBF\u7528\u6237:"
+    about.statistics.users_online_value: "{0} \u4F4D\u7528\u6237"
+    about.statistics.welcome: "\u6B22\u8FCE\u56DE\u6765, {0}\uFF01"
+    about.support_development: "\u5F00\u53D1\u652F\u6301"
+    about.translate_description: "\u2022 \u5982\u679C\u60A8\u60F3\u4E3A\u7FFB\u8BD1\
+        \u505A\u51FA\u8D21\u732E\uFF0C\u8BF7\u52A0\u5165 Discord \u670D\u52A1\u5668\
+        \u3002"
+    about.translation_credits: "\u7FFB\u8BD1\u9E23\u8C22"
+    about.truckersmudgeon.description: "\u6E38\u620F\u6570\u636E\u63D0\u53D6\u4E0E\
+        \u5904\u7406"
+    about.tumppi066.description: "ETS2LA \u7684\u9996\u5E2D\u5F00\u53D1\u4EBA\u5458\
+        \u548C\u521B\u5EFA\u8005"
+    about.viszke.description: "\u9519\u8BEF\u4FEE\u590D"
+    about.whytrevorwhy.description: "\u534F\u52A9\u5F00\u53D1\u5730\u56FE\u63D2\u4EF6\
+        \u4E0E\u5BFC\u822A\u529F\u80FD"
+    about.zhaoyj.description: "\u73AF\u5883\u53EF\u89C6\u5316\u7684 3D \u6A21\u578B"
+    about.ziakhan4505.description: "C++ \u652F\u6301\u3001Linux \u548C Unix \u9002\
+        \u914D\u3001\u9519\u8BEF\u4FEE\u590D"
+    acc.settings.1.description: "\u6B64\u9009\u9879\u5C06\u5F71\u54CD\u5E94\u7528\u7A0B\
+        \u5E8F\u5BF9\u5176\u4ED6\u8F66\u8F86\u7684\u53CD\u5E94\u65B9\u5F0F\u3002"
+    acc.settings.1.title: "ACC - \u81EA\u9002\u5E94\u5DE1\u822A\u63A7\u5236 \u8BBE\
+        \u7F6E"
+    acc.settings.2.description: "\u4E0E\u524D\u65B9\u8F66\u8F86\u4E4B\u95F4\u7684\u8DDD\
+        \u79BB\u5E94\u4FDD\u6301\u7684\u79D2\u6570\u3002(\u5230\u8FBE\u524D\u65B9\u8F66\
+        \u8F86\u5F53\u524D\u6240\u5904\u4F4D\u7F6E\u6240\u9700\u8981\u7684\u79D2\u6570\
+        )"
+    acc.settings.2.name: "\u8DDF\u8F66\u65F6\u95F4"
+    acc.settings.3.description: "\u4EE5\u8D85\u8FC7\u9650\u901F\u591A\u5C11\u53BB\u884C\
+        \u9A76\u3002"
+    acc.settings.3.name: "\u901F\u5EA6\u504F\u79FB"
+    acc.settings.4.description: "\u4E0E\u524D\u65B9\u7684\u7269\u4F53\u4FDD\u6301\u591A\
+        \u8FDC\u7684\u8DDD\u79BB\u3002"
+    acc.settings.4.name: "\u8DDD\u79BB\u4FDD\u6301"
+    acc.settings.5.description: "\u884C\u9A76\u7684\u901F\u5EA6\u662F\u5426\u8981\u6BD4\
+        \u9650\u901F\u5FEB\u4E00\u5B9A\u767E\u5206\u6BD4\uFF0C\u8FD8\u662F\u8981\u5FEB\
+        \u4E00\u5B9A\u91CF\uFF1F"
+    acc.settings.5.name: "\u901F\u5EA6\u504F\u79FB\u7C7B\u578B"
+    acc.settings.6.description: "\u5F53\u7A0B\u5E8F\u56E0\u4EFB\u4F55\u969C\u788D\u7269\
+        \u800C\u51CF\u901F\u65F6\u663E\u793A\u4E00\u4E2A\u5F39\u51FA\u7A97\u53E3\u3002"
+    acc.settings.6.name: "\u663E\u793A\u901A\u77E5/\u5F39\u51FA\u7A97\u53E3"
+    acc.settings.7.description: "\u5F53 API \u8BFB\u53D6\u5230\u5F53\u524D\u8DEF\u6BB5\
+        \u65E0\u9650\u901F\u65F6\u6240\u4FDD\u6301\u7684\u884C\u9A76\u901F\u5EA6\u3002"
+    acc.settings.7.name: "\u5728\u65E0\u9650\u901F\u8DEF\u6BB5\u65F6\u6240\u4FDD\u6301\
+        \u7684\u8F66\u901F"
+    cancel: "\u53D6\u6D88"
+    clear: "\u6E05\u9664"
+    confirm: "\u786E\u5B9A"
+    continue: "\u7EE7\u7EED"
+    controls.listener_started: "\u63A7\u5236\u7A0B\u5E8F\u5DF2\u542F\u52A8\u3002"
+    core.backend_started: "ETS2LA \u670D\u52A1\u5668\u7AEF\u5DF2\u6210\u529F\u542F\
+        \u52A8\u3002"
+    done: "\u5B8C\u6210\uFF01"
+    download: "\u4E0B\u8F7D"
+    downloading: "\u4E0B\u8F7D\u4E2D {0}..."
+    error: "\u9519\u8BEF"
+    events.vehicle_change.vehicle_change: "\u68C0\u6D4B\u5230\u8F66\u8F86\u6539\u53D8\
+        \u3002"
+    events.vehicle_change.vehicle_change_description: "\u6211\u4EEC\u68C0\u6D4B\u5230\
+        \u4E86\u4E00\u8F86\u65B0\u8F66\u8F86\u3002\u8BF7\u5728\u5EA7\u8231\u89C6\u56FE\
+        \u4E2D\u6309 F4\uFF0C\u6253\u5F00\u5EA7\u6905\u8BBE\u7F6E\uFF0C\u7136\u540E\
+        \u8F93\u5165\u65B0\u7684 FOV \u503C\u3002"
+    frontend.404.button: "\u8FD4\u56DE\u5230\u4E3B\u754C\u9762"
+    frontend.404.message: "\u65E0\u8BBA\u5982\u4F55\uFF0C\u8BF7\u70B9\u51FB\u4E0B\u65B9\
+        \u6309\u94AE\u8FD4\u56DE\u4E3B\u754C\u9762\uFF0C\u5E76\u544A\u8BC9\u6211\u4EEC\
+        \u60A8\u662F\u600E\u4E48\u5230\u8FBE\u8FD9\u4E2A\u9875\u9762\u7684"
+    frontend.404.title: "\u60A8\u8C8C\u4F3C\u8FDB\u5165\u5230\u4E86\u6211\u4EEC\u7684\
+        \u89C6\u91CE\u76F2\u533A"
+    frontend.dialog.not_supported: "\u5BF9\u8BDD\u6846\u4E2D\u4E0D\u652F\u6301 {0}\u3002"
+    frontend.disclaimer.description.line1: "ETS2LA \u5BF9\u56E0\u4F7F\u7528\u8BE5\u8F6F\
+        \u4EF6\u63D0\u4F9B\u7684\u4EFB\u4F55\u529F\u80FD\u800C\u5BFC\u81F4\u7684\u4EFB\
+        \u4F55\u4E0D\u826F\u5F71\u54CD\u4E0D\u8D1F\u4EFB\u4F55\u8D23\u4EFB\u3002\u8BF7\
+        \u81EA\u884C\u627F\u62C5\u4F7F\u7528\u8BE5\u8F6F\u4EF6\u7684\u98CE\u9669\u3002"
+    frontend.disclaimer.description.line2: "TMP \u5DE5\u4F5C\u4EBA\u5458\u5141\u8BB8\
+        \u5728 TruckersMP \u4E2D\u4F7F\u7528 ETS2LA\uFF0C\u4F46\u60A8\u5E94\u5BF9\u56E0\
+        \u4F7F\u7528\u8BE5\u8F6F\u4EF6\u800C\u5BFC\u81F4\u7684\u4EFB\u4F55\u5C01\u7981\
+        \u6216\u8B66\u544A\u8D1F\u8D23\u3002"
+    frontend.disclaimer.dontshowagain: "\u4E0D\u518D\u663E\u793A"
+    frontend.disclaimer.dontshowagain.toast: "\u76F4\u5230\u4E0B\u4E00\u6B21\u66F4\
+        \u65B0\u524D\u4F60\u4E0D\u4F1A\u518D\u770B\u5230\u6B64\u6D88\u606F"
+    frontend.disclaimer.ok: "\u6211\u660E\u767D"
+    frontend.disclaimer.title: "\u514D\u8D23\u58F0\u660E\uFF01"
+    frontend.feedback: "\u53CD\u9988"
+    frontend.feedback.description: "\u8BF7\u63D0\u4F9B\u60A8\u6709\u7684\u4EFB\u4F55\
+        \u53CD\u9988\u610F\u89C1\u3002\u8FD9\u5C06\u76F4\u63A5\u53D1\u9001\u5230\u5F00\
+        \u53D1\u4EBA\u5458\u7684\u79C1\u4EBA\u9891\u9053\u3002"
+    frontend.feedback.disclaimer: "\u8BF7\u52FF\u5206\u4EAB\u4EFB\u4F55\u4E2A\u4EBA\
+        \u4FE1\u606F\u3002"
+    frontend.feedback.empty: "\u53CD\u9988\u4E3A\u7A7A\uFF0C\u8BF7\u63D0\u4F9B\u60A8\
+        \u6709\u7684\u4EFB\u4F55\u53CD\u9988\u3002"
+    frontend.feedback.error_sending: "\u53D1\u9001\u53CD\u9988\u65F6\u51FA\u73B0\u9519\
+        \u8BEF\uFF0C\u8BF7\u7A0D\u540E\u518D\u8BD5\u3002"
+    frontend.feedback.sending: "\u6B63\u5728\u53D1\u9001\u53CD\u9988..."
+    frontend.feedback.sent: "\u53CD\u9988\u5DF2\u53D1\u9001\uFF01"
+    frontend.feedback.submit: "\u63D0\u4EA4"
+    frontend.hello: "\u4F60\u597D\uFF0C{0}\uFF01"
+    frontend.immediate.checking_updates: "\u6B63\u5728\u68C0\u67E5\u66F4\u65B0..."
+    frontend.immediate.close: "\u5173\u95ED"
+    frontend.immediate.connected: "\u5DF2\u8FDE\u63A5\u81F3 ETS2LA \u670D\u52A1\u7AEF"
+    frontend.immediate.disable_stay_on_top: "\u505C\u7528\u7F6E\u9876"
+    frontend.immediate.disable_transparent: "\u7981\u7528\u534A\u900F\u660E"
+    frontend.immediate.disconnected: "\u4E0E ETS2LA \u670D\u52A1\u5668\u7AEF\u65AD\
+        \u5F00\u8FDE\u63A5"
+    frontend.immediate.enable_stay_on_top: "\u542F\u7528\u7F6E\u9876"
+    frontend.immediate.enable_transparent: "\u542F\u7528\u534A\u900F\u660E"
+    frontend.immediate.minimize: "\u6700\u5C0F\u5316"
+    frontend.immediate.no_updates: "\u6CA1\u6709\u53EF\u7528\u7684\u66F4\u65B0\u3002"
+    frontend.immediate.socket_connected: "\u5DF2\u8FDE\u63A5"
+    frontend.immediate.socket_disconnected: "\u5DF2\u65AD\u5F00\uFF0C\u8BF7\u91CD\u65B0\
+        \u52A0\u8F7D\u3002"
+    frontend.immediate.up_to_date: "\u5DF2\u662F\u6700\u65B0\u7248\u672C"
+    frontend.immediate.update_available: "\u4F60\u5DF2\u843D\u540E\u6700\u65B0\u7248\
+        \ {0} \u4E2A\u66F4\u65B0"
+    frontend.immediate.update_check_error: "\u9519\u8BEF\uFF1A{0}"
+    frontend.logged_out: "\u5DF2\u767B\u51FA\u3002"
+    frontend.login: "\u767B\u5F55"
+    frontend.login.already_logged_in: "\u6CE8\u610F\uFF1A\u60A8\u5DF2\u7ECF\u767B\u5F55\
+        \uFF0C\u53EF\u4EE5\u901A\u8FC7\u518D\u6B21\u767B\u5F55\u6765\u8986\u76D6\u5B83\
+        \u3002"
+    frontend.login.disclaimer: "\u6211\u4EEC\u76EE\u524D\u4EC5\u652F\u6301\u901A\u8FC7\
+        \ Discord \u767B\u5F55\uFF0C\u8FD9\u6837\u6211\u4EEC\u5C31\u4E0D\u5FC5\u5B58\
+        \u50A8\u4EFB\u4F55\u654F\u611F\u4FE1\u606F\uFF0C\u4F8B\u5982\u5BC6\u7801\u3002"
+    frontend.login.discord: "\u4F7F\u7528 Discord \u767B\u5F55"
+    frontend.login.privacy_policy: "\u9690\u79C1\u653F\u7B56"
+    frontend.login.successful: "\u767B\u5F55\u6210\u529F\uFF01"
+    frontend.login.successful_description: "\u4F7F\u7528\u5DE6\u4E0B\u89D2\u7528\u6237\
+        \u540D\u4E0B\u7684\u83DC\u5355\u8FDB\u884C\u6CE8\u9500\u3002"
+    frontend.plugins.authors: "\u4F5C\u8005"
+    frontend.plugins.disabled_all_plugins: "\u5DF2\u7981\u7528\u6240\u6709\u63D2\u4EF6"
+    frontend.plugins.disabled_plugin: "\u5DF2\u7981\u7528 {0}"
+    frontend.plugins.disabling_all_plugins: "\u6B63\u5728\u7981\u7528\u6240\u6709\u63D2\
+        \u4EF6..."
+    frontend.plugins.disabling_plugin: "\u6B63\u5728\u7981\u7528 {0}"
+    frontend.plugins.enabled_all_plugins: "\u5DF2\u542F\u7528\u6240\u6709\u63D2\u4EF6"
+    frontend.plugins.enabled_plugin: "\u5DF2\u542F\u7528 {0}"
+    frontend.plugins.enabling_all_plugins: "\u6B63\u5728\u542F\u7528\u6240\u6709\u63D2\
+        \u4EF6..."
+    frontend.plugins.enabling_plugin: "\u6B63\u5728\u542F\u7528 {0}"
+    frontend.plugins.end_list: "\u5DF2\u5230\u8FBE\u5217\u8868\u5E95\u90E8"
+    frontend.plugins.error_disabling_plugin: "\u7981\u7528 {0} \u65F6\u51FA\u73B0\u9519\
+        \u8BEF"
+    frontend.plugins.error_enabling_plugin: "\u542F\u7528 {0} \u65F6\u51FA\u73B0\u9519\
+        \u8BEF"
+    frontend.plugins.hidden: "\u5DF2\u9690\u85CF {0} \u4E2A\u63D2\u4EF6"
+    frontend.plugins.name: "\u540D\u79F0"
+    frontend.plugins.select_authors: "\u641C\u7D22\u4F5C\u8005"
+    frontend.plugins.select_tags: "\u641C\u7D22\u6807\u7B7E"
+    frontend.plugins.selected_authors: "\u5DF2\u9009\u62E9 {0} \u4E2A\u4F5C\u8005"
+    frontend.plugins.selected_tags: "\u5DF2\u9009\u62E9 {0} \u4E2A\u6807\u7B7E"
+    frontend.plugins.tags: "\u6807\u7B7E"
+    frontend.settings: "\u8BBE\u7F6E"
+    frontend.settings.array.add: "\u65B0\u589E\u9879\u76EE"
+    frontend.settings.array.added_element: "\u9879\u76EE\u5DF2\u65B0\u589E"
+    frontend.settings.array.remove: "\u79FB\u9664"
+    frontend.settings.array.removed_element: "\u9879\u76EE\u5DF2\u79FB\u9664"
+    frontend.settings.array.updated_element: "\u9879\u76EE\u5DF2\u66F4\u65B0"
+    frontend.settings.backend_no_data: "\u4ECE\u670D\u52A1\u5668\u7AEF\u672A\u83B7\
+        \u53D6\u5230\u6570\u636E\u3002"
+    frontend.settings.boolean.updated: "\u8BBE\u7F6E\u5DF2\u66F4\u65B0"
+    frontend.settings.controls: "\u63A7\u5236"
+    frontend.settings.data_missing: "\u63D2\u4EF6\u6570\u636E\u65E0\u6548\u6216\u7F3A\
+        \u5931\u3002"
+    frontend.settings.enum.no_enum: "\u672A\u63D0\u4F9B\u9009\u9879\u503C\u3002"
+    frontend.settings.enum.updated: "\u8BBE\u7F6E\u5DF2\u66F4\u65B0"
+    frontend.settings.error: "\u9519\u8BEF\uFF1A{0}"
+    frontend.settings.global: "\u5168\u5C40\u8BBE\u7F6E"
+    frontend.settings.global_info: "\u6B64\u5217\u8868\u4EC5\u5305\u62EC\u652F\u6301\
+        \u5168\u5C40\u8BBE\u7F6E\u6587\u4EF6\u7684\u63D2\u4EF6\u3002"
+    frontend.settings.needs_restart: "\u63D2\u4EF6\u9700\u8981\u91CD\u65B0\u542F\u52A8\
+        \u624D\u80FD\u66F4\u65B0\u8BBE\u7F6E\u3002"
+    frontend.settings.number.updated: "\u8BBE\u7F6E\u5DF2\u66F4\u65B0"
+    frontend.settings.restarted: "\u91CD\u65B0\u542F\u52A8\u6210\u529F"
+    frontend.settings.string.updated: "\u8BBE\u7F6E\u5DF2\u66F4\u65B0"
+    frontend.settings.unknown_data_type: "\u672A\u77E5\u7684\u6570\u636E\u7C7B\u578B\
+        \uFF1A{0}"
+    frontend.sidebar.account: "\u8D26\u6237"
+    frontend.sidebar.anonymous: "\u533F\u540D"
+    frontend.sidebar.chat: "\u804A\u5929"
+    frontend.sidebar.dashboard: "\u6982\u89C8"
+    frontend.sidebar.help: "\u5E2E\u52A9"
+    frontend.sidebar.main: "\u4E3B\u754C\u9762"
+    frontend.sidebar.manager: "\u63D2\u4EF6\u7BA1\u7406"
+    frontend.sidebar.performance: "\u6027\u80FD"
+    frontend.sidebar.plugins: "\u63D2\u4EF6"
+    frontend.sidebar.settings: "\u8BBE\u7F6E"
+    frontend.sidebar.sign_in: "\u767B\u5F55"
+    frontend.sidebar.sign_out: "\u6CE8\u9500"
+    frontend.sidebar.sign_out_description: "\u4F60\u53EF\u4EE5\u968F\u65F6\u91CD\u65B0\
+        \u767B\u5F55\u56DE\u6765\u3002"
+    frontend.sidebar.sign_out_successful: "\u767B\u51FA\u6210\u529F\u3002"
+    frontend.sidebar.updates_available: "\u53EF\u7528\u66F4\u65B0"
+    frontend.sidebar.visualization: "\u73AF\u5883\u53EF\u89C6\u5316"
+    frontend.sidebar.wiki: Wiki
+    frontend.states.complete: "\u5B8C\u6210\uFF01"
+    frontend.theme.dark: "\u6DF1\u8272\u4E3B\u9898"
+    frontend.theme.light: "\u6D45\u8272\u4E3B\u9898"
+    global.settings.1.description: "\u8FD9\u4E9B\u4E3B\u8981\u662F\u5F71\u54CD\u6574\
+        \u4E2A\u5E94\u7528\u7A0B\u5E8F\u7684\u8BBE\u7F6E\u3002"
+    global.settings.1.title: "\u5168\u5C40\u8BBE\u7F6E"
+    global.settings.10.description: "\u7A97\u53E3\u7684\u5BBD\u5EA6\u3002"
+    global.settings.10.name: "\u7A97\u53E3\u5BBD\u5EA6"
+    global.settings.11.description: "\u7A97\u53E3\u7684\u9AD8\u5EA6\u3002"
+    global.settings.11.name: "\u7A97\u53E3\u9AD8\u5EA6"
+    global.settings.12.description: "\u534A\u900F\u660E\u6A21\u5F0F\u4E0B\u7A97\u53E3\
+        \u7684\u900F\u660E\u5EA6\u30021 = \u5B8C\u5168\u4E0D\u900F\u660E\uFF0C0 =\
+        \ \u5B8C\u5168\u900F\u660E\u3002"
+    global.settings.12.name: "\u900F\u660E\u5EA6"
+    global.settings.13.description: "\u7528\u4E8E\u89C6\u89C9\u6027\u529F\u80FD\uFF08\
+        \u7269\u4F53\u8BC6\u522B\u7B49\uFF09\u7684\u663E\u793A\u5668ID\u3002\u4F60\
+        \u9700\u8981\u5C06\u5176\u8BBE\u7F6E\u4E3A\u6B63\u5728\u8FD0\u884CETS2\u7684\
+        \u663E\u793A\u5668\u3002\u9700\u8981\u5B8C\u5168\u91CD\u542F\u624D\u80FD\u5E94\
+        \u7528\u66F4\u6539\uFF01"
+    global.settings.13.name: "\u663E\u793A\u5668ID"
+    global.settings.14.description: "\u9519\u8FC7\u4E86FOV\u4FEE\u6539\u5F39\u7A97\
+        \uFF1F\u5728\u6B64\u66F4\u6539\u60A8\u7684 FOV\u3002"
+    global.settings.14.name: FOV
+    global.settings.15.description: "\u662F\u5426\u5728\u5C4F\u5E55\u4E0A\u542F\u7528\
+        \u96EA\u82B1\u7C92\u5B50\u3002"
+    global.settings.15.name: "\u96EA\u82B1"
+    global.settings.16.description: "\u662F\u5426\u5728\u5C4F\u5E55\u4E0A\u542F\u7528\
+        \u70DF\u82B1\u3002"
+    global.settings.16.name: "\u70DF\u82B1"
+    global.settings.2.description: "\u8981\u4F7F\u7528\u7684\u97F3\u6548\u5E93\u3002\
+        \u8FD9\u4E9B\u5C06\u6539\u53D8\u5E94\u7528\u7A0B\u5E8F\u4E2D\u7684\u6240\u6709\
+        \u97F3\u6548\u3002"
+    global.settings.2.name: "\u97F3\u6548\u5E93"
+    global.settings.3.description: "\u5E94\u7528\u7A0B\u5E8F\u4E2D\u97F3\u6548\u7684\
+        \u97F3\u91CF\u3002"
+    global.settings.3.name: "\u97F3\u91CF"
+    global.settings.4.description: "\u7528\u6237\u7AEF\u8FD0\u884C\u7684\u7AEF\u53E3\
+        \u3002"
+    global.settings.4.name: "\u8FDE\u63A5\u7AEF\u53E3"
+    global.settings.5.description: "\u5F53\u62A5\u9519\u65F6\u662F\u5426\u4F7F\u7528\
+        \u9AD8\u7EA7Traceback\u3002"
+    global.settings.5.name: "\u9AD8\u7EA7Traceback"
+    global.settings.6.description: "\u662F\u5426\u5C06\u5D29\u6E83\u62A5\u544A\u53D1\
+        \u9001\u7ED9\u5F00\u53D1\u8005\u3002"
+    global.settings.6.name: "\u53D1\u9001\u5D29\u6E83\u62A5\u544A"
+    global.settings.7.description: "\u662F\u5426\u542F\u7528\u8C03\u8BD5\u6A21\u5F0F\
+        \u3002"
+    global.settings.7.name: "\u8C03\u8BD5\u6A21\u5F0F"
+    global.settings.8.description: "\u5E94\u7528\u7A0B\u5E8F\u4F7F\u7528\u7684\u8BED\
+        \u8A00\u3002\u9700\u8981\u91CD\u65B0\u542F\u52A8\u624D\u80FD\u66F4\u6539\uFF01"
+    global.settings.8.name: "\u8BED\u8A00"
+    global.settings.9.description: "\u662F\u5426\u4F7F\u7528\u65E0\u8FB9\u6846\u7A97\
+        \u53E3\u3002\u9700\u8981\u5B8C\u5168\u91CD\u542F\u624D\u80FD\u5E94\u7528\u66F4\
+        \u6539\uFF01\u8FD9\u5C06\u4FEE\u6B63\u79FB\u52A8\u5E94\u7528\u7A0B\u5E8F\u7A97\
+        \u53E3\u65F6\u7684\u95EE\u9898\uFF0C\u5E76\u542F\u7528\u7F29\u653E\u529F\u80FD\
+        \u3002"
+    global.settings.9.name: "\u65E0\u8FB9\u6846\u7A97\u53E3"
+    global.settings.audio: "\u97F3\u9891"
+    global.settings.misc: "\u6742\u9879"
+    global.settings.ui: "\u7528\u6237\u754C\u9762"
+    global.settings.variables: "\u914D\u7F6E"
+    godot.server_started: "Godot \u5DF2\u5728\u7AEF\u53E3 {0} \u4E0A\u542F\u52A8"
+    immediate.empty_page: "\u5C1D\u8BD5\u53D1\u9001\u4E00\u4E2A\u7A7A\u767D\u9875\u9762\
+        \u3002"
+    immediate.message_error: "\u5904\u7406\u6D88\u606F\u65F6\u53D1\u751F\u9519\u8BEF\
+        \u3002"
+    immediate.websocket_started: "Websocket \u5DF2\u542F\u52A8\u3002"
+    install: "\u5B89\u88C5"
+    loading: "\u52A0\u8F7D\u4E2D..."
+    logging.delete_log_error: "\u65E0\u6CD5\u5220\u9664\u65E5\u5FD7\u6587\u4EF6\u3002"
+    logging.logger_initialized: "\u65E5\u5FD7\u7CFB\u7EDF\u5DF2\u521D\u59CB\u5316\u3002"
+    main.closed: "ETS2LA \u5DF2\u5173\u95ED\u3002"
+    main.crashed: "ETS2LA \u56E0\u4EE5\u4E0B\u9519\u8BEF\u5D29\u6E83\uFF1A"
+    main.development_mode: "\u6B63\u5728\u4EE5\u5F00\u53D1\u6A21\u5F0F\u8FD0\u884C"
+    main.errors: "\u9519\u8BEF\uFF1A"
+    main.errors_and_warnings: "\u65E5\u5FD7\u4E2D\u7684\u9519\u8BEF\u548C\u8B66\u544A\
+        \uFF1A"
+    main.legacy_traceback: "\u4F7F\u7528\u4E86\u65E7\u7248\u7684\u9519\u8BEF\u8FFD\
+        \u8E2A\u3002"
+    main.no_errors_or_warnings: "\u672A\u53D1\u73B0\u9519\u8BEF\u6216\u8B66\u544A\u3002"
+    main.overseer_started: "ETS2LA \u7BA1\u7406\u7A0B\u5E8F\u5DF2\u542F\u52A8\uFF01"
+    main.press_enter: "\u6309 Enter \u952E\u4EE5\u9000\u51FA..."
+    main.restarting: "ETS2LA \u6B63\u5728\u91CD\u65B0\u542F\u52A8..."
+    main.send_report: "\u5C06\u4E0A\u8FF0\u9519\u8BEF\u62A5\u544A\u53D1\u9001\u7ED9\
+        \u5F00\u53D1\u4EBA\u5458\u3002"
+    main.update_done: "\u66F4\u65B0\u5B8C\u6210... \u6B63\u5728\u91CD\u542F\uFF01"
+    main.updating: "ETS2LA \u6B63\u5728\u66F4\u65B0..."
+    main.warnings: "\u8B66\u544A\uFF1A"
+    map.extracting_data: "\u6B63\u5728\u83B7\u53D6 GameData.zip \u6570\u636E\uFF0C\
+        \u8BF7\u7A0D\u5019..."
+    map.json_not_found: "\u5728 GameData \u6587\u4EF6\u5939\u4E2D\u627E\u4E0D\u5230\
+        \ JSON \u6587\u4EF6\uFF0C\u8BF7\u89E3\u538B\u7F29 GameData.zip \u6587\u4EF6\
+        \u3002"
+    map.loading.ferries: "\u5730\u56FE\u52A0\u8F7D\u8F6E\u6E21\u4E2D..."
+    map.loading.final_calculations: "\u5730\u56FE\u8FDB\u884C\u6700\u540E\u8BA1\u7B97\
+        \u4E2D..."
+    map.loading.nodes: "\u5730\u56FE\u52A0\u8F7D\u6570\u636E\u70B9..."
+    map.loading.prefab_data: "\u5730\u56FE\u52A0\u8F7D\u9884\u8BBE\u5BF9\u8C61\u6570\
+        \u636E\u4E2D..."
+    map.loading.prefabs: "\u5730\u56FE\u52A0\u8F7D\u9884\u8BBE\u5BF9\u8C61\u4E2D..."
+    map.loading.preparing: "\u5730\u56FE\u6B63\u5728\u51C6\u5907\u52A0\u8F7D\u6570\
+        \u636E..."
+    map.loading.roads: "\u5730\u56FE\u52A0\u8F7D\u9053\u8DEF\u4E2D..."
+    map.settings.1.description: "\u8FD9\u4E9B\u662F\u5730\u56FE\u63D2\u4EF6\u7684\u8BBE\
+        \u7F6E\u3002"
+    map.settings.1.title: "\u5730\u56FE\u8BBE\u7F6E"
+    map.settings.10.title: "\u8F6C\u5411\u8BBE\u7F6E"
+    map.settings.11.description: "\u5E73\u6ED1\u8F6C\u5411\u7684\u65F6\u95F4\uFF08\
+        \u4EE5\u79D2\u4E3A\u5355\u4F4D\uFF09\u3002\u503C\u4E3A0\u65F6\uFF0C\u8F6C\u5411\
+        \u4F1A\u975E\u5E38\u7075\u654F\uFF1B\u503C\u5927\u4E8E0.5\u65F6\uFF0C\u53EF\
+        \u80FD\u4F1A\u5BFC\u81F4\u5DE6\u53F3\u6447\u6446\u3002"
+    map.settings.11.name: "\u5E73\u6ED1\u5EA6"
+    map.settings.12.description: "\u5C06\u8BA1\u7B97\u51FA\u5230\u8FBE\u76EE\u7684\
+        \u5730\u6240\u9700\u7684\u8DEF\u5F84\u3002\u514D\u8D23\u58F0\u660E\uFF1A\u6B64\
+        \u8DEF\u7EBF\u4E0D\u4FDD\u8BC1\u662F\u6700\u5FEB\u7684\uFF01"
+    map.settings.12.name: "\u5728ETS2LA\u4E0A\u5BFC\u822A"
+    map.settings.2.description: "\u8FD9\u5C06\u8BA1\u7B97\u5730\u56FE\u8F6C\u5411\u5361\
+        \u8F66\u6240\u9700\u7684\u5FC5\u8981\u503C\u3002"
+    map.settings.2.name: "\u8BA1\u7B97\u8F6C\u5411"
+    map.settings.3.description: "\u8FD9\u5C06\u5141\u8BB8\u5176\u4ED6\u63D2\u4EF6\u4F7F\
+        \u7528\u5730\u56FE\u7684\u6570\u636E\u3002\u8BF7\u6CE8\u610F\uFF0C\u5982\u679C\
+        \u672A\u542F\u7528\u6B64\u9009\u9879\uFF0C\u73AF\u5883\u53EF\u89C6\u5316\u5C06\
+        \u65E0\u6CD5\u5DE5\u4F5C\u3002\u6B64\u9009\u9879\u53EF\u4EE5\u4E14\u5C06\u63D0\
+        \u9AD8\u6027\u80FD\u3002"
+    map.settings.3.name: "\u53D1\u9001\u6570\u636E"
+    map.settings.4.title: "\u5185\u90E8\u53EF\u89C6\u5316"
+    map.settings.5.description: "\u63A7\u5236\u5185\u90E8\u53EF\u89C6\u5316\u7684\u7F29\
+        \u653E\u7EA7\u522B\u3002"
+    map.settings.5.name: "\u7F29\u653E"
+    map.settings.6.description: "\u662F\u5426\u6E32\u67D3\u5730\u56FE\u7684\u5185\u90E8\
+        \u53EF\u89C6\u5316\u3002\u5982\u679C\u60A8\u672A\u53D1\u9001\u5916\u90E8\u6570\
+        \u636E\uFF0C\u8FD9\u5F88\u6709\u7528\u3002"
+    map.settings.6.name: "\u542F\u7528"
+    map.settings.7.title: "\u5916\u90E8\u53EF\u89C6\u5316"
+    map.settings.8.description: "\u8FD9\u5C06\u8BBE\u7F6E\u53D1\u9001\u7ED9\u5176\u4ED6\
+        \u63D2\u4EF6\u7684\u6570\u636E\u7684\u6700\u5927\u8DDD\u79BB\uFF0C\u524D\u63D0\
+        \u662F\u8BE5\u63D2\u4EF6\u5141\u8BB8\u3002"
+    map.settings.8.name: "\u6E32\u67D3\u8DDD\u79BB"
+    map.settings.9.description: "\u8FD9\u5C06\u663E\u793A\u6E38\u620F\u4E2D\u7684\u9053\
+        \u8DEF\uFF0C\u60A8\u9700\u8981\u542F\u7528 AR \u63D2\u4EF6\u3002"
+    map.settings.9.name: "\u663E\u793A AR \u753B\u9762"
+    map.visualisation.prefabs.curves: "\u5F2F\u9053\uFF1A{0}"
+    map.visualisation.prefabs.prefabs: "\u9884\u8BBE\u5BF9\u8C61\uFF1A{0}\uFF0C\u533A\
+        \u5757\uFF1A{1}"
+    map.visualisation.roads.text: "\u9053\u8DEF\uFF1A{0}\uFF0C\u533A\u5757\uFF1A{1}\uFF0C\
+        \u52A0\u8F7D\u4E2D\uFF1A{2}"
+    'no': "\u5426"
+    object_detection.connection_failed.1: "\u65E0\u6CD5\u8BBF\u95EE Hugging Face \u7684\
+        \u670D\u52A1\u5668\u3002"
+    object_detection.connection_failed.2: "\u8BF7\u68C0\u67E5\u60A8\u7684\u4E92\u8054\
+        \u7F51\u8FDE\u63A5\u3002"
+    object_detection.connection_failed.3: "\u6CE8\u610F\uFF1A\u5728\u4E2D\u56FD\u7B49\
+        \u56FD\u5BB6\uFF0C\u670D\u52A1\u5668\u53EF\u80FD\u4F1A\u88AB\u5C01\u9501\u3002"
+    object_detection.connection_failed.4: "\u5728\u8FD9\u79CD\u60C5\u51B5\u4E0B\uFF0C\
+        \u60A8\u5E94\u8BE5\u5728 Discord \u4E2D\u5BFB\u6C42\u5E2E\u52A9\u3002"
+    object_detection.loaded_model: "\u7269\u4F53\u68C0\u6D4B\u6A21\u578B\u5DF2\u52A0\
+        \u8F7D\u4E8E {0}"
+    object_detection.loading_model: "\u6B63\u5728\u52A0\u8F7D\u7269\u4F53\u68C0\u6D4B\
+        \u6A21\u578B..."
+    object_detection.not_found.1: "\u4EE5\u4E0B\u6240\u9700\u6A21\u578B\u5C1A\u672A\
+        \u4E0B\u8F7D\u3002"
+    object_detection.not_found.2: "\u70B9\u51FB\u4E0B\u9762\u7684\u6309\u94AE\u4ECE\
+        \u4EE5\u4E0B\u4F4D\u7F6E\u4E0B\u8F7D\u6A21\u578B"
+    object_detection.processing_error: "\u5904\u7406\u8F66\u8F86\u6570\u636E\u65F6\
+        \u51FA\u9519"
+    object_detection.screen_capture_profile: "\u7269\u4F53\u68C0\u6D4B \u6B63\u5728\
+        \u4F7F\u7528 \u5C4F\u5E55\u6355\u83B7\u914D\u7F6E\u6587\u4EF6\uFF1A{0}"
+    object_detection.settings.1.description: "\u8FD9\u4E9B\u8BBE\u7F6E\u5C06\u5F71\
+        \u54CD\u7269\u4F53\u68C0\u6D4B\u7684\u8D28\u91CF\u548C\u6027\u80FD\u3002"
+    object_detection.settings.1.title: "\u7269\u4F53\u68C0\u6D4B\u8BBE\u7F6E"
+    object_detection.settings.2.description: "\u7528\u6765\u8FD0\u884C\u7269\u4F53\
+        \u68C0\u6D4B\u7684\u8BBE\u5907\uFF0C\u5982\u679C\u9009\u62E9\u81EA\u52A8\uFF0C\
+        \u5219\u5C06\u6839\u636E\u60A8\u7684\u7CFB\u7EDF\u51B3\u5B9A\u3002\uFF08\u5982\
+        \u679C\u9009\u62E9 GPU\uFF0C\u800C\u60A8\u6CA1\u6709 GPU \u6216\u672A\u5B89\
+        \u88C5 CUDA\uFF0C\u5B83\u5C06\u9ED8\u8BA4\u4F7F\u7528 CPU\u3002\uFF09"
+    object_detection.settings.2.name: "\u8BBE\u5907"
+    object_detection.settings.3.description: "\u60A8\u60F3\u4F7F\u7528\u7684\u7269\
+        \u4F53\u68C0\u6D4B\u6A21\u5F0F\u3002\u8BF7\u6CE8\u610F\uFF0C\u8D28\u91CF\u6A21\
+        \u5F0F\u9700\u8981\u5F3A\u5927\u7684\u7535\u8111\u624D\u80FD\u826F\u597D\u8FD0\
+        \u884C\u3002"
+    object_detection.settings.3.name: "\u6A21\u5F0F"
+    object_detection.settings.4.description: "YOLO \u6A21\u578B\u7684\u66F4\u65B0\u901F\
+        \u7387\u3002\u8F83\u9AD8\u7684\u503C\u5C06\u66F4\u5FEB\u5730\u66F4\u65B0\u68C0\
+        \u6D4B\u3002\u5728\u6027\u80FD\u6A21\u5F0F\u4E0B\uFF0C\u8FD9\u662F FPS\uFF0C\
+        \u5728\u8D28\u91CF\u6A21\u5F0F\u4E0B\uFF0C\u8FD9\u662F\u68C0\u6D4B\u4E4B\u95F4\
+        \u7684\u5E27\u6570\u3002\u8BF7\u6CE8\u610F\uFF0C\u6027\u80FD\u6A21\u5F0F\u4E0B\
+        \u7684\u503C\u9AD8\u4E8E 2 \u53EF\u80FD\u65E0\u6CD5\u6309\u9884\u671F\u8FD0\
+        \u4F5C\u3002"
+    object_detection.settings.4.name: "YOLO \u68C0\u6D4B\u901F\u5EA6"
+    object_detection.settings.5.description: "\u60A8\u60F3\u4F7F\u7528\u7684\u6A21\
+        \u578B\u3002\u8BF7\u6CE8\u610F\uFF0CYoloV7 \u9700\u8981\u66F4\u591A\u7684\u8BA1\
+        \u7B97\u8D44\u6E90\u3002"
+    object_detection.settings.5.name: "\u6A21\u578B"
+    object_detection.settings.6.description: "\u7528\u4E8E\u7269\u4F53\u68C0\u6D4B\
+        \u7684\u5C4F\u5E55\u90E8\u5206\u3002\u4F4D\u7F6E 0 \u662F X\uFF0C\u4F4D\u7F6E\
+        \ 1 \u662F Y\uFF0C\u4F4D\u7F6E 2 \u662F\u5BBD\u5EA6\uFF0C\u4F4D\u7F6E 3 \u662F\
+        \u9AD8\u5EA6\u3002\u6B64\u8BBE\u7F6E\u5C06\u5728\u60A8\u9996\u6B21\u542F\u52A8\
+        \u63D2\u4EF6\u540E\u81EA\u52A8\u8BBE\u7F6E\u3002"
+    object_detection.settings.6.name: "\u5C4F\u5E55\u6355\u6349\u5C3A\u5BF8"
+    object_detection.tracking_failed: "\u5BF9 {0} \u7684\u8DDF\u8E2A\u5931\u8D25\uFF0C\
+        \u7F6E\u4FE1\u5EA6\u4E3A {1}"
+    plugins.adaptivecruisecontrol: "\u4E3B\u52A8\u5DE1\u822A\u63A7\u5236 (ACC)"
+    plugins.adaptivecruisecontrol.description: "\u4F1A\u5728\u524D\u65B9\u6709\u8F66\
+        \u8F86\u65F6\u51CF\u901F\uFF08\u5982\u679C\u542F\u7528\u4E86\u7269\u4F53\u68C0\
+        \u6D4B\u63D2\u4EF6\uFF09\u3002\u5728\u8F6C\u5F2F\u65F6\u4E5F\u4F1A\u51CF\u901F\
+        \uFF08\u5982\u679C\u542F\u7528\u4E86\u5BFC\u51FA\u6B64\u4FE1\u606F\u7684\u63D2\
+        \u4EF6\uFF09\u3002"
+    plugins.ar: "AR (\u589E\u5F3A\u73B0\u5B9E)"
+    plugins.ar.description: "\u5F00\u53D1\u4E2D... \u63D2\u4EF6\u4F1A\u5728\u6E38\u620F\
+        \u753B\u9762\u4E0A\u7ED8\u5236\u5F62\u72B6\uFF0C\u4F7F\u5B83\u4EEC\u770B\u8D77\
+        \u6765\u50CF\u662F\u5728\u6E38\u620F\u91CC\u4E00\u6837\u3002"
+    plugins.cruisecontrol: "\u5DE1\u822A\u63A7\u5236 (CC)"
+    plugins.cruisecontrol.description: "\u57FA\u4E8E\u6E38\u620F\u5185\u81EA\u52A8\
+        \u5DE1\u822A\u6765\u63A7\u5236\u901F\u5EA6\u4E0E\u4FDD\u6301\u8F66\u8DDD\u3002\
+        \u65E0\u6CD5\u4E0EACC\u63D2\u4EF6\u4E00\u8D77\u4F7F\u7528\uFF01"
+    plugins.datacollection: "\u6570\u636E\u6536\u96C6"
+    plugins.datacollection.description: "\u7528\u4E8E\u8F66\u8F86\u68C0\u6D4B\u63D2\
+        \u4EF6\u7684\u6570\u636E\u6536\u96C6\u3002"
+    plugins.depthprediction: "\u6DF1\u5EA6\u9884\u6D4B"
+    plugins.depthprediction.description: "\u63D0\u4F9B\u7269\u4F53\u907F\u8BA9\u7684\
+        \u6DF1\u5EA6\u9884\u6D4B\uFF0C\u8BF7\u6CE8\u610F\uFF0C\u7531\u4E8E\u6027\u80FD\
+        \u9700\u6C42\u8F83\u9AD8\uFF0C\u6B64\u63D2\u4EF6\u53EF\u80FD\u4EC5\u9002\u7528\
+        \u4E8E NVIDIA \u663E\u5361\u3002"
+    plugins.discordrichpresence: "Discord \u72B6\u6001\u663E\u793A (RPC)"
+    plugins.discordrichpresence.description: "\u9002\u7528\u4E8E ETS2LA \u7684 Discord\
+        \ \u72B6\u6001\u663E\u793A (RPC) \u63D2\u4EF6\u3002"
+    plugins.map: "\u5730\u56FE"
+    plugins.map.description: "\u5730\u56FE\u9A7E\u9A76\u63D2\u4EF6\u3002"
+    plugins.microcontrollercontrol: "\u5FAE\u63A7\u5236\u5668\u63A7\u5236"
+    plugins.microcontrollercontrol.description: "\u5141\u8BB8\u60A8\u4F7F\u7528\u5FAE\
+        \u63A7\u5236\u5668\u63A7\u5236 ETS2LA \u548C ETS2\uFF08\u9002\u7528\u4E8E\u6309\
+        \u952E\u76D2/\u4E2D\u63A7\u76D2\uFF09\u3002"
+    plugins.navigationdetection: "\u5BFC\u822A\u68C0\u6D4B"
+    plugins.navigationdetection.description: "\u4F7F\u7528\u6E38\u620F\u5185\u7684\
+        \u8DEF\u7EBF\u6765\u8DDF\u968F\u9009\u62E9\u7684\u8DEF\u7EBF\u3002"
+    plugins.objectdetection: "\u7269\u4F53\u68C0\u6D4B"
+    plugins.objectdetection.description: "\u4F7F\u7528\u5C4F\u5E55\u56FE\u50CF\u8BC6\
+        \u522B\u68C0\u6D4B\u5404\u79CD\u7269\u4F53\uFF0C\u5E76\u53EF\u5728\u8F93\u51FA\
+        \u7A97\u53E3\u548C 3D \u73AF\u5883\u53EF\u89C6\u5316\u4E2D\u663E\u793A\u5B83\
+        \u4EEC\u3002"
+    plugins.raycastingtest: "Raycast\u6D4B\u8BD5"
+    plugins.raycastingtest.description: "Raycast\u6D4B\u8BD5\u63D2\u4EF6\uFF0C\u5C06\
+        \u5C04\u7EBF\u6295\u5C04\u5230\u60A8\u7684\u9F20\u6807\u4F4D\u7F6E\u3002"
+    plugins.sockets: Sockets
+    plugins.sockets.description: "\u4F7F\u6570\u636E\u63A5\u53E3\u53EF\u7528\uFF0C\
+        \u4E3B\u8981\u7528\u4E8E\u5185\u7F6E\u7684\u73AF\u5883\u53EF\u89C6\u5316\u529F\
+        \u80FD\u3002"
+    plugins.trafficlightdetection: "\u7EA2\u7EFF\u706F\u68C0\u6D4B"
+    plugins.trafficlightdetection.description: "\u4F7F\u7528\u8BA1\u7B97\u673A\u89C6\
+        \u89C9\u68C0\u6D4B\u7EA2\u7EFF\u706F\uFF0C\u5E76\u53EF\u5728\u8F93\u51FA\u7A97\
+        \u53E3\u663E\u793A\u5B83\u4EEC\u3002\u5B83\u4E0E\u5DE1\u822A\u63A7\u5236\u63D2\
+        \u4EF6\u8FDE\u63A5\uFF0C\u53EF\u5728\u7EA2\u706F\u65F6\u505C\u6B62\u5361\u8F66\
+        \u3002"
+    plugins.truckstats: "\u5361\u8F66\u6570\u636E"
+    plugins.truckstats.description: "\u6B64\u63D2\u4EF6\u663E\u793A\u5173\u4E8E\u5361\
+        \u8F66\u3001\u8DEF\u7EBF\u548C\u6E38\u620F\u7684\u4E00\u4E9B\u7EDF\u8BA1\u6570\
+        \u636E\u3002"
+    runner.could_not_import: "\u65E0\u6CD5\u5BFC\u5165\u63D2\u4EF6"
+    runner.could_not_load_module: "\u65E0\u6CD5\u52A0\u8F7D\u6A21\u5757"
+    runner.error_calling_function: "\u8C03\u7528\u51FD\u6570\u65F6\u51FA\u9519"
+    runner.initialize_error: "\u6267\u884C Initialize() \u65F6\u51FA\u9519"
+    runner.plugin_crash: "\u63D2\u4EF6\u5DF2\u5D29\u6E83\u3002"
+    sdk_install.description: "\u68C0\u67E5\u60A8\u662F\u5426\u5B89\u88C5\u4E86\u6211\
+        \u4EEC\u4E0E\u6E38\u620F\u8FDB\u884C\u901A\u4FE1\u6240\u9700\u7684 DLL\u3002"
+    sdk_install.games: "\u6211\u4EEC\u5728\u60A8\u7684\u7CFB\u7EDF\u4E0A\u53D1\u73B0\
+        \u4E86\u4EE5\u4E0B\u6E38\u620F\uFF1A"
+    sdk_install.install: "\u5B89\u88C5 SDK"
+    sdk_install.install_description: "\u6B64\u6309\u94AE\u5C06\u4E3A\u4E0A\u9762\u5217\
+        \u51FA\u7684\u6240\u6709\u6E38\u620F\u5B89\u88C5 SDK\u3002\u5B89\u88C5\u5B8C\
+        \u6210\u540E\u53EF\u80FD\u9700\u8981\u4E00\u4E9B\u65F6\u95F4\u624D\u80FD\u5237\
+        \u65B0\u9875\u9762\u3002"
+    sdk_install.installed: "- \u5DF2\u5B89\u88C5"
+    sdk_install.no_games: "\u6211\u4EEC\u5728\u60A8\u7684\u7CFB\u7EDF\u4E0A\u627E\u4E0D\
+        \u5230\u6E38\u620F\u3002\u60A8\u5FC5\u987B\u624B\u52A8\u5B89\u88C5 SDK\u3002"
+    sdk_install.not_installed: "- \u672A\u5B89\u88C5"
+    sdk_install.title: "SDK \u8BBE\u7F6E"
+    sdk_install.uninstall: "\u5378\u8F7D SDK"
+    sdk_install.uninstall_description: "\u6B64\u6309\u94AE\u5C06\u4E3A\u4E0A\u9762\
+        \u5217\u51FA\u7684\u6240\u6709\u6E38\u620F\u5378\u8F7D SDK\u3002\u5378\u8F7D\
+        \u5B8C\u6210\u540E\uFF0C\u53EF\u80FD\u9700\u8981\u4E00\u4E9B\u65F6\u95F4\u5237\
+        \u65B0\u9875\u9762\u3002"
+    search: "\u641C\u7D22"
+    set: "\u5DF2\u8BBE\u7F6E"
+    setting: "\u6B63\u5728\u8BBE\u7F6E..."
+    sounds.invalid_file_type: "\u97F3\u6548\u5E93 '{0}' \u5305\u542B\u65E0\u6548\u7684\
+        \u6587\u4EF6\u7C7B\u578B '{1}'"
+    sounds.missing_sound: "\u97F3\u6548\u5E93 '{0}' \u7F3A\u5C11\u6240\u9700\u7684\
+        \u97F3\u6548 '{1}'"
+    sounds.sound_not_found_in_soundpack: "\u5C1D\u8BD5\u64AD\u653E\u97F3\u6548 '{0}'\uFF0C\
+        \u4F46\u5728\u97F3\u6548\u5E93 '{1}' \u4E2D\u627E\u4E0D\u5230"
+    submit: "\u63D0\u4EA4"
+    success: "\u6210\u529F"
+    tutorials.main.settings: "\u73B0\u5728\u8BF7\u524D\u5F80\u8BBE\u7F6E\u9875\u9762\
+        \uFF01"
+    tutorials.main.sidebar: "\u60A8\u53EF\u4EE5\u901A\u8FC7\u4FA7\u8FB9\u680F\u8F7B\
+        \u677E\u5207\u6362\u5230\u8F6F\u4EF6\u7684\u4E0D\u540C\u9875\u9762\u3002\u90E8\
+        \u5206\u9875\u9762\u8FD8\u5305\u542B\u66F4\u591A\u63D0\u793A\u5E2E\u52A9\u60A8\
+        \u719F\u6089\u672C\u8F6F\u4EF6\uFF01"
+    tutorials.main.sidebar_collapse: "\u70B9\u51FB\u4FA7\u8FB9\u680F\u8FB9\u7F18\u53EF\
+        \u4EE5\u6298\u53E0\u4FA7\u8FB9\u680F\uFF0C\u4EE5\u8FDB\u5165\u5168\u5C4F\u6A21\
+        \u5F0F\u3002"
+    tutorials.main.slide_area: "\u60A8\u53EF\u4EE5\u901A\u8FC7\u62D6\u52A8\u6B64\u533A\
+        \u57DF\u6765\u79FB\u52A8\u7A97\u53E3\u4F4D\u7F6E\u3002"
+    tutorials.main.window_controls: "\u8FD9\u4E9B\u662F\u7A97\u53E3\u63A7\u5236\u6309\
+        \u94AE\u3002\u6700\u5DE6\u4FA7\u7684\u6309\u94AE\u5305\u542B\u989D\u5916\u9009\
+        \u9879\uFF0C\u60A8\u53EF\u4EE5\u5C06\u9F20\u6807\u60AC\u505C\u5176\u4E0A\u4EE5\
+        \u67E5\u770B\u8BE6\u7EC6\u63D0\u793A\uFF01\uFF08\u5728\u5F15\u5BFC\u6559\u7A0B\
+        \u7ED3\u675F\u540E\uFF09"
+    tutorials.plugins.clear: "\u70B9\u51FB\u6B64\u6309\u94AE\u53EF\u6E05\u9664\u5F53\
+        \u524D\u6240\u6709\u641C\u7D22\u9009\u9879\u3002"
+    tutorials.plugins.enable_all: "\u901A\u8FC7\u6B64\u590D\u9009\u6846\u53EF\u6279\
+        \u91CF\u542F\u7528/\u7981\u7528\u5F53\u524D\u53EF\u89C1\u7684\u6240\u6709\u63D2\
+        \u4EF6\u3002"
+    tutorials.plugins.list: "\u521D\u6B21\u4F7F\u7528\u65F6\uFF0C\u5EFA\u8BAE\u542F\
+        \u7528\u9664\u201C\u6570\u636E\u6536\u96C6\u201D\u548C\u201C\u5BFC\u822A\u68C0\
+        \u6D4B\u201D\u4E4B\u5916\u7684\u6240\u6709\u63D2\u4EF6\u3002"
+    tutorials.plugins.options: "\u60A8\u53EF\u4EE5\u4F7F\u7528\u641C\u7D22\u9009\u9879\
+        \u5FEB\u901F\u5B9A\u4F4D\u6240\u9700\u5185\u5BB9\u3002"
+    tutorials.plugins.tags: "\u9ED8\u8BA4\u9009\u4E2D\u4E86base\u6807\u7B7E\u3002\u60A8\
+        \u53EF\u4EE5\u901A\u8FC7\u70B9\u51FB\u63D2\u4EF6\u5217\u8868\u4E2D\u7684\u6807\
+        \u7B7E\u6216\u5728\u6B64\u5904\u6253\u5F00\u4E0B\u62C9\u83DC\u5355\u6765\u6DFB\
+        \u52A0\u66F4\u591A\u7B5B\u9009\u6761\u4EF6\u3002"
+    tutorials.settings.global: "\u5F53\u524D\u663E\u793A\u7684\u662F\u5168\u5C40\u8BBE\
+        \u7F6E\uFF0C\u5305\u542B\u754C\u9762\u8BBE\u7F6E\u548C\u5176\u4ED6\u63D2\u4EF6\
+        \u8FD0\u884C\u6240\u9700\u7684\u6742\u9879\u914D\u7F6E\u3002"
+    tutorials.settings.plugin: "\u8FD9\u662F\u6240\u6709\u5E26\u6709\u8BBE\u7F6E\u9875\
+        \u9762\u7684\u63D2\u4EF6\u5217\u8868\u3002\u70B9\u51FB\u4EFB\u610F\u63D2\u4EF6\
+        \u53EF\u914D\u7F6E\u5176\u4E13\u5C5E\u8BBE\u7F6E\u3002"
+    tutorials.settings.sdk: "\u6700\u540E\u8BF7\u6253\u5F00SDK\u8BBE\u7F6E\u9875\u9762\
+        \u5E76\u5B89\u88C5SDK\uFF08\u5982\u679C\u5C1A\u672A\u5B89\u88C5\uFF09\u3002\
+        \u6CE8\u610F\uFF1A\u5982\u679C\u60A8\u662F\u4ECEV1\u7248\u672C\u5347\u7EA7\
+        \u800C\u6765\uFF0C\u9700\u8981\u5728\u6B64\u9875\u9762\u91CD\u65B0\u5B89\u88C5\
+        SDK\u3002"
+    tutorials.settings.static: "\u8FD9\u91CC\u663E\u793A\u7684\u662F\u6574\u4E2A\u8F6F\
+        \u4EF6\u6240\u9700\u7684\u57FA\u7840\u8BBE\u7F6E\u3002"
+    uninstall: "\u5378\u8F7D"
+    unknown: "\u672A\u77E5"
+    webpage.opened: "ETS2LA \u7528\u6237\u754C\u9762\u5DF2\u6253\u5F00\u3002"
+    webpage.ui_loading: "\u6B63\u5728\u521D\u59CB\u5316\u7528\u6237\u754C\u9762\uFF0C\
+        \u8BF7\u7A0D\u5019"
+    webserver.disabling_plugin: "\u6B63\u5728\u505C\u7528\u63D2\u4EF6 {0}"
+    webserver.enabling_plugin: "\u6B63\u5728\u542F\u7528\u63D2\u4EF6 {0}"
+    webserver.frontend_started: "\u7528\u6237\u754C\u9762\u5DF2\u5728 {0} \u4E0A\u542F\
+        \u52A8 ( {1} )"
+    webserver.webserver_started: "\u7F51\u9875\u670D\u52A1\u5DF2\u5728 {0} \u4E0A\u542F\
+        \u52A8 ( {1} )"
+    'yes': "\u662F"

@@ -1,438 +1,460 @@
 Language:
-  name: "Deutsch"
-  # ^ The name of the language in its own language. Example: "Suomi"
-  name_en: "German"
-  # ^ The name of the language in English. Example: "Finnish"
-  iso_code: "de"
-  # ^ The ISO 639-1 code for the language. Example: "fi"
-  credits: "Du benutzt die offizielle deutsche Übersetzung"
-  # ^ The credits for the language show in the UI.
-  version: "2.0.0"
-  # ^ Latest compatible version. Checked by the UI for compatibility.
-
+    credits: "Du benutzt die offizielle deutsche \xDCbersetzung"
+    iso_code: de
+    name: Deutsch
+    name_en: German
+    version: 2.0.0
 Translations:
-
-  # MARK: Globals
-
-  confirm: "Bestätigen"
-  cancel: "Abbrechen"
-  'yes': "Ja"
-  'no': "Nein"
-  continue: "Weiter"
-  loading: "Lade..."
-  success: "Erfolgreich"
-  # ^ Usually used in a statement that says something was successful. Example: [Something was completed] 'Success!'
-  error: "Fehler"
-  # ^ Usually used in a statement that says something was unsuccessful. Example: [Something was not completed] 'Error!'
-  done: "Erledigt!"
-  set: "setzen"
-  # ^ Something was set. Example: [Stay on top set to true] 'Set'
-  setting: "Setting..."
-  # ^ The act of setting something. Example: [Setting stay on top to true] 'Setting...'
-  unknown: "Unbekannt"
-  download: "Herunterladen"
-  downloading: "Lade {0}..."
-  # ^ {0} is the name of what is being downloaded. Example: 'Downloading model...'
-  clear: "Löschen"
-  search: "Suchen"
-  submit: "Übermitteln"
-  install: "Installieren"
-  uninstall: "Deinstallieren"
-
-  # MARK: Backend
-
-  main.errors_and_warnings: "Fehler und Warnungen in den Log-Dateien:"
-  main.errors: "Fehler:"
-  # ^ Here the text is before a count of errors. For example a print could be 'Errors: 5'
-  main.warnings: "Warnungen:"
-  # ^ Here the text is before a count of warnings. For example a print could be 'Warnings: 5'
-  main.no_errors_or_warnings: "Keine Fehler oder Warnungen gefunden."
-  main.overseer_started: "ETS2LA Übersteuerung gestartet!"
-  # ^ Overseer in this context means the main file that monitors the rest of the program. If the program crashes the overseer will attempt to fix the issue and restart.
-  main.development_mode: "ETS2LA im Entwicklungsmodus."
-  main.restarting: "ETS2LA startet neu..."
-  main.updating: "ETS2LA installiert ein Update..."
-  main.update_done: "Update erfolgreich, starte neu!"
-  main.crashed: "ETS2LA is mit den folgenden Fehlern abgestürzt:"
-  main.legacy_traceback: "Veraltete Traceback-Ausgabe verwendet."
-  main.send_report: "Sende das obige Traceback an die Entwickler."
-  main.closed: "ETS2LA wurde geschlossen."  
-  main.press_enter: "Drücke Enter um zu verlassen..."
-  core.backend_started: "ETS2LA backend ist erfolgreich gestartet."
-  immediate.websocket_started: "Websocket ist gestartet."
-  immediate.message_error: "Ein Fehler ist bei der Datenübermittlung aufgetreten."
-  # ^ Message in this context means a transmission between the websocket client (for example the frontend) and the server.
-  immediate.empty_page: "Versucht, eine leere Seite zu senden."
-  webserver.enabling_plugin: "Aktiviere Plugin {0}"
-  # ^ {0} is the plugin to be enabled.
-  webserver.disabling_plugin: "Deaktiviere Plugin {0}"
-  # ^ {0} is the plugin to be disabled.
-  webserver.webserver_started: "Webserver gestartet auf {0} ( {1} )"
-  # ^ {0} is the local network address {1} is localhost address. Example: 'Webserver started on http://192.168.1.106:37520 ( http://localhost:37520 )'
-  webserver.frontend_started: "Frontend gestartet auf {0} ( {1} )"
-  # ^ {0} is the local network address {1} is localhost address. Example: 'Frontend started on http://192.168.1.106:3005 ( http://localhost:3005 )'
-  godot.server_started: "Godot befindet sich an Port {0}"
-  # ^ {0} is the port number. Example: 'Godot serving on port 60407'
-  webpage.opened: "ETS2LA UI geöffnet."
-  webpage.ui_loading: "Bitte warte einen Moment, während wir die Benutzeroberfläche initialisieren."
-  controls.listener_started: "Steuerungs-Listener gestartet."
-  # ^ Listener just means the app is listening for input from the user.
-  sounds.missing_sound: "Soundpack '{0}' fehlt der benötigte Ton '{1}'"
-  # ^ {0} is the soundpack name {1} is the sound name Example: 'Soundpack 'default' is missing the required sound 'beep'
-  sounds.invalid_file_type: "Soundpack '{0}' hat einen invaliden Datentyp '{1}'"
-  # ^ {0} is the soundpack name {1} is the file type Example: 'Soundpack 'default' has an invalid file type 'flac'
-  sounds.sound_not_found_in_soundpack: "Fehler beim Abspielen des Tons '{0}', es wurde nicht im Soundpack '{1}' gefunden."
-  # ^ {0} is the sound name {1} is the soundpack name Example: 'Tried to play sound 'beep', but it was not found in soundpack 'default'
-  logging.delete_log_error: "Fehler beim Löschen der Log-Datei"
-  logging.logger_initialized: "Logger initialisiert."
-  events.vehicle_change.vehicle_change: "Fahrzeugwechsel erkannt."
-  events.vehicle_change.vehicle_change_description: "Wir haben ein neues Fahrzeug erkannt. Bitte drücke F4 in der Kabinenansicht, öffne die Sitzeinstellungen und gib deinen neuen FOV-Wert ein."
-
-  # MARK: Runner
-
-  runner.could_not_import: "Fehler beim Importieren des Plugins {0}"
-  # ^ {0} is the plugin path. Example: 'Could not import plugin 'ETS2LA.plugins.NavigationDetection.main''
-  runner.could_not_load_module: "Fehler beim Laden des Moduls {0}"
-  # ^ {0} is the module object. Example: 'Could not load module <object>'
-  runner.initialize_error: "Fehler bei der Ausführung von Initialize() für {0}"
-  # ^ {0} is the plugin name or module Example: 'Error while running Initialize() for NavigationDetection
-  runner.error_calling_function: "Fehler beim Aufrufen der Funktion {0} in {1}"
-  # ^ {0} is the function name {1} is the plugin name Example: 'Error while calling function 'onStart' in NavigationDetection
-  runner.plugin_crash: "Plugin {0} ist abgestürzt."
-  # ^ {0} is the plugin name Example: 'Plugin NavigationDetection has crashed'
-
-  # MARK: Frontend
-
-  frontend.hello: "Hallo, {0}!"
-  # ^ {0} is the name of the user Example: 'Hello, Tumppi066'
-  frontend.disclaimer.title: "Haftungsausschluss!"
-  frontend.disclaimer.description.line1: "ETS2LA übernimmt keine Verantwortung für mögliche negative Auswirkungen durch die Nutzung dieses Programms. Die Nutzung erfolgt auf eigenes Risiko."
-  frontend.disclaimer.description.line2: "Die Nutzung von ETS2LA in TruckersMP wurde von den TMP-Administratoren erlaubt, jedoch bist du selbst für eventuelle Sperren oder Verwarnungen verantwortlich."
-  frontend.disclaimer.ok: "Verstanden"
-  frontend.disclaimer.dontshowagain: "Nicht mehr anzeigen"
-  frontend.disclaimer.dontshowagain.toast: "Dieser Hinweis wird erst nach dem nächsten Update wieder angezeigt."
-  frontend.logged_out: "Abgemeldet."
-  frontend.states.complete: "Fertig!"
-  frontend.theme.dark: "Dunkel"
-  frontend.theme.light: "Hell"
-  frontend.immediate.connected: "Verbunden mit dem ETS2LA-Backend"
-  frontend.immediate.disconnected: "Getrennt vom ETS2LA-Backend"
-  frontend.immediate.update_check_error: "Fehler: {0}"
-  # ^ {0} is the error message
-  frontend.immediate.checking_updates: "Suche nach Updates..."
-  frontend.immediate.update_available: "Du bist {0} Update(s) im Rückstand"
-  frontend.immediate.no_updates: "Keine Updates verfügbar."
-  frontend.immediate.up_to_date: "Auf dem neuesten Stand"
-  frontend.immediate.socket_connected: "Verbunden"
-  frontend.immediate.socket_disconnected: "Verbindung getrennt, bitte aktualisieren."
-  frontend.immediate.enable_stay_on_top: "Immer im Vordergrund aktivieren"
-  frontend.immediate.disable_stay_on_top: "Immer im Vordergrund deaktivieren"
-  frontend.immediate.enable_transparent: "Transparenz aktivieren"
-  frontend.immediate.disable_transparent: "Transparenz deaktivieren"
-  frontend.immediate.minimize: "Minimieren"
-  frontend.immediate.close: "Schließen"
-  frontend.404.title: "Warum sind wir hier... nur um zu leiden?"
-  # ^ You can go wild here, I'd like to see some fun jokes in the 404 page!
-  frontend.404.message: "Klicke auf den Button unten, um zur Startseite zurückzukehren. Und kannst du uns bitte sagen, wie du hier gelandet bist?"
-  # ^ You can go wild here, I'd like to see some fun jokes in the 404 page!
-  frontend.404.button: "Hauptmenü"
-  # ^ You can go wild here, I'd like to see some fun jokes in the 404 page! (at least make this something about the main menu)
-  frontend.settings.data_missing: "Plugin-Daten sind ungültig oder fehlen."
-  frontend.settings: "Einstellungen"
-  frontend.settings.global: "Global"
-  frontend.settings.controls: "Steuerung"
-  frontend.settings.global_info: "Diese Liste enthält nur Plugins, die die globale Einstellungsdatei unterstützen."
-  frontend.settings.error: "Fehler: {0}"
-  # ^ {0} is the error message that happened.
-  frontend.settings.backend_no_data: "Keine Daten vom Backend erhalten."
-  frontend.settings.string.updated: "Einstellung aktualisiert"
-  frontend.settings.number.updated: "Einstellung aktualisiert"
-  frontend.settings.boolean.updated: "Einstellung aktualisiert"
-  frontend.settings.array.updated_element: "Array-Element aktualisiert"
-  frontend.settings.array.removed_element: "Array-Element entfernt"
-  frontend.settings.array.added_element: "Array-Element hinzugefügt"
-  frontend.settings.array.add: "Element hinzufügen"
-  frontend.settings.array.remove: "Entfernen"
-  frontend.settings.enum.no_enum: "Keine Enum-Werte angegeben."
-  frontend.settings.enum.updated: "Einstellung aktualisiert"
-  frontend.settings.unknown_data_type: "Unbekannter Datentyp: {0}"
-  # ^ {0} is the data type that was unknown. Example: 'Unknown data type: string'
-  frontend.settings.needs_restart: "Das Plugin muss neu gestartet werden, um die Einstellungen zu übernehmen."
-  frontend.settings.restarted: "Neustart erfolgreich"
-  frontend.feedback: "Feedback"
-  frontend.feedback.empty: "Feedback ist leer, bitte gib dein Feedback ein."
-  frontend.feedback.sending: "Feedback wird gesendet..."
-  frontend.feedback.sent: "Feedback gesendet!"
-  frontend.feedback.error_sending: "Fehler beim Senden des Feedbacks, bitte später erneut versuchen."
-  frontend.feedback.description: "Bitte teile uns dein Feedback mit. Es wird direkt an einen privaten Kanal für Entwickler gesendet."
-  frontend.feedback.disclaimer: "Teile keine persönlichen Informationen."
-  frontend.feedback.submit: "Absenden"
-  frontend.plugins.name: "Name"
-  frontend.plugins.authors: "Autoren"
-  frontend.plugins.tags: "Tags"
-  frontend.plugins.select_tags: "Tags suchen"
-  frontend.plugins.select_authors: "Autoren suchen"
-  frontend.plugins.selected_tags: "{0} Tag(s) ausgewählt"
-  frontend.plugins.selected_authors: "{0} Autor(en) ausgewählt"
-  frontend.plugins.end_list: "Das ist das Ende der Liste"
-  frontend.plugins.enabling_plugin: "{0} wird aktiviert"
-  frontend.plugins.enabled_plugin: "{0} aktiviert"
-  frontend.plugins.error_enabling_plugin: "Fehler beim Aktivieren von {0}"
-  frontend.plugins.enabling_all_plugins: "Alle Plugins werden aktiviert..."
-  frontend.plugins.enabled_all_plugins: "Alle Plugins aktiviert"
-  frontend.plugins.disabling_plugin: "{0} wird deaktiviert"
-  frontend.plugins.disabled_plugin: "{0} deaktiviert"
-  frontend.plugins.error_disabling_plugin: "Fehler beim Deaktivieren von {0}"
-  frontend.plugins.disabling_all_plugins: "Alle Plugins werden deaktiviert..."
-  frontend.plugins.disabled_all_plugins: "Alle Plugins deaktiviert"
-  frontend.plugins.hidden: "{0} Plugin(s) ausgeblendet"
-  frontend.dialog.not_supported: "{0} wird im Dialog nicht unterstützt."
-  # ^ {0} is the function that is not supported. Example: 'EnabledLock is not supported in a dialog.'
-  frontend.sidebar.updates_available: "Updates verfügbar"
-  frontend.sidebar.main: "Hauptmenü"
-  frontend.sidebar.dashboard: "Dashboard"
-  frontend.sidebar.visualization: "Visualisierung"
-  frontend.sidebar.plugins: "Plugins"
-  frontend.sidebar.manager: "Manager"
-  frontend.sidebar.performance: "Leistung"
-  frontend.sidebar.help: "Hilfe"
-  frontend.sidebar.wiki: "Wiki"
-  frontend.sidebar.chat: "Chat"
-  frontend.sidebar.settings: "Einstellungen"
-  frontend.sidebar.anonymous: "Anonym"
-  frontend.sidebar.account: "Konto"
-  frontend.sidebar.sign_out: "Abmelden"
-  frontend.sidebar.sign_out_successful: "Erfolgreich abgemeldet."
-  frontend.sidebar.sign_out_description: "Du kannst dich jederzeit wieder anmelden."
-  frontend.sidebar.sign_in: "Anmelden"
-  frontend.login: "Anmeldung"
-  frontend.login.disclaimer: "Derzeit ist eine Anmeldung nur über Discord möglich, damit wir keine sensiblen Daten wie Passwörter speichern müssen."
-  frontend.login.discord: "Mit Discord anmelden"
-  frontend.login.privacy_policy: "Datenschutzrichtlinie"
-  frontend.login.already_logged_in: "HINWEIS: Du bist bereits angemeldet. Du kannst dies überschreiben, indem du dich erneut anmeldest."
-  frontend.login.successful: "Erfolgreich angemeldet!"
-  frontend.login.successful_description: "Melde dich über das Kontextmenü unter deinem Benutzernamen unten links ab."
-
-  # MARK: Tutorials
-
-  tutorials.main.window_controls: "These are the window controls. The left most button controls some extra options. Hover over it to see a tooltip! (after the onboarding)"
-  tutorials.main.slide_area: "You can move the window around by dragging this area."
-  tutorials.main.sidebar_collapse: 'You can click on the side of the sidebar to collapse it and go into "fullscreen" mode.'
-  tutorials.main.sidebar: "You can easily navigate the different app pages using the sidebar. Some of them have more tips to help you get used to the app!"
-  tutorials.main.settings: "For now you should head to the settings page!"
-  tutorials.settings.static: "Here you can see the settings that are needed by the entire app."
-  tutorials.settings.global: "Right now you can see the Global settings. These include UI settings and other miscellaneous settings required by the app at some point."
-  tutorials.settings.plugin: "This is a list of all the plugins that have settings pages. You can click on any of them to change settings on a per-plugin basis."
-  tutorials.settings.sdk: "As the final step you should open the SDK settings page, and install the SDK if you haven't already. Please note that if you're coming from V1, you should reinstall the SDK on this page."
-  tutorials.plugins.options: "You can use the search options to easily find what you are looking for."
-  tutorials.plugins.tags: "By default the Base tag is selected. You can add more selections by clicking on the tags in the plugin list or by opening the dropdown here."
-  tutorials.plugins.clear: 'Use this button to remove all current search options.'
-  tutorials.plugins.enable_all: "You can enable/disable all the currently visible plugins by clicking this checkbox."
-  tutorials.plugins.list: 'To get started you can enable everything but the "Data Collection End-To-End Driving" and "Navigation Detection" plugins.'
-
-  # MARK: About
-
-  about.about: "About"
-  about.description: "ETS2LA is a project that aims to provide an easy to use self driving solution for ETS2 and ATS, if you want to learn more then you can visit the github page or the wiki via the sidebar."
-  about.statistics: "Statistics"
-  about.statistics.users_online: "Users online:"
-  about.statistics.users_online_value: "{0} users"
-  about.statistics.past_24h: "Past 24 hours:"
-  about.statistics.past_24h_value: "{0} unique users"
-  about.statistics.usage_time: "Your usage time:"
-  about.statistics.usage_time_value_hour: "{0} hours"
-  about.statistics.usage_time_value_minute: "{0} minutes"
-  about.statistics.usage_time_value_hour_and_minute: "{0} hours and {1} minutes"
-  about.statistics.logged_in: "You are logged in."
-  about.statistics.not_logged_in: "You are not logged in."
-  about.statistics.anonymous_user_id: "Your anonymous user ID is: {0}"
-  about.statistics.welcome: "Welcome back, {0}!"
-  about.developers: "Developers / Contributors"
-  about.translation_credits: "Translation Credits"
-  about.no_credits: "Language has no credits."
-  about.support_development: "Support Development"
-  about.kofi_description: "• If you like the project and want to support the development, you can do so by donating via Ko-Fi."
-  about.contribute_description: "• If you want to contribute, then I recommend joining the discord server and checking out the github page."
-  about.translate_description: "• If you want to contribute to the translations, then you can do so by joining the discord."
-  about.tumppi066.description: "Lead developer and creator of ETS2LA, backend & frontend."
-  about.glas42.description: "Navigation Detection, Traffic Light Detection, ETS2LA Lite, 'co-owner'"
-  about.cloud.description: "Linux & Unix Port, various improvements and bug fixes"
-  about.dyldev.description: "Various additions and improvements, Object Detection AI models & development"
-  about.roccovax.description: "ETS2LA game-side SDK developer. Vehicles, Traffic Lights, Camera data and more direct from the game."
-  about.truckersmudgeon.description: "Game data extraction and processing"
-  about.whytrevorwhy.description: "Help with Navigate on ETS2LA & Map"
-  about.mimi89999.description: "scs-sdk-controller developer"
-  about.zhaoyj.description: "3D models for the visualization"
-  about.lun.description: "Chinese translation, bug fixes"
-  about.mruiaw.description: "Chinese translations, bug fixes"
-  about.ziakhan4505.description: "C++ support, Linux & Unix Port, bug fixes"
-  about.piotrke.description: "Game hooks"
-  about.dtheicydragon.description: "Bug fixes"
-  about.romansonnik.description: "Bug fixes"
-  about.atac_helicopter.description: "Bug fixes"
-  about.flexflexen.description: "Bug fixes"
-  about.lookatyourskill.description: "Bug fixes"
-  about.viszke.description: "Bug fixes"
-
-  # MARK: List of plugins
-
-  plugins.adaptivecruisecontrol: "Adaptive Cruise Control"
-  plugins.adaptivecruisecontrol.description: "Will slow down for vehicles in front (if an object detection model is enabled). Will also slow down for turns (if a plugin exporting this information is enabled)."
-  plugins.ar: "AR (Augmented Reality)"
-  plugins.ar.description: "In development... The plugin will draw shapes over your game, to make it seem like they are in the game world."
-  plugins.cruisecontrol: "Cruise Control"
-  plugins.cruisecontrol.description: "Use the In-Game cruise control to control speed and keep distance between vehicles in front. Can't work with ACC plugin!"
-  plugins.datacollection: "Data Collection"
-  plugins.datacollection.description: "Data collection for vehicle detection plugin."
-  plugins.depthprediction: "Depth Prediction"
-  plugins.depthprediction.description: "Provides depth prediction for object avoidance, please note that this plugin may only work on NVIDIA graphics cards, due to the sheer performance requirements."
-  plugins.discordrichpresence: "Discord Rich Presence"
-  plugins.discordrichpresence.description: "Discord Rich Presence for ETS2LA"
-  plugins.map: "Map"
-  plugins.map.description: "Map detection plugin."
-  plugins.microcontrollercontrol: "Microcontroller Control"
-  plugins.microcontrollercontrol.description: "Allows you to control ETS2LA and ETS2 from a microcontroller (Made for button boxes)"
-  plugins.navigationdetection: "Navigation Detection"
-  plugins.navigationdetection.description: "Uses the in-game route advisor to follow the selected route."
-  plugins.objectdetection: "Object Detection"
-  plugins.objectdetection.description: "Detects various objects using computer vision and can display them in an output window and 3D visualization."
-  plugins.raycastingtest: "Raycasting Test"
-  plugins.raycastingtest.description: "A test plugin for raycasting. Will raycast to your mouse position."
-  plugins.sockets: "Sockets"
-  plugins.sockets.description: "Plugin to make a data socket available mainly for the built in visualisation."
-  plugins.trafficlightdetection: "Traffic Light Detection"
-  plugins.trafficlightdetection.description: "Detects traffic lights using computer vision and can display them in an output window. It communicates with the CruiseControl plugin to stop the truck at red traffic lights."
-  plugins.truckstats: "Truck Stats"
-  plugins.truckstats.description: "This plugin shows some statistics about the truck, route and the game."
-
-  # MARK: Plugin settings
-
-  global.settings.1.title: "Global Settings"
-  global.settings.1.description: "These are mostly settings that affect the entire application."
-  global.settings.2.name: "Soundpack"
-  global.settings.2.description: "The soundpack to use. These will change all the sounds for the app."
-  global.settings.3.name: "Volume"
-  global.settings.3.description: "The volume of the sounds in the app."
-  global.settings.4.name: "Frontend Port"
-  global.settings.4.description: "The port the frontend runs on."
-  global.settings.5.name: "Fancy Traceback"
-  global.settings.5.description: "Whether to use a fancy traceback when an error occurs."
-  global.settings.6.name: "Send Crash Reports"
-  global.settings.6.description: "Whether to send crash reports to the developers."
-  global.settings.7.name: "Debug Mode"
-  global.settings.7.description: "Whether to enable debug mode."
-  global.settings.8.name: "Language"
-  global.settings.8.description: "The language to use for the app. Needs a restart to apply changes!"
-  global.settings.9.name: "Frameless"
-  global.settings.9.description: "Whether to use a frameless window for the app. Needs a full restart to apply changes! Will fix problems with moving the app window around. Also enables scaling."
-  global.settings.10.name: "Window Width"
-  global.settings.10.description: "Width of the window."
-  global.settings.11.name: "Window Height"
-  global.settings.11.description: "Height of the window."
-  global.settings.12.name: "Transparency Mode Alpha"
-  global.settings.12.description: "The transparency of the window in transparent mode. 1 = fully opaque, 0 = fully transparent."
-  global.settings.13.name: "Display ID"
-  global.settings.13.description: "The ID of the display to use for vision applications (Object Detection, etc.). This should be set to the monitor that ETS2 is running on. Needs a restart to apply changes!"
-  global.settings.14.name: "FOV"
-  global.settings.14.description: "Missed the popup? Change your FOV here."
-  global.settings.15.name: "Snow"
-  global.settings.15.description: "Whether to enable snow particles on the screen."
-  global.settings.16.name: "Fireworks"
-  global.settings.16.description: "Whether to enable fireworks on the screen."
-  global.settings.ui: "User Interface"
-  global.settings.audio: "Audio"
-  global.settings.variables: "Variables"
-  global.settings.misc: "Miscellaneous"
-  map.settings.1.title: "Map Settings"
-  map.settings.1.description: "These settings are for the map plugin."
-  map.settings.2.name: "Calculate Steering"
-  map.settings.2.description: "This will calculate all necessary values for the map to steer the truck."
-  map.settings.3.name: "Send Data"
-  map.settings.3.description: "This will allow other plugins to use the Map's data. Please note that visualisation will not work without this option enabled. This option can and will improve performance marginally."
-  map.settings.4.title: "Internal Visualisation"
-  map.settings.5.name: "Zoom"
-  map.settings.5.description: "Controls the zoom level of the internal visualisation."
-  map.settings.6.name: "Enable Internal Visualisation"
-  map.settings.6.description: "Whether to render the internal visualisation of the map. Useful if you are not sending the external data."
-  map.settings.7.title: "External Visualisation"
-  map.settings.8.name: "Render Distance"
-  map.settings.8.description: "This will set the max distance of the data send to other plugins. Assuming it is allowed by the plugin."
-  map.settings.9.name: "Show AR data"
-  map.settings.9.description: "This will show the roads over your game, you need to enable the AR plugin too."
-  map.settings.10.title: "Steering Settings"
-  map.settings.11.name: "Smoothness"
-  map.settings.11.description: "The amount of seconds to smooth the steering over. A value of 0 will be extremely snappy, while a value over 0.5 might swing left and right."
-  map.settings.12.name: "Navigate on ETS2LA"
-  map.settings.12.description: "Will calculate the necessary path to follow a route to your destination. Disclaimer: This route is not guaranteed to be the fastest!"
-  object_detection.settings.1.title: "Object Detection Settings"
-  object_detection.settings.1.description: "These settings will affect the quality and performance of the object detection."
-  object_detection.settings.2.name: "Device"
-  object_detection.settings.2.description: "The device to run Object Detection on, if you use automatic, it will be decided based on your system. (If you select GPU, and you dont have one, or CUDA isn't installed, it will default to CPU.)"
-  # ^ This has three options, CPU, GPU and Automatic. The others are probably self explanatory but if you think people can't understand 'Automatic' then you should explain it here.
-  object_detection.settings.3.name: "Mode"
-  object_detection.settings.3.description: "The object detection mode you want to use. Please note that quality mode requires a powerful PC to run well."
-  # ^ This two options, Performance and Quality. These cannot be translated. If you think people can't understand them then you should explain them here.
-  object_detection.settings.4.name: "YOLO Speed"
-  object_detection.settings.4.description: "The refresh rate of the YOLO model. Higher values will update detections faster. In performance mode this is FPS, quality mode it's frames between detections. Please note that values above 2 for performance mode might not work as expected."
-  object_detection.settings.5.name: "Model architecture"
-  object_detection.settings.5.description: "The model architecture you want to use. Please note that YoloV7 needs more power."
-  object_detection.settings.6.name: "Screen Capture Dimensions"
-  object_detection.settings.6.description: "What part of your screen to use for object detection. Index 0 is X, index 1 is Y, index 2 is Width, index 3 is Height. This setting will be automatically generate after you start the plugin once."
-  acc.settings.1.title: "Adaptive Cruise Control Settings"
-  acc.settings.1.description: "This will affect how the app responds to other vehicles."
-  acc.settings.2.name: "Follow Time"
-  acc.settings.2.description: "How many seconds behind the vehicle in front we should be."
-  acc.settings.3.name: "Speed Offset"
-  acc.settings.3.description: "Drive this amount over the speed limit."
-  acc.settings.4.name: "Distance"
-  acc.settings.4.description: "How far the app should keep from the object in front."
-  acc.settings.5.name: "Speed Offset type"
-  acc.settings.5.description: "Do we drive a percentage faster than the speed limit, or do we add a set amount?"
-  acc.settings.6.name: "Show Notifications"
-  acc.settings.6.description: "Show a popup when the app is slowing down due to any obstructions."
-  acc.settings.7.name: "Speed when API speed limit is 0"
-  acc.settings.7.description: "The speed to which will be driven when the API reads a speed limit of 0 or below."
-
-  # MARK: Plugin keys
-
-  map.json_not_found: "No JSON files found in the GameData folder, please unpack the GameData.zip file."
-  map.loading.preparing: "Map preparing to load data..."
-  map.loading.nodes: "Map Loading nodes..."
-  map.loading.roads: "Map Loading roads..."
-  map.loading.ferries: "Map Loading ferries..."
-  map.loading.prefab_data: "Map Loading prefab data..."
-  map.loading.prefabs: "Map Loading prefabs..."
-  map.loading.final_calculations: "Map doing final calculations..."
-  map.visualisation.roads.text: "Roads: {0}, Tile: {1}, Loading: {2}"
-  # ^ {0} is the count of roads {1} is the current tile {2} is the count of roads currently being loaded Example: 'Roads: 5, Tile: (27,13), Loading: 2'
-  map.visualisation.prefabs.prefabs: "Prefabs: {0}, Tile: {1}"
-  # ^ {0} is the count of prefabs {1} is the current tile Example: 'Prefabs: 5, Tile: (27,13)'
-  map.visualisation.prefabs.curves: "Curves: {0}"
-  # ^ {0} is the count of curves Example: 'Curves: 5'
-  map.extracting_data: "Extracting GameData.zip please wait..."
-  object_detection.loading_model: "Loading Object Detection Model..."
-  object_detection.not_found.1: "The requested model shown below has not yet been downloaded."
-  # ^ Displayed in the first line of a modal when the selected model is not found, the model name is shown below this message.
-  object_detection.not_found.2: "Click the button below to download the model from"
-  # ^ The full sentence will be: {translation} Hugging Face
-  object_detection.connection_failed.1: "Unable to reach the server at Hugging Face."
-  # ^ Don't change Hugging Face
-  object_detection.connection_failed.2: "Please check your internet connection."
-  object_detection.connection_failed.3: "NOTE: In countries like China, the server may be blocked."
-  object_detection.connection_failed.4: "In this case, you should ask in the Discord for help."
-  object_detection.screen_capture_profile: "Object Detection is using screen capture profile: {0}"
-  # ^ {0} is the profile name Example: 'Object Detection is using screen capture profile: 1080p'
-  object_detection.loaded_model: "Object Detection model loaded on {0}"
-  object_detection.tracking_failed: "Tracking failed for {0} with confidence {1}"
-  # ^ {0} is the class of vehicle that the tracking failed on. {1} is the confidence rating of said vehicle, this is a number from 0 to 1. Example: 'Tracking failed for car with confidence 0.5'
-  object_detection.processing_error: "Error while processing vehicle data"
-  sdk_install.title: "SDK Setup"
-  sdk_install.description: "Check that you have the necessary DLLs installed for us to communicate with the game."
-  sdk_install.no_games: "We could not find any games on your system. You'll have to install the SDKs manually."
-  sdk_install.games: "We found the following games on your system:"
-  sdk_install.install: "Install SDKs"
-  sdk_install.install_description: "This button will install the SDKs for all the games listed above. It might take some time to refresh the page after the installation is complete."
-  sdk_install.uninstall: "Uninstall SDKs"
-  sdk_install.uninstall_description: "This button will uninstall the SDKs for all the games listed above. It might take some time to refresh the page after the uninstallation is complete."
-  sdk_install.installed: "- Installed"
-  sdk_install.not_installed: "- Not Installed"
+    about.about: About
+    about.atac_helicopter.description: Bug fixes
+    about.cloud.description: Linux & Unix Port, various improvements and bug fixes
+    about.contribute_description: "\u2022 If you want to contribute, then I recommend\
+        \ joining the discord server and checking out the github page."
+    about.description: ETS2LA is a project that aims to provide an easy to use self
+        driving solution for ETS2 and ATS, if you want to learn more then you can
+        visit the github page or the wiki via the sidebar.
+    about.developers: Developers / Contributors
+    about.dtheicydragon.description: Bug fixes
+    about.dyldev.description: Various additions and improvements, Object Detection
+        AI models & development
+    about.flexflexen.description: Bug fixes
+    about.glas42.description: Navigation Detection, Traffic Light Detection, ETS2LA
+        Lite, 'co-owner'
+    about.kofi_description: "\u2022 If you like the project and want to support the\
+        \ development, you can do so by donating via Ko-Fi."
+    about.lookatyourskill.description: Bug fixes
+    about.lun.description: Chinese translation, bug fixes
+    about.mimi89999.description: scs-sdk-controller developer
+    about.mruiaw.description: Chinese translations, bug fixes
+    about.no_credits: Language has no credits.
+    about.piotrke.description: Game hooks
+    about.roccovax.description: ETS2LA game-side SDK developer. Vehicles, Traffic
+        Lights, Camera data and more direct from the game.
+    about.romansonnik.description: Bug fixes
+    about.statistics: Statistics
+    about.statistics.anonymous_user_id: 'Your anonymous user ID is: {0}'
+    about.statistics.logged_in: You are logged in.
+    about.statistics.not_logged_in: You are not logged in.
+    about.statistics.past_24h: 'Past 24 hours:'
+    about.statistics.past_24h_value: '{0} unique users'
+    about.statistics.usage_time: 'Your usage time:'
+    about.statistics.usage_time_value_hour: '{0} hours'
+    about.statistics.usage_time_value_hour_and_minute: '{0} hours and {1} minutes'
+    about.statistics.usage_time_value_minute: '{0} minutes'
+    about.statistics.users_online: 'Users online:'
+    about.statistics.users_online_value: '{0} users'
+    about.statistics.welcome: Welcome back, {0}!
+    about.support_development: Support Development
+    about.translate_description: "\u2022 If you want to contribute to the translations,\
+        \ then you can do so by joining the discord."
+    about.translation_credits: Translation Credits
+    about.truckersmudgeon.description: Game data extraction and processing
+    about.tumppi066.description: Lead developer and creator of ETS2LA, backend & frontend.
+    about.viszke.description: Bug fixes
+    about.whytrevorwhy.description: Help with Navigate on ETS2LA & Map
+    about.zhaoyj.description: 3D models for the visualization
+    about.ziakhan4505.description: C++ support, Linux & Unix Port, bug fixes
+    acc.settings.1.description: This will affect how the app responds to other vehicles.
+    acc.settings.1.title: Adaptive Cruise Control Settings
+    acc.settings.2.description: How many seconds behind the vehicle in front we should
+        be.
+    acc.settings.2.name: Follow Time
+    acc.settings.3.description: Drive this amount over the speed limit.
+    acc.settings.3.name: Speed Offset
+    acc.settings.4.description: How far the app should keep from the object in front.
+    acc.settings.4.name: Distance
+    acc.settings.5.description: Do we drive a percentage faster than the speed limit,
+        or do we add a set amount?
+    acc.settings.5.name: Speed Offset type
+    acc.settings.6.description: Show a popup when the app is slowing down due to any
+        obstructions.
+    acc.settings.6.name: Show Notifications
+    acc.settings.7.description: The speed to which will be driven when the API reads
+        a speed limit of 0 or below.
+    acc.settings.7.name: Speed when API speed limit is 0
+    cancel: Abbrechen
+    clear: "L\xF6schen"
+    confirm: "Best\xE4tigen"
+    continue: Weiter
+    controls.listener_started: Steuerungs-Listener gestartet.
+    core.backend_started: ETS2LA backend ist erfolgreich gestartet.
+    done: Erledigt!
+    download: Herunterladen
+    downloading: Lade {0}...
+    error: Fehler
+    events.vehicle_change.vehicle_change: Fahrzeugwechsel erkannt.
+    events.vehicle_change.vehicle_change_description: "Wir haben ein neues Fahrzeug\
+        \ erkannt. Bitte dr\xFCcke F4 in der Kabinenansicht, \xF6ffne die Sitzeinstellungen\
+        \ und gib deinen neuen FOV-Wert ein."
+    frontend.404.button: "Hauptmen\xFC"
+    frontend.404.message: "Klicke auf den Button unten, um zur Startseite zur\xFC\
+        ckzukehren. Und kannst du uns bitte sagen, wie du hier gelandet bist?"
+    frontend.404.title: Warum sind wir hier... nur um zu leiden?
+    frontend.dialog.not_supported: "{0} wird im Dialog nicht unterst\xFCtzt."
+    frontend.disclaimer.description.line1: "ETS2LA \xFCbernimmt keine Verantwortung\
+        \ f\xFCr m\xF6gliche negative Auswirkungen durch die Nutzung dieses Programms.\
+        \ Die Nutzung erfolgt auf eigenes Risiko."
+    frontend.disclaimer.description.line2: "Die Nutzung von ETS2LA in TruckersMP wurde\
+        \ von den TMP-Administratoren erlaubt, jedoch bist du selbst f\xFCr eventuelle\
+        \ Sperren oder Verwarnungen verantwortlich."
+    frontend.disclaimer.dontshowagain: Nicht mehr anzeigen
+    frontend.disclaimer.dontshowagain.toast: "Dieser Hinweis wird erst nach dem n\xE4\
+        chsten Update wieder angezeigt."
+    frontend.disclaimer.ok: Verstanden
+    frontend.disclaimer.title: Haftungsausschluss!
+    frontend.feedback: Feedback
+    frontend.feedback.description: "Bitte teile uns dein Feedback mit. Es wird direkt\
+        \ an einen privaten Kanal f\xFCr Entwickler gesendet."
+    frontend.feedback.disclaimer: "Teile keine pers\xF6nlichen Informationen."
+    frontend.feedback.empty: Feedback ist leer, bitte gib dein Feedback ein.
+    frontend.feedback.error_sending: "Fehler beim Senden des Feedbacks, bitte sp\xE4\
+        ter erneut versuchen."
+    frontend.feedback.sending: Feedback wird gesendet...
+    frontend.feedback.sent: Feedback gesendet!
+    frontend.feedback.submit: Absenden
+    frontend.hello: Hallo, {0}!
+    frontend.immediate.checking_updates: Suche nach Updates...
+    frontend.immediate.close: "Schlie\xDFen"
+    frontend.immediate.connected: Verbunden mit dem ETS2LA-Backend
+    frontend.immediate.disable_stay_on_top: Immer im Vordergrund deaktivieren
+    frontend.immediate.disable_transparent: Transparenz deaktivieren
+    frontend.immediate.disconnected: Getrennt vom ETS2LA-Backend
+    frontend.immediate.enable_stay_on_top: Immer im Vordergrund aktivieren
+    frontend.immediate.enable_transparent: Transparenz aktivieren
+    frontend.immediate.minimize: Minimieren
+    frontend.immediate.no_updates: "Keine Updates verf\xFCgbar."
+    frontend.immediate.socket_connected: Verbunden
+    frontend.immediate.socket_disconnected: Verbindung getrennt, bitte aktualisieren.
+    frontend.immediate.up_to_date: Auf dem neuesten Stand
+    frontend.immediate.update_available: "Du bist {0} Update(s) im R\xFCckstand"
+    frontend.immediate.update_check_error: 'Fehler: {0}'
+    frontend.logged_out: Abgemeldet.
+    frontend.login: Anmeldung
+    frontend.login.already_logged_in: "HINWEIS: Du bist bereits angemeldet. Du kannst\
+        \ dies \xFCberschreiben, indem du dich erneut anmeldest."
+    frontend.login.disclaimer: "Derzeit ist eine Anmeldung nur \xFCber Discord m\xF6\
+        glich, damit wir keine sensiblen Daten wie Passw\xF6rter speichern m\xFCssen."
+    frontend.login.discord: Mit Discord anmelden
+    frontend.login.privacy_policy: Datenschutzrichtlinie
+    frontend.login.successful: Erfolgreich angemeldet!
+    frontend.login.successful_description: "Melde dich \xFCber das Kontextmen\xFC\
+        \ unter deinem Benutzernamen unten links ab."
+    frontend.plugins.authors: Autoren
+    frontend.plugins.disabled_all_plugins: Alle Plugins deaktiviert
+    frontend.plugins.disabled_plugin: '{0} deaktiviert'
+    frontend.plugins.disabling_all_plugins: Alle Plugins werden deaktiviert...
+    frontend.plugins.disabling_plugin: '{0} wird deaktiviert'
+    frontend.plugins.enabled_all_plugins: Alle Plugins aktiviert
+    frontend.plugins.enabled_plugin: '{0} aktiviert'
+    frontend.plugins.enabling_all_plugins: Alle Plugins werden aktiviert...
+    frontend.plugins.enabling_plugin: '{0} wird aktiviert'
+    frontend.plugins.end_list: Das ist das Ende der Liste
+    frontend.plugins.error_disabling_plugin: Fehler beim Deaktivieren von {0}
+    frontend.plugins.error_enabling_plugin: Fehler beim Aktivieren von {0}
+    frontend.plugins.hidden: '{0} Plugin(s) ausgeblendet'
+    frontend.plugins.name: Name
+    frontend.plugins.select_authors: Autoren suchen
+    frontend.plugins.select_tags: Tags suchen
+    frontend.plugins.selected_authors: "{0} Autor(en) ausgew\xE4hlt"
+    frontend.plugins.selected_tags: "{0} Tag(s) ausgew\xE4hlt"
+    frontend.plugins.tags: Tags
+    frontend.settings: Einstellungen
+    frontend.settings.array.add: "Element hinzuf\xFCgen"
+    frontend.settings.array.added_element: "Array-Element hinzugef\xFCgt"
+    frontend.settings.array.remove: Entfernen
+    frontend.settings.array.removed_element: Array-Element entfernt
+    frontend.settings.array.updated_element: Array-Element aktualisiert
+    frontend.settings.backend_no_data: Keine Daten vom Backend erhalten.
+    frontend.settings.boolean.updated: Einstellung aktualisiert
+    frontend.settings.controls: Steuerung
+    frontend.settings.data_missing: "Plugin-Daten sind ung\xFCltig oder fehlen."
+    frontend.settings.enum.no_enum: Keine Enum-Werte angegeben.
+    frontend.settings.enum.updated: Einstellung aktualisiert
+    frontend.settings.error: 'Fehler: {0}'
+    frontend.settings.global: Global
+    frontend.settings.global_info: "Diese Liste enth\xE4lt nur Plugins, die die globale\
+        \ Einstellungsdatei unterst\xFCtzen."
+    frontend.settings.needs_restart: "Das Plugin muss neu gestartet werden, um die\
+        \ Einstellungen zu \xFCbernehmen."
+    frontend.settings.number.updated: Einstellung aktualisiert
+    frontend.settings.restarted: Neustart erfolgreich
+    frontend.settings.string.updated: Einstellung aktualisiert
+    frontend.settings.unknown_data_type: 'Unbekannter Datentyp: {0}'
+    frontend.sidebar.account: Konto
+    frontend.sidebar.anonymous: Anonym
+    frontend.sidebar.chat: Chat
+    frontend.sidebar.dashboard: Dashboard
+    frontend.sidebar.help: Hilfe
+    frontend.sidebar.main: "Hauptmen\xFC"
+    frontend.sidebar.manager: Manager
+    frontend.sidebar.performance: Leistung
+    frontend.sidebar.plugins: Plugins
+    frontend.sidebar.settings: Einstellungen
+    frontend.sidebar.sign_in: Anmelden
+    frontend.sidebar.sign_out: Abmelden
+    frontend.sidebar.sign_out_description: Du kannst dich jederzeit wieder anmelden.
+    frontend.sidebar.sign_out_successful: Erfolgreich abgemeldet.
+    frontend.sidebar.updates_available: "Updates verf\xFCgbar"
+    frontend.sidebar.visualization: Visualisierung
+    frontend.sidebar.wiki: Wiki
+    frontend.states.complete: Fertig!
+    frontend.theme.dark: Dunkel
+    frontend.theme.light: Hell
+    global.settings.1.description: These are mostly settings that affect the entire
+        application.
+    global.settings.1.title: Global Settings
+    global.settings.10.description: Width of the window.
+    global.settings.10.name: Window Width
+    global.settings.11.description: Height of the window.
+    global.settings.11.name: Window Height
+    global.settings.12.description: The transparency of the window in transparent
+        mode. 1 = fully opaque, 0 = fully transparent.
+    global.settings.12.name: Transparency Mode Alpha
+    global.settings.13.description: The ID of the display to use for vision applications
+        (Object Detection, etc.). This should be set to the monitor that ETS2 is running
+        on. Needs a restart to apply changes!
+    global.settings.13.name: Display ID
+    global.settings.14.description: Missed the popup? Change your FOV here.
+    global.settings.14.name: FOV
+    global.settings.15.description: Whether to enable snow particles on the screen.
+    global.settings.15.name: Snow
+    global.settings.16.description: Whether to enable fireworks on the screen.
+    global.settings.16.name: Fireworks
+    global.settings.2.description: The soundpack to use. These will change all the
+        sounds for the app.
+    global.settings.2.name: Soundpack
+    global.settings.3.description: The volume of the sounds in the app.
+    global.settings.3.name: Volume
+    global.settings.4.description: The port the frontend runs on.
+    global.settings.4.name: Frontend Port
+    global.settings.5.description: Whether to use a fancy traceback when an error
+        occurs.
+    global.settings.5.name: Fancy Traceback
+    global.settings.6.description: Whether to send crash reports to the developers.
+    global.settings.6.name: Send Crash Reports
+    global.settings.7.description: Whether to enable debug mode.
+    global.settings.7.name: Debug Mode
+    global.settings.8.description: The language to use for the app. Needs a restart
+        to apply changes!
+    global.settings.8.name: Language
+    global.settings.9.description: Whether to use a frameless window for the app.
+        Needs a full restart to apply changes! Will fix problems with moving the app
+        window around. Also enables scaling.
+    global.settings.9.name: Frameless
+    global.settings.audio: Audio
+    global.settings.misc: Miscellaneous
+    global.settings.ui: User Interface
+    global.settings.variables: Variables
+    godot.server_started: Godot befindet sich an Port {0}
+    immediate.empty_page: Versucht, eine leere Seite zu senden.
+    immediate.message_error: "Ein Fehler ist bei der Daten\xFCbermittlung aufgetreten."
+    immediate.websocket_started: Websocket ist gestartet.
+    install: Installieren
+    loading: Lade...
+    logging.delete_log_error: "Fehler beim L\xF6schen der Log-Datei"
+    logging.logger_initialized: Logger initialisiert.
+    main.closed: ETS2LA wurde geschlossen.
+    main.crashed: "ETS2LA is mit den folgenden Fehlern abgest\xFCrzt:"
+    main.development_mode: ETS2LA im Entwicklungsmodus.
+    main.errors: 'Fehler:'
+    main.errors_and_warnings: 'Fehler und Warnungen in den Log-Dateien:'
+    main.legacy_traceback: Veraltete Traceback-Ausgabe verwendet.
+    main.no_errors_or_warnings: Keine Fehler oder Warnungen gefunden.
+    main.overseer_started: "ETS2LA \xDCbersteuerung gestartet!"
+    main.press_enter: "Dr\xFCcke Enter um zu verlassen..."
+    main.restarting: ETS2LA startet neu...
+    main.send_report: Sende das obige Traceback an die Entwickler.
+    main.update_done: Update erfolgreich, starte neu!
+    main.updating: ETS2LA installiert ein Update...
+    main.warnings: 'Warnungen:'
+    map.extracting_data: Extracting GameData.zip please wait...
+    map.json_not_found: No JSON files found in the GameData folder, please unpack
+        the GameData.zip file.
+    map.loading.ferries: Map Loading ferries...
+    map.loading.final_calculations: Map doing final calculations...
+    map.loading.nodes: Map Loading nodes...
+    map.loading.prefab_data: Map Loading prefab data...
+    map.loading.prefabs: Map Loading prefabs...
+    map.loading.preparing: Map preparing to load data...
+    map.loading.roads: Map Loading roads...
+    map.settings.1.description: These settings are for the map plugin.
+    map.settings.1.title: Map Settings
+    map.settings.10.title: Steering Settings
+    map.settings.11.description: The amount of seconds to smooth the steering over.
+        A value of 0 will be extremely snappy, while a value over 0.5 might swing
+        left and right.
+    map.settings.11.name: Smoothness
+    map.settings.12.description: 'Will calculate the necessary path to follow a route
+        to your destination. Disclaimer: This route is not guaranteed to be the fastest!'
+    map.settings.12.name: Navigate on ETS2LA
+    map.settings.2.description: This will calculate all necessary values for the map
+        to steer the truck.
+    map.settings.2.name: Calculate Steering
+    map.settings.3.description: This will allow other plugins to use the Map's data.
+        Please note that visualisation will not work without this option enabled.
+        This option can and will improve performance marginally.
+    map.settings.3.name: Send Data
+    map.settings.4.title: Internal Visualisation
+    map.settings.5.description: Controls the zoom level of the internal visualisation.
+    map.settings.5.name: Zoom
+    map.settings.6.description: Whether to render the internal visualisation of the
+        map. Useful if you are not sending the external data.
+    map.settings.6.name: Enable Internal Visualisation
+    map.settings.7.title: External Visualisation
+    map.settings.8.description: This will set the max distance of the data send to
+        other plugins. Assuming it is allowed by the plugin.
+    map.settings.8.name: Render Distance
+    map.settings.9.description: This will show the roads over your game, you need
+        to enable the AR plugin too.
+    map.settings.9.name: Show AR data
+    map.visualisation.prefabs.curves: 'Curves: {0}'
+    map.visualisation.prefabs.prefabs: 'Prefabs: {0}, Tile: {1}'
+    map.visualisation.roads.text: 'Roads: {0}, Tile: {1}, Loading: {2}'
+    'no': Nein
+    object_detection.connection_failed.1: Unable to reach the server at Hugging Face.
+    object_detection.connection_failed.2: Please check your internet connection.
+    object_detection.connection_failed.3: 'NOTE: In countries like China, the server
+        may be blocked.'
+    object_detection.connection_failed.4: In this case, you should ask in the Discord
+        for help.
+    object_detection.loaded_model: Object Detection model loaded on {0}
+    object_detection.loading_model: Loading Object Detection Model...
+    object_detection.not_found.1: The requested model shown below has not yet been
+        downloaded.
+    object_detection.not_found.2: Click the button below to download the model from
+    object_detection.processing_error: Error while processing vehicle data
+    object_detection.screen_capture_profile: 'Object Detection is using screen capture
+        profile: {0}'
+    object_detection.settings.1.description: These settings will affect the quality
+        and performance of the object detection.
+    object_detection.settings.1.title: Object Detection Settings
+    object_detection.settings.2.description: The device to run Object Detection on,
+        if you use automatic, it will be decided based on your system. (If you select
+        GPU, and you dont have one, or CUDA isn't installed, it will default to CPU.)
+    object_detection.settings.2.name: Device
+    object_detection.settings.3.description: The object detection mode you want to
+        use. Please note that quality mode requires a powerful PC to run well.
+    object_detection.settings.3.name: Mode
+    object_detection.settings.4.description: The refresh rate of the YOLO model. Higher
+        values will update detections faster. In performance mode this is FPS, quality
+        mode it's frames between detections. Please note that values above 2 for performance
+        mode might not work as expected.
+    object_detection.settings.4.name: YOLO Speed
+    object_detection.settings.5.description: The model architecture you want to use.
+        Please note that YoloV7 needs more power.
+    object_detection.settings.5.name: Model architecture
+    object_detection.settings.6.description: What part of your screen to use for object
+        detection. Index 0 is X, index 1 is Y, index 2 is Width, index 3 is Height.
+        This setting will be automatically generate after you start the plugin once.
+    object_detection.settings.6.name: Screen Capture Dimensions
+    object_detection.tracking_failed: Tracking failed for {0} with confidence {1}
+    plugins.adaptivecruisecontrol: Adaptive Cruise Control
+    plugins.adaptivecruisecontrol.description: Will slow down for vehicles in front
+        (if an object detection model is enabled). Will also slow down for turns (if
+        a plugin exporting this information is enabled).
+    plugins.ar: AR (Augmented Reality)
+    plugins.ar.description: In development... The plugin will draw shapes over your
+        game, to make it seem like they are in the game world.
+    plugins.cruisecontrol: Cruise Control
+    plugins.cruisecontrol.description: Use the In-Game cruise control to control speed
+        and keep distance between vehicles in front. Can't work with ACC plugin!
+    plugins.datacollection: Data Collection
+    plugins.datacollection.description: Data collection for vehicle detection plugin.
+    plugins.depthprediction: Depth Prediction
+    plugins.depthprediction.description: Provides depth prediction for object avoidance,
+        please note that this plugin may only work on NVIDIA graphics cards, due to
+        the sheer performance requirements.
+    plugins.discordrichpresence: Discord Rich Presence
+    plugins.discordrichpresence.description: Discord Rich Presence for ETS2LA
+    plugins.map: Map
+    plugins.map.description: Map detection plugin.
+    plugins.microcontrollercontrol: Microcontroller Control
+    plugins.microcontrollercontrol.description: Allows you to control ETS2LA and ETS2
+        from a microcontroller (Made for button boxes)
+    plugins.navigationdetection: Navigation Detection
+    plugins.navigationdetection.description: Uses the in-game route advisor to follow
+        the selected route.
+    plugins.objectdetection: Object Detection
+    plugins.objectdetection.description: Detects various objects using computer vision
+        and can display them in an output window and 3D visualization.
+    plugins.raycastingtest: Raycasting Test
+    plugins.raycastingtest.description: A test plugin for raycasting. Will raycast
+        to your mouse position.
+    plugins.sockets: Sockets
+    plugins.sockets.description: Plugin to make a data socket available mainly for
+        the built in visualisation.
+    plugins.trafficlightdetection: Traffic Light Detection
+    plugins.trafficlightdetection.description: Detects traffic lights using computer
+        vision and can display them in an output window. It communicates with the
+        CruiseControl plugin to stop the truck at red traffic lights.
+    plugins.truckstats: Truck Stats
+    plugins.truckstats.description: This plugin shows some statistics about the truck,
+        route and the game.
+    runner.could_not_import: Fehler beim Importieren des Plugins {0}
+    runner.could_not_load_module: Fehler beim Laden des Moduls {0}
+    runner.error_calling_function: Fehler beim Aufrufen der Funktion {0} in {1}
+    runner.initialize_error: "Fehler bei der Ausf\xFChrung von Initialize() f\xFC\
+        r {0}"
+    runner.plugin_crash: "Plugin {0} ist abgest\xFCrzt."
+    sdk_install.description: Check that you have the necessary DLLs installed for
+        us to communicate with the game.
+    sdk_install.games: 'We found the following games on your system:'
+    sdk_install.install: Install SDKs
+    sdk_install.install_description: This button will install the SDKs for all the
+        games listed above. It might take some time to refresh the page after the
+        installation is complete.
+    sdk_install.installed: '- Installed'
+    sdk_install.no_games: We could not find any games on your system. You'll have
+        to install the SDKs manually.
+    sdk_install.not_installed: '- Not Installed'
+    sdk_install.title: SDK Setup
+    sdk_install.uninstall: Uninstall SDKs
+    sdk_install.uninstall_description: This button will uninstall the SDKs for all
+        the games listed above. It might take some time to refresh the page after
+        the uninstallation is complete.
+    search: Suchen
+    set: setzen
+    setting: Setting...
+    sounds.invalid_file_type: Soundpack '{0}' hat einen invaliden Datentyp '{1}'
+    sounds.missing_sound: "Soundpack '{0}' fehlt der ben\xF6tigte Ton '{1}'"
+    sounds.sound_not_found_in_soundpack: Fehler beim Abspielen des Tons '{0}', es
+        wurde nicht im Soundpack '{1}' gefunden.
+    submit: "\xDCbermitteln"
+    success: Erfolgreich
+    tutorials.main.settings: For now you should head to the settings page!
+    tutorials.main.sidebar: You can easily navigate the different app pages using
+        the sidebar. Some of them have more tips to help you get used to the app!
+    tutorials.main.sidebar_collapse: You can click on the side of the sidebar to collapse
+        it and go into "fullscreen" mode.
+    tutorials.main.slide_area: You can move the window around by dragging this area.
+    tutorials.main.window_controls: These are the window controls. The left most button
+        controls some extra options. Hover over it to see a tooltip! (after the onboarding)
+    tutorials.plugins.clear: Use this button to remove all current search options.
+    tutorials.plugins.enable_all: You can enable/disable all the currently visible
+        plugins by clicking this checkbox.
+    tutorials.plugins.list: To get started you can enable everything but the "Data
+        Collection End-To-End Driving" and "Navigation Detection" plugins.
+    tutorials.plugins.options: You can use the search options to easily find what
+        you are looking for.
+    tutorials.plugins.tags: By default the Base tag is selected. You can add more
+        selections by clicking on the tags in the plugin list or by opening the dropdown
+        here.
+    tutorials.settings.global: Right now you can see the Global settings. These include
+        UI settings and other miscellaneous settings required by the app at some point.
+    tutorials.settings.plugin: This is a list of all the plugins that have settings
+        pages. You can click on any of them to change settings on a per-plugin basis.
+    tutorials.settings.sdk: As the final step you should open the SDK settings page,
+        and install the SDK if you haven't already. Please note that if you're coming
+        from V1, you should reinstall the SDK on this page.
+    tutorials.settings.static: Here you can see the settings that are needed by the
+        entire app.
+    uninstall: Deinstallieren
+    unknown: Unbekannt
+    webpage.opened: "ETS2LA UI ge\xF6ffnet."
+    webpage.ui_loading: "Bitte warte einen Moment, w\xE4hrend wir die Benutzeroberfl\xE4\
+        che initialisieren."
+    webserver.disabling_plugin: Deaktiviere Plugin {0}
+    webserver.enabling_plugin: Aktiviere Plugin {0}
+    webserver.frontend_started: Frontend gestartet auf {0} ( {1} )
+    webserver.webserver_started: Webserver gestartet auf {0} ( {1} )
+    'yes': Ja
