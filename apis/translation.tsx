@@ -63,11 +63,33 @@ export const changeLanguage = async (language: string) => {
         // 添加延迟以确保动画有足够时间显示
         await new Promise(resolve => setTimeout(resolve, 300));
         
+        // 调用后端API更新语言设置
+        try {
+            const response = await fetch(`http://localhost:37520/api/language`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ language })
+            });
+            
+            if (!response.ok) {
+                console.error('Failed to update language on backend');
+            }
+        } catch (apiError) {
+            console.error('API error when changing language:', apiError);
+            // 继续执行，即使后端API调用失败
+        }
+        
         // 更新当前语言
         currentLanguage = language;
         
         // 加载新语言的翻译
         await loadTranslations();
+        
+        // 主动触发React组件重新渲染
+        const languageChangeEvent = new CustomEvent('languageChanged');
+        document.dispatchEvent(languageChangeEvent);
         
         // 添加延迟以确保翻译加载完成后动画有足够时间显示
         await new Promise(resolve => setTimeout(resolve, 500));

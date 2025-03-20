@@ -1,438 +1,679 @@
 Language:
-  name: "Tiếng Việt"
-  # ^ The name of the language in its own language. Example: "Suomi"
-  name_en: "Vietnamese"
-  # ^ The name of the language in English. Example: "Finnish"
-  iso_code: "vn"
-  # ^ The ISO 639-1 code for the language. Example: "fi"
-  credits: "Bạn đang sử dụng phiên bản dịch Tiếng Việt của ETS2LA. Dịch bởi MeoNguOfficial và TFlat."
-  # ^ The credits for the language show in the UI.
-  version: "2.0.0"
-  # ^ Latest compatible version. Checked by the UI for compatibility.
-
+    credits: "B\u1EA1n \u0111ang s\u1EED d\u1EE5ng phi\xEAn b\u1EA3n d\u1ECBch Ti\u1EBF\
+        ng Vi\u1EC7t c\u1EE7a ETS2LA. D\u1ECBch b\u1EDFi MeoNguOfficial v\xE0 TFlat."
+    iso_code: vn
+    name: "Ti\u1EBFng Vi\u1EC7t"
+    name_en: Vietnamese
+    version: 2.0.0
 Translations:
-
-  # MARK: Globals
-
-  confirm: "Xác nhận"
-  cancel: "Hủy"
-  'yes': "Có"
-  'no': "Không"
-  continue: "Tiếp tục"
-  loading: "Đang tải..."
-  success: "Thành công"
-  # ^ Usually used in a statement that says something was successful. Example: [Something was completed] 'Success!'
-  error: "Lỗi"
-  # ^ Usually used in a statement that says something was unsuccessful. Example: [Something was not completed] 'Error!'
-  done: "Hoàn tất!"
-  set: "Đã thiết lập"
-  # ^ Something was set. Example: [Stay on top set to true] 'Set'
-  setting: "Tùy chỉnh"
-  # ^ The act of setting something. Example: [Setting stay on top to true] 'Setting...'
-  unknown: "Không xác định"
-  download: "Tải xuống"
-  downloading: "Đang tải xuống {0}..."
-  # ^ {0} is the name of what is being downloaded. Example: 'Downloading model...'
-  clear: "Xóa"
-  search: "Tìm kiếm"
-  submit: "Gửi"
-  install: "Cài đặt"
-  uninstall: "Gỡ cài đặt"
-
-  # MARK: Backend
-
-  main.errors_and_warnings: "Lỗi và cảnh báo trong tệp nhật ký:"
-  main.errors: "Lỗi:"
-  # ^ Here the text is before a count of errors. For example a print could be 'Errors: 5'
-  main.warnings: "Cảnh báo:"
-  # ^ Here the text is before a count of warnings. For example a print could be 'Warnings: 5'
-  main.no_errors_or_warnings: "Không tìm thấy lỗi hoặc cảnh báo nào cả."
-  main.overseer_started: "ETS2LA Overseer đã khởi động!!"
-  # ^ Overseer in this context means the main file that monitors the rest of the program. If the program crashes the overseer will attempt to fix the issue and restart.
-  main.development_mode: "Đang chạy ETS2LA ở chế độ phát triển."
-  main.restarting: "ETS2LA đang khởi động lại..."
-  main.updating: "ETS2LA đang cập nhật..."
-  main.update_done: "Cập nhật hoàn tất!"
-  main.crashed: "ETS2LA đã gặp sự cố với lỗi:"
-  main.legacy_traceback: "Đã sử dụng phương pháp ghi vết lỗi cũ."
-  main.send_report: "Gửi báo cáo lỗi trên đến nhà phát triển."
-  main.closed: "ETS2LA đã đóng."
-  main.press_enter: "Nhấn Enter để thoát..."
-  core.backend_started: "Backend ETS2LA đã khởi động thành công."
-  immediate.websocket_started: "Websocket đã khởi động."
-  immediate.message_error: "Đã xảy ra lỗi khi xử lý tin nhắn."
-  # ^ Message in this context means a transmission between the websocket client (for example the frontend) and the server.
-  immediate.empty_page: "Đã cố gửi một trang trống."
-  webserver.enabling_plugin: "Đang bật plugin {0}"
-  # ^ {0} is the plugin to be enabled.
-  webserver.disabling_plugin: "Đang tắt plugin {0}"
-  # ^ {0} is the plugin to be disabled.
-  webserver.webserver_started: "Máy chủ web đã khởi động tại: {0} ( {1} )"
-  # ^ {0} is the local network address {1} is localhost address. Example: 'Webserver started on http://192.168.1.106:37520 ( http://localhost:37520 )'
-  webserver.frontend_started: "Giao diện người dùng đã khởi động tại: {0} ( {1} )"
-  # ^ {0} is the local network address {1} is localhost address. Example: 'Frontend started on http://192.168.1.106:3005 ( http://localhost:3005 )'
-  godot.server_started: "Godot đang phục vụ trên cổng {0}"
-  # ^ {0} is the port number. Example: 'Godot serving on port 60407'
-  webpage.opened: "ETS2LA UI đã mở."
-  webpage.ui_loading: "Vui lòng chờ trong khi giao diện người dùng đang khởi tạo"
-  controls.listener_started: "Bộ lắng nghe điều khiển đã khởi động."
-  # ^ Listener just means the app is listening for input from the user.
-  sounds.missing_sound: "Gói âm thanh '{0}' thiếu âm thanh yêu cầu '{1}'"
-  # ^ {0} is the soundpack name {1} is the sound name Example: 'Soundpack 'default' is missing the required sound 'beep'
-  sounds.invalid_file_type: "Gói âm thanh '{0}' có loại tệp không hợp lệ '{1}'"
-  # ^ {0} is the soundpack name {1} is the file type Example: 'Soundpack 'default' has an invalid file type 'flac'
-  sounds.sound_not_found_in_soundpack: "Đã cố phát âm thanh '{0}', nhưng không tìm thấy trong gói âm thanh '{1}'"
-  # ^ {0} is the sound name {1} is the soundpack name Example: 'Tried to play sound 'beep', but it was not found in soundpack 'default'
-  logging.delete_log_error: "Không thể xóa tệp nhật ký."
-  logging.logger_initialized: "Trình ghi nhật ký đã khởi tạo."
-  events.vehicle_change.vehicle_change: "Phát hiện thay đổi phương tiện."
-  events.vehicle_change.vehicle_change_description: "Chúng tôi đã phát hiện một phương tiện mới. Hãy nhấn F4 trong chế độ cabin, mở cài đặt ghế và nhập giá trị FOV mới của bạn."
-
-  # MARK: Runner
-
-  runner.could_not_import: "Không thể nhập plugin {0}"
-  # ^ {0} is the plugin path. Example: 'Could not import plugin 'ETS2LA.plugins.NavigationDetection.main''
-  runner.could_not_load_module: "Không thể tải mô-đun {0}"
-  # ^ {0} is the module object. Example: 'Could not load module <object>'
-  runner.initialize_error: "Lỗi khi chạy Initialize() cho {0}"
-  # ^ {0} is the plugin name or module Example: 'Error while running Initialize() for NavigationDetection
-  runner.error_calling_function: "Lỗi khi gọi hàm {0} trong {1}"
-  # ^ {0} is the function name {1} is the plugin name Example: 'Error while calling function 'onStart' in NavigationDetection
-  runner.plugin_crash: "Plugin {0} đã gặp sự cố."
-  # ^ {0} is the plugin name Example: 'Plugin NavigationDetection has crashed'
-
-  # MARK: Frontend
-
-  frontend.hello: "Xin chào, {0}!"
-  # ^ {0} is the name of the user Example: 'Hello, Tumppi066'
-  frontend.disclaimer.title: "Lưu ý khi dùng!"
-  frontend.disclaimer.description.line1: "ETS2LA không chịu trách nhiệm về bất kỳ hậu quả tiêu cực hoặc thiệt hại nào phát sinh từ việc sử dụng bất kỳ tính năng nào trong phần mềm này. Vui lòng sử dụng phần mềm với sự cẩn trọng và chấp nhận rủi ro của riêng bạn."
-  frontend.disclaimer.description.line2: "Việc sử dụng ETS2LA trong TruckersMP đã được nhân viên TMP cho phép nhưng bạn vẫn phải tuân thủ các quy tắc của TruckersMP. Bạn phải chịu trách nhiệm về mọi lệnh cấm hoặc cảnh báo do sử dụng phần mềm này gây ra."
-  frontend.disclaimer.ok: "Tôi đã đọc và hiểu"
-  frontend.disclaimer.dontshowagain: "Không hiện lại"
-  frontend.disclaimer.dontshowagain.toast: "Bạn sẽ không thấy thông báo này cho đến lần cập nhật tiếp theo."
-  frontend.logged_out: "Đã đăng xuất."
-  frontend.states.complete: "Hoàn tất!"
-  frontend.theme.dark: "Tối"
-  frontend.theme.light: "Sáng"
-  frontend.immediate.connected: "Đã kết nối với backend ETS2LA"
-  frontend.immediate.disconnected: "Mất kết nối với backend ETS2LA"
-  frontend.immediate.update_check_error: "Lỗi: {0}"
-  # ^ {0} is the error message
-  frontend.immediate.checking_updates: "Đang kiểm tra cập nhật..."
-  frontend.immediate.update_available: "Bạn đang chậm {0} bản cập nhật"
-  frontend.immediate.no_updates: "Không có cập nhật nào."
-  frontend.immediate.up_to_date: "Đang sử dụng phiên bản mới nhất."
-  frontend.immediate.socket_connected: "Đã kết nối, chúc bạn chơi vui vẻ!"
-  frontend.immediate.socket_disconnected: "Mất kết nối, hãy kiểm tra lại kết nối mạng của bạn và làm mới trang."
-  frontend.immediate.enable_stay_on_top: "Bật luôn hiển thị trên cùng"
-  frontend.immediate.disable_stay_on_top: "Tắt luôn hiển thị trên cùng"
-  frontend.immediate.enable_transparent: "Bật chế độ trong suốt"
-  frontend.immediate.disable_transparent: "Tắt chế độ trong suốt"
-  frontend.immediate.minimize: "Thu nhỏ"
-  frontend.immediate.close: "Đóng"
-  frontend.404.title: "Tại sao bạn lại ở đây? Nó chả có gì ở đây cả!"
-  # ^ You can go wild here, I'd like to see some fun jokes in the 404 page!
-  frontend.404.message: "Dù sao thì, nhấn vào nút bên dưới để quay lại màn hình chính, và hãy cho chúng tôi biết làm thế nào bạn đến được đây?"
-  # ^ You can go wild here, I'd like to see some fun jokes in the 404 page!
-  frontend.404.button: "Menu chính"
-  # ^ You can go wild here, I'd like to see some fun jokes in the 404 page! (at least make this something about the main menu)
-  frontend.settings.data_missing: "Dữ liệu plugin không hợp lệ hoặc bị thiếu."
-  frontend.settings: "Cài đặt"
-  frontend.settings.global: "Chung"
-  frontend.settings.controls: "Điều khiển"
-  frontend.settings.global_info: "Danh sách này chỉ bao gồm các plugin hỗ trợ tệp cài đặt toàn cầu."
-  frontend.settings.error: "Lỗi: {0}"
-  # ^ {0} là thông điệp lỗi đã xảy ra.
-  frontend.settings.backend_no_data: "Không nhận được dữ liệu từ backend."
-  frontend.settings.string.updated: "Đã cập nhật cài đặt"
-  frontend.settings.number.updated: "Đã cập nhật cài đặt"
-  frontend.settings.boolean.updated: "Đã cập nhật cài đặt"
-  frontend.settings.array.updated_element: "Đã cập nhật phần tử mảng"
-  frontend.settings.array.removed_element: "Đã xóa phần tử mảng"
-  frontend.settings.array.added_element: "Đã thêm phần tử mảng"
-  frontend.settings.array.add: "Thêm phần tử"
-  frontend.settings.array.remove: "Xóa"
-  frontend.settings.enum.no_enum: "Không có giá trị enum nào được cung cấp."
-  frontend.settings.enum.updated: "Đã cập nhật cài đặt"
-  frontend.settings.unknown_data_type: "Loại dữ liệu không xác định: {0}"
-  # ^ {0} là loại dữ liệu không xác định. Ví dụ: 'Loại dữ liệu không xác định: string'
-  frontend.settings.needs_restart: "Plugin cần khởi động lại để cập nhật cài đặt."
-  frontend.settings.restarted: "Khởi động lại thành công"
-  frontend.feedback: "Phản hồi"
-  frontend.feedback.empty: "Phản hồi trống, vui lòng cung cấp bất kỳ phản hồi nào bạn có."
-  frontend.feedback.sending: "Đang gửi phản hồi..."
-  frontend.feedback.sent: "Phản hồi đã được gửi!"
-  frontend.feedback.error_sending: "Có lỗi khi gửi phản hồi, thử lại sau."
-  frontend.feedback.description: "Vui lòng cung cấp bất kỳ phản hồi nào bạn có. Điều này sẽ được gửi trực tiếp đến một kênh riêng tư để các nhà phát triển xem."
-  frontend.feedback.disclaimer: "Xin lưu ý: Không chia sẻ bất kỳ thông tin cá nhân nào."
-  frontend.feedback.submit: "Gửi"
-  frontend.plugins.name: "Tên"
-  frontend.plugins.authors: "Tác giả"
-  frontend.plugins.tags: "Thẻ"
-  frontend.plugins.select_tags: "Tìm kiếm Thẻ"
-  frontend.plugins.select_authors: "Tìm kiếm Tác giả"
-  frontend.plugins.selected_tags: "{0} thẻ đã chọn"
-  frontend.plugins.selected_authors: "{0} tác giả đã chọn"
-  frontend.plugins.end_list: "Đây là cuối danh sách"
-  frontend.plugins.enabling_plugin: "Đang bật {0}"
-  frontend.plugins.enabled_plugin: "Đã bật {0}"
-  frontend.plugins.error_enabling_plugin: "Lỗi khi bật {0}"
-  frontend.plugins.enabling_all_plugins: "Đang bật tất cả các plugin..."
-  frontend.plugins.enabled_all_plugins: "Đã bật tất cả các plugin"
-  frontend.plugins.disabling_plugin: "Đang tắt {0}"
-  frontend.plugins.disabled_plugin: "Đã tắt {0}"
-  frontend.plugins.error_disabling_plugin: "Lỗi khi tắt {0}"
-  frontend.plugins.disabling_all_plugins: "Đang tắt tất cả các plugin..."
-  frontend.plugins.disabled_all_plugins: "Đã tắt tất cả các plugin"
-  frontend.plugins.hidden: "{0} plugin(s) bị ẩn"
-  frontend.dialog.not_supported: "{0} không được hỗ trợ trong một hộp thoại."
-  # ^ {0} là chức năng không được hỗ trợ. Ví dụ: 'EnabledLock không được hỗ trợ trong một hộp thoại.'
-  frontend.sidebar.updates_available: "Có cập nhật"
-  frontend.sidebar.main: "Chính"
-  frontend.sidebar.dashboard: "Bảng điều khiển"
-  frontend.sidebar.visualization: "Hiển thị"
-  frontend.sidebar.plugins: "Plugin"
-  frontend.sidebar.manager: "Quản lý"
-  frontend.sidebar.performance: "Hiệu suất"
-  frontend.sidebar.help: "Trợ giúp"
-  frontend.sidebar.wiki: "Wiki"
-  frontend.sidebar.chat: "Trò chuyện"
-  frontend.sidebar.settings: "Cài đặt"
-  frontend.sidebar.anonymous: "Ẩn danh"
-  frontend.sidebar.account: "Tài khoản"
-  frontend.sidebar.sign_out: "Đăng xuất"
-  frontend.sidebar.sign_out_successful: "Đăng xuất thành công."
-  frontend.sidebar.sign_out_description: "Bạn có thể đăng nhập lại bất cứ lúc nào."
-  frontend.sidebar.sign_in: "Đăng nhập"
-  frontend.login: "Đăng nhập"
-  frontend.login.disclaimer: "Chúng tôi hiện chỉ hỗ trợ đăng nhập qua discord, điều này để chúng tôi không phải lưu trữ bất kỳ thông tin nhạy cảm nào như mật khẩu."
-  frontend.login.discord: "Đăng nhập với Discord"
-  frontend.login.privacy_policy: "Chính sách bảo mật"
-  frontend.login.already_logged_in: "LƯU Ý: Bạn đã đăng nhập, bạn có thể ghi đè bằng cách đăng nhập lại."
-  frontend.login.successful: "Đăng nhập thành công!"
-  frontend.login.successful_description: "Đăng xuất bằng cách sử dụng menu ngữ cảnh dưới tên người dùng của bạn ở góc dưới bên trái."
-
-  # MARK: Tutorials
-
-  tutorials.main.window_controls: "Đây là các điều khiển cửa sổ. Nút bên trái nhất điều khiển một số tùy chọn bổ sung. Di chuột qua nó để xem tooltip! (sau khi hoàn thành hướng dẫn)"
-  tutorials.main.slide_area: "Bạn có thể di chuyển cửa sổ bằng cách kéo khu vực này."
-  tutorials.main.sidebar_collapse: 'Bạn có thể nhấp vào cạnh của thanh bên để thu gọn nó và chuyển sang chế độ "toàn màn hình".'
-  tutorials.main.sidebar: "Bạn có thể dễ dàng điều hướng giữa các trang của ứng dụng bằng cách sử dụng thanh bên. Một số trang có thêm mẹo để giúp bạn làm quen với ứng dụng!"
-  tutorials.main.settings: "Bây giờ bạn nên đến trang cài đặt!"
-  tutorials.settings.static: "Tại đây bạn có thể xem các cài đặt cần thiết cho toàn bộ ứng dụng."
-  tutorials.settings.global: "Hiện tại bạn có thể thấy cài đặt Toàn cầu. Những cài đặt này bao gồm cài đặt giao diện người dùng và các cài đặt khác cần thiết cho ứng dụng tại một số thời điểm."
-  tutorials.settings.plugin: "Đây là danh sách tất cả các plugin có trang cài đặt. Bạn có thể nhấp vào bất kỳ plugin nào để thay đổi cài đặt theo từng plugin."
-  tutorials.settings.sdk: "Bước cuối cùng bạn nên mở trang cài đặt SDK và cài đặt SDK nếu bạn chưa làm. Xin lưu ý rằng nếu bạn đang chuyển từ V1, bạn nên cài đặt lại SDK trên trang này."
-  tutorials.plugins.options: "Bạn có thể sử dụng các tùy chọn tìm kiếm để dễ dàng tìm những gì bạn đang tìm."
-  tutorials.plugins.tags: "Theo mặc định, thẻ Cơ sở được chọn. Bạn có thể thêm nhiều lựa chọn hơn bằng cách nhấp vào các thẻ trong danh sách plugin hoặc mở menu thả xuống ở đây."
-  tutorials.plugins.clear: 'Sử dụng nút này để xóa tất cả các tùy chọn tìm kiếm hiện tại.'
-  tutorials.plugins.enable_all: "Bạn có thể bật/tắt tất cả các plugin hiện có bằng cách nhấp vào hộp kiểm này."
-  tutorials.plugins.list: 'Để bắt đầu, bạn có thể bật mọi thứ ngoại trừ các plugin "Thu thập Dữ liệu Lái xe Đầu-cuối" và "Phát hiện Điều hướng".'
-
-  # MARK: About
-
-  about.about: "Giới thiệu"
-  about.description: "ETS2LA là một dự án nhằm cung cấp giải pháp lái xe tự động dễ sử dụng cho ETS2 và ATS. Nếu bạn muốn tìm hiểu thêm, bạn có thể truy cập trang GitHub hoặc wiki qua thanh bên."
-  about.statistics: "Thống kê"
-  about.statistics.users_online: "Người dùng trực tuyến:"
-  about.statistics.users_online_value: "{0} người dùng"
-  about.statistics.past_24h: "24 giờ qua:"
-  about.statistics.past_24h_value: "{0} người dùng duy nhất"
-  about.statistics.usage_time: "Thời gian sử dụng của bạn:"
-  about.statistics.usage_time_value_hour: "{0} giờ"
-  about.statistics.usage_time_value_minute: "{0} phút"
-  about.statistics.usage_time_value_hour_and_minute: "{0} giờ và {1} phút"
-  about.statistics.logged_in: "Bạn đã đăng nhập."
-  about.statistics.not_logged_in: "Bạn chưa đăng nhập."
-  about.statistics.anonymous_user_id: "Mã người dùng ẩn danh của bạn là: {0}"
-  about.statistics.welcome: "Chào mừng trở lại, {0}!"
-  about.developers: "Nhà phát triển / Cộng tác viên"
-  about.translation_credits: "Tín dụng Dịch thuật"
-  about.no_credits: "Ngôn ngữ này không có tín dụng."
-  about.support_development: "Hỗ trợ phát triển"
-  about.kofi_description: "• Nếu bạn thích dự án và muốn hỗ trợ phát triển, bạn có thể làm điều đó bằng cách ủng hộ qua Ko-Fi."
-  about.contribute_description: "• Nếu bạn muốn đóng góp, tôi khuyên bạn nên tham gia máy chủ Discord và kiểm tra trang GitHub."
-  about.translate_description: "• Nếu bạn muốn tham gia vào việc dịch thuật, bạn có thể làm điều đó bằng cách tham gia Discord."
-  about.tumppi066.description: "Nhà phát triển chính và người sáng lập ETS2LA, backend & frontend."
-  about.glas42.description: "Phát hiện Điều hướng, Phát hiện Đèn giao thông, ETS2LA Lite, 'đồng sở hữu'"
-  about.cloud.description: "Cổng Linux & Unix, cải tiến và sửa lỗi khác nhau."
-  about.dyldev.description: "Các bổ sung và cải tiến khác nhau, mô hình AI Phát hiện Đối tượng & phát triển."
-  about.roccovax.description: "Nhà phát triển SDK bên game ETS2LA. Dữ liệu Xe, Đèn giao thông, dữ liệu Camera và nhiều hơn nữa trực tiếp từ game."
-  about.truckersmudgeon.description: "Trích xuất và xử lý dữ liệu game."
-  about.whytrevorwhy.description: "Giúp đỡ với Điều hướng trên ETS2LA & Bản đồ."
-  about.mimi89999.description: "Nhà phát triển scs-sdk-controller."
-  about.zhaoyj.description: "Mô hình 3D cho hình ảnh hóa."
-  about.lun.description: "Dịch thuật tiếng Trung, sửa lỗi."
-  about.mruiaw.description: "Dịch thuật tiếng Trung, sửa lỗi."
-  about.ziakhan4505.description: "Hỗ trợ C++, Cổng Linux & Unix, sửa lỗi."
-  about.piotrke.description: "Game hooks."
-  about.dtheicydragon.description: "Sửa lỗi."
-  about.romansonnik.description: "Sửa lỗi."
-  about.atac_helicopter.description: "Sửa lỗi."
-  about.flexflexen.description: "Sửa lỗi."
-  about.lookatyourskill.description: "Sửa lỗi."
-  about.viszke.description: "Sửa lỗi."
-
-  # MARK: List of plugins
-
-  plugins.adaptivecruisecontrol: "Kiểm soát Tốc độ Tự động"
-  plugins.adaptivecruisecontrol.description: "Sẽ giảm tốc độ cho các phương tiện phía trước (nếu một mô hình phát hiện đối tượng được kích hoạt). Cũng sẽ giảm tốc độ cho các khúc cua (nếu một plugin xuất thông tin này được kích hoạt)."
-  plugins.ar: "AR (Thực tế Tăng cường)"
-  plugins.ar.description: "Đang phát triển... Plugin sẽ vẽ các hình dạng trên màn hình game của bạn, để tạo cảm giác như chúng ở trong thế giới game."
-  plugins.cruisecontrol: "Kiểm soát Tốc độ"
-  plugins.cruisecontrol.description: "Sử dụng chức năng kiểm soát tốc độ trong game để điều khiển tốc độ và giữ khoảng cách với các phương tiện phía trước. Không thể hoạt động với plugin ACC!"
-  plugins.datacollection: "Thu thập Dữ liệu"
-  plugins.datacollection.description: "Thu thập dữ liệu cho plugin phát hiện phương tiện."
-  plugins.depthprediction: "Dự đoán Độ sâu"
-  plugins.depthprediction.description: "Cung cấp dự đoán độ sâu cho việc tránh đối tượng, xin lưu ý rằng plugin này chỉ có thể hoạt động trên card đồ họa NVIDIA, do yêu cầu hiệu suất cao."
-  plugins.discordrichpresence: "Hiện diện Giàu có trên Discord"
-  plugins.discordrichpresence.description: "Hiện diện Giàu có trên Discord cho ETS2LA."
-  plugins.map: "Bản đồ"
-  plugins.map.description: "Plugin phát hiện bản đồ."
-  plugins.microcontrollercontrol: "Điều khiển Vi điều khiển"
-  plugins.microcontrollercontrol.description: "Cho phép bạn điều khiển ETS2LA và ETS2 từ một vi điều khiển (được thiết kế cho hộp nút)."
-  plugins.navigationdetection: "Phát hiện Điều hướng"
-  plugins.navigationdetection.description: "Sử dụng hệ thống tư vấn lộ trình trong game để theo dõi lộ trình đã chọn."
-  plugins.objectdetection: "Phát hiện Đối tượng"
-  plugins.objectdetection.description: "Phát hiện các đối tượng khác nhau bằng cách sử dụng thị giác máy tính và có thể hiển thị chúng trong cửa sổ đầu ra và hình ảnh 3D."
-  plugins.raycastingtest: "Kiểm tra Raycasting"
-  plugins.raycastingtest.description: "Một plugin kiểm tra cho raycasting. Sẽ raycast đến vị trí chuột của bạn."
-  plugins.sockets: "Sockets"
-  plugins.sockets.description: "Plugin để tạo ra một socket dữ liệu, chủ yếu cho hình ảnh hóa tích hợp."
-  plugins.trafficlightdetection: "Phát hiện Đèn giao thông"
-  plugins.trafficlightdetection.description: "Phát hiện đèn giao thông bằng thị giác máy tính và có thể hiển thị chúng trong cửa sổ đầu ra. Nó giao tiếp với plugin Kiểm soát Tốc độ để dừng xe tải tại đèn giao thông đỏ."
-  plugins.truckstats: "Thống kê Xe tải"
-  plugins.truckstats.description: "Plugin này hiển thị một số thống kê về xe tải, lộ trình và game."
-
-  # MARK: Plugin settings
-
-  global.settings.1.title: "Cài đặt chung"
-  global.settings.1.description: "Đây chủ yếu là những cài đặt ảnh hưởng đến toàn bộ ứng dụng."
-  global.settings.2.name: "Gói âm thanh"
-  global.settings.2.description: "Gói âm thanh để sử dụng. Những âm thanh này sẽ thay đổi tất cả âm thanh của ứng dụng."
-  global.settings.3.name: "Âm lượng"
-  global.settings.3.description: "Âm lượng của ứng dụng."
-  global.settings.4.name: "Cổng giao diện người dùng"
-  global.settings.4.description: "Cổng giao diện mà ứng dụng đang chạy."
-  global.settings.5.name: "Ghi vết Lỗi Tinh tế"
-  global.settings.5.description: "Bạn muốn chúng tôi ghi vết lỗi tinh tế hơn không?"
-  global.settings.6.name: "Gửi Báo cáo Lỗi"
-  global.settings.6.description: "Có gửi báo cáo sự cố cho các nhà phát triển hay không.."
-  global.settings.7.name: "Chế độ Gỡ lỗi"
-  global.settings.7.description: "Có bật chế độ gỡ lỗi không."
-  global.settings.8.name: "Ngôn ngữ"
-  global.settings.8.description: "Ngôn ngữ sử dụng cho ứng dụng. Cần khởi động lại để áp dụng thay đổi!"
-  global.settings.9.name: "Cửa sổ không khung"
-  global.settings.9.description: "Có sử dụng cửa sổ không khung cho ứng dụng không. Cần khởi động lại đầy đủ để áp dụng thay đổi! Sẽ sửa lỗi về việc di chuyển cửa sổ ứng dụng xung quanh. Cũng kích hoạt tỷ lệ."
-  global.settings.10.name: "Chiều rộng Cửa sổ"
-  global.settings.10.description: "Chiều rộng của cửa sổ."
-  global.settings.11.name: "Chiều cao Cửa sổ"
-  global.settings.11.description: "Chiều cao của cửa sổ."
-  global.settings.12.name: "Chế độ Trong suốt Alpha"
-  global.settings.12.description: "Độ trong suốt của cửa sổ trong chế độ trong suốt. 1 = hoàn toàn không trong suốt, 0 = hoàn toàn trong suốt."
-  global.settings.13.name: "Hiển thị ID"  
-  global.settings.13.description: "ID của màn hình sử dụng cho các ứng dụng tầm nhìn (Phát hiện đối tượng, v.v.). Cái này nên được đặt vào màn hình mà ETS2 đang chạy. Cần khởi động lại để áp dụng thay đổi!"
-  global.settings.14.name: "FOV"
-  global.settings.14.description: "Bạn vừa quên hoặc bỏ lỡ popup ư? Đừng lo, vì bạn có thể thay đổi FOV của bạn ở đây."
-  global.settings.15.name: "Tuyết"
-  global.settings.15.description: "Bạn muốn tuyết rơi ư! Vậy chế độ này có thể giúp bạn trải nghiệm chúng."
-  global.settings.16.name: "Pháo hoa"
-  global.settings.16.description: "Bạn muốn pháo hoa không? Vậy chế độ này có thể giúp bạn trải nghiệm chúng."
-  global.settings.ui: "Giáo diện người dùng"
-  global.settings.audio: "Âm thanh"
-  global.settings.variables: "Biến"
-  global.settings.misc: "Linh tinh"
-  map.settings.1.title: "Cài đặt Bản đồ"
-  map.settings.1.description: "Lưu ý nó chỉ ảnh hưởng đến plugin Bản đồ."
-  map.settings.2.name: "Tính toán lái xe"
-  map.settings.2.description: "Điều này sẽ tính toán tất cả các giá trị cần thiết để bản đồ điều khiển xe tải."
-  map.settings.3.name: "Gửi Dữ liệu"
-  map.settings.3.description: "Điều này sẽ cho phép các plugin khác sử dụng dữ liệu của Bản đồ. Xin lưu ý rằng hình ảnh hóa sẽ không hoạt động nếu không bật tùy chọn này. Tùy chọn này có thể và sẽ cải thiện hiệu suất nhẹ (một phần nào đó)."
-  map.settings.4.title: "Trực quan hóa nội bộ"
-  map.settings.5.name: "Mức Phóng to"
-  map.settings.5.description: "Kiểm soát mức độ thu phóng của hình ảnh trực quan bên trong."
-  map.settings.6.name: "Bật Trực quan hóa nội bộ"
-  map.settings.6.description: "Có nên hiển thị hình ảnh trực quan bên trong của bản đồ hay không. Hữu ích nếu bạn không gửi dữ liệu bên ngoài."
-  map.settings.7.title: "Trực quan hóa bên ngoài"
-  map.settings.8.name: "Khoảng cách kết xuất"
-  map.settings.8.description: "Điều này sẽ thiết lập khoảng cách tối đa của dữ liệu gửi đến các plugin khác. Giả sử điều đó được phép bởi plugin."
-  map.settings.9.name: "Hiển thị dữ liệu AR"
-  map.settings.9.description: "Điều này sẽ hiển thị các con đường lên trò chơi của bạn, nhưng bạn cần phải bật plugin AR nữa nó mới chạy."
-  map.settings.10.title: "Cài đặt Lái xe"
-  map.settings.11.name: "Điều khiển mượt hơn"
-  map.settings.11.description: "Số giây để làm cho tay lái mượt mà hơn. Giá trị 0 sẽ cực kỳ nhạy, trong khi giá trị trên 0,5 có thể lắc sang trái và phải."
-  map.settings.12.name: "Điều hướng trên ETS2LA"
-  map.settings.12.description: "Sẽ tính toán lộ trình cần thiết để theo dõi lộ trình đến điểm đến của bạn. Lưu ý: Lộ trình này không đảm bảo là nhanh nhất!"
-  object_detection.settings.1.title: "Cài đặt Phát hiện Đối tượng"
-  object_detection.settings.1.description: "Các cài đặt này sẽ ảnh hưởng đến chất lượng và hiệu suất của việc phát hiện đối tượng."
-  object_detection.settings.2.name: "Thiết bị"
-  object_detection.settings.2.description: "Thiết bị để chạy Phát hiện đối tượng, nếu bạn sử dụng tự động, nó sẽ được quyết định dựa trên hệ thống của bạn. (Nếu bạn chọn GPU và bạn không có GPU hoặc CUDA không được cài đặt, nó sẽ mặc định là CPU.)"
-  # ^ Có ba tùy chọn, CPU, GPU và Tự động. Các tùy chọn khác có thể tự giải thích nhưng nếu bạn nghĩ mọi người không hiểu 'Tự động' thì bạn nên giải thích ở đây.
-  object_detection.settings.3.name: "Chế độ"
-  object_detection.settings.3.description: "Chế độ phát hiện đối tượng bạn muốn sử dụng. Xin lưu ý rằng chế độ chất lượng yêu cầu PC mạnh để chạy tốt."
-  # ^ Hai tùy chọn này, Hiệu suất và Chất lượng. Không thể dịch được. Nếu bạn nghĩ mọi người không hiểu thì bạn nên giải thích ở đây.
-  object_detection.settings.4.name: "Tốc độ YOLO"
-  object_detection.settings.4.description: "Tốc độ làm mới của mô hình YOLO. Các giá trị cao hơn sẽ cập nhật phát hiện nhanh hơn. Ở chế độ hiệu suất, đây là FPS, chế độ chất lượng là khung hình giữa các lần phát hiện. Xin lưu ý rằng các giá trị trên 2 đối với chế độ hiệu suất có thể không hoạt động như mong đợi."
-  object_detection.settings.5.name: "Kiến trúc mô hình"
-  object_detection.settings.5.description: "Kiến trúc mô hình bạn muốn sử dụng. Xin lưu ý rằng YoloV7 cần nhiều năng lượng hơn."
-  object_detection.settings.6.name: "Kích thước chụp màn hình"
-  object_detection.settings.6.description: "Phần nào trên màn hình của bạn để sử dụng để phát hiện đối tượng. Chỉ số 0 là X, chỉ số 1 là Y, chỉ số 2 là Chiều rộng, chỉ số 3 là Chiều cao. Cài đặt này sẽ tự động được tạo sau khi bạn khởi động plugin một lần."
-  acc.settings.1.title: "Cài đặt kiểm soát hành trình thích ứng"
-  acc.settings.1.description: "Điều này sẽ ảnh hưởng đến cách ứng dụng phản hồi với các phương tiện khác."
-  acc.settings.2.name: "Thời gian theo sau"
-  acc.settings.2.description: "Chúng ta nên đi sau xe phía trước bao nhiêu giây."
-  acc.settings.3.name: "Bù trừ tốc độ"
-  acc.settings.3.description: "Lái xe vượt quá tốc độ giới hạn này."
-  acc.settings.4.name: "Khoảng cách"
-  acc.settings.4.description: "Ứng dụng nên giữ khoảng cách với vật thể phía trước bao xa."
-  acc.settings.5.name: "Loại bù trừ tốc độ"
-  acc.settings.5.description: "Chúng ta nên lái xe nhanh hơn tốc độ giới hạn một phần trăm hay tăng thêm một khoảng thời gian nhất định?"
-  acc.settings.6.name: "Hiển thị thông báo"
-  acc.settings.6.description: "Hiển thị cửa sổ bật lên khi ứng dụng chậm lại do bất kỳ vật cản nào."
-  acc.settings.7.name: "Tốc độ khi giới hạn tốc độ API là 0"
-  acc.settings.7.description: "Tốc độ sẽ được điều khiển khi API đọc giới hạn tốc độ là 0 hoặc thấp hơn."
-
-  # MARK: Plugin keys
-
-  map.json_not_found: "Không tìm thấy tệp JSON trong thư mục GameData, vui lòng giải nén tệp GameData.zip."
-  map.loading.preparing: "Bản đồ đang chuẩn bị để tải dữ liệu..."
-  map.loading.nodes: "Bản đồ đang tải các nút..."
-  map.loading.roads: "Bản đồ đang tải các con đường..."
-  map.loading.ferries: "Bản đồ đang tải các phà..."
-  map.loading.prefab_data: "Bản đồ đang tải dữ liệu prefab..."
-  map.loading.prefabs: "Bản đồ đang tải các prefab..."
-  map.loading.final_calculations: "Bản đồ đang thực hiện các tính toán cuối cùng..."
-  map.visualisation.roads.text: "Đường: {0}, Ô: {1}, Đang tải: {2}"
-  # ^ {0} là số lượng đường, {1} là ô hiện tại, {2} là số lượng đường đang được tải. Ví dụ: 'Đường: 5, Ô: (27,13), Đang tải: 2'
-  map.visualisation.prefabs.prefabs: "Prefab: {0}, Ô: {1}"
-  # ^ {0} là số lượng prefab, {1} là ô hiện tại. Ví dụ: 'Prefab: 5, Ô: (27,13)'
-  map.visualisation.prefabs.curves: "Đường cong: {0}"
-  # ^ {0} là số lượng đường cong. Ví dụ: 'Đường cong: 5'
-  map.extracting_data: "Đang giải nén GameData.zip, vui lòng chờ..."
-  object_detection.loading_model: "Đang tải Mô hình Phát hiện Đối tượng..."
-  object_detection.not_found.1: "Mô hình được yêu cầu bên dưới chưa được tải xuống."
-  # ^ Hiển thị ở dòng đầu tiên của một modal khi mô hình đã chọn không được tìm thấy, tên mô hình sẽ được hiển thị bên dưới thông điệp này.
-  object_detection.not_found.2: "Nhấp vào nút bên dưới để tải mô hình từ"
-  # ^ Câu đầy đủ sẽ là: {translation} Hugging Face
-  object_detection.connection_failed.1: "Không thể kết nối đến máy chủ tại Hugging Face."
-  # ^ Đừng thay đổi Hugging Face
-  object_detection.connection_failed.2: "Vui lòng kiểm tra kết nối internet của bạn."
-  object_detection.connection_failed.3: "LƯU Ý: Ở một số quốc gia như Trung Quốc, máy chủ có thể bị chặn."
-  object_detection.connection_failed.4: "Trong trường hợp này, bạn nên hỏi trong Discord để được giúp đỡ."
-  object_detection.screen_capture_profile: "Phát hiện Đối tượng đang sử dụng hồ sơ chụp màn hình: {0}"
-  # ^ {0} là tên hồ sơ. Ví dụ: 'Phát hiện Đối tượng đang sử dụng hồ sơ chụp màn hình: 1080p'
-  object_detection.loaded_model: "Mô hình Phát hiện Đối tượng đã được tải trên {0}"
-  object_detection.tracking_failed: "Theo dõi thất bại cho {0} với độ tin cậy {1}"
-  # ^ {0} là loại phương tiện mà việc theo dõi đã thất bại. {1} là mức độ tin cậy của phương tiện đó, đây là một số từ 0 đến 1. Ví dụ: 'Theo dõi thất bại cho xe hơi với độ tin cậy 0.5'
-  object_detection.processing_error: "Lỗi trong quá trình xử lý dữ liệu phương tiện"
-  sdk_install.title: "Thiết lập SDK"
-  sdk_install.description: "Kiểm tra xem bạn đã cài đặt các DLL cần thiết để chúng tôi có thể giao tiếp với game hay chưa."
-  sdk_install.no_games: "Chúng tôi không tìm thấy bất kỳ trò chơi SCS nào trên hệ thống của bạn. Xin lưu ý rằng ETS2LA chỉ hoạt động với các phiên bản hợp lệ được tải xuống từ Steam."
-  sdk_install.games: "Chúng tôi đã tìm thấy các trò chơi sau trên hệ thống của bạn:"
-  sdk_install.install: "Cài đặt SDK"
-  sdk_install.install_description: "Nút này sẽ cài đặt SDK cho tất cả các trò chơi được liệt kê ở trên. Có thể mất một chút thời gian để làm mới trang sau khi cài đặt hoàn tất."
-  sdk_install.uninstall: "Gỡ cài đặt SDK"
-  sdk_install.uninstall_description: "Nút này sẽ gỡ cài đặt SDK cho tất cả các trò chơi được liệt kê ở trên. Có thể mất một chút thời gian để làm mới trang sau khi gỡ cài đặt hoàn tất."
-  sdk_install.installed: "- Đã cài đặt"
-  sdk_install.not_installed: "- Chưa cài đặt"
+    about.about: "Gi\u1EDBi thi\u1EC7u"
+    about.atac_helicopter.description: "S\u1EEDa l\u1ED7i."
+    about.cloud.description: "C\u1ED5ng Linux & Unix, c\u1EA3i ti\u1EBFn v\xE0 s\u1EED\
+        a l\u1ED7i kh\xE1c nhau."
+    about.contribute_description: "\u2022 N\u1EBFu b\u1EA1n mu\u1ED1n \u0111\xF3ng\
+        \ g\xF3p, t\xF4i khuy\xEAn b\u1EA1n n\xEAn tham gia m\xE1y ch\u1EE7 Discord\
+        \ v\xE0 ki\u1EC3m tra trang GitHub."
+    about.description: "ETS2LA l\xE0 m\u1ED9t d\u1EF1 \xE1n nh\u1EB1m cung c\u1EA5\
+        p gi\u1EA3i ph\xE1p l\xE1i xe t\u1EF1 \u0111\u1ED9ng d\u1EC5 s\u1EED d\u1EE5\
+        ng cho ETS2 v\xE0 ATS. N\u1EBFu b\u1EA1n mu\u1ED1n t\xECm hi\u1EC3u th\xEA\
+        m, b\u1EA1n c\xF3 th\u1EC3 truy c\u1EADp trang GitHub ho\u1EB7c wiki qua thanh\
+        \ b\xEAn."
+    about.developers: "Nh\xE0 ph\xE1t tri\u1EC3n / C\u1ED9ng t\xE1c vi\xEAn"
+    about.dtheicydragon.description: "S\u1EEDa l\u1ED7i."
+    about.dyldev.description: "C\xE1c b\u1ED5 sung v\xE0 c\u1EA3i ti\u1EBFn kh\xE1\
+        c nhau, m\xF4 h\xECnh AI Ph\xE1t hi\u1EC7n \u0110\u1ED1i t\u01B0\u1EE3ng &\
+        \ ph\xE1t tri\u1EC3n."
+    about.flexflexen.description: "S\u1EEDa l\u1ED7i."
+    about.glas42.description: "Ph\xE1t hi\u1EC7n \u0110i\u1EC1u h\u01B0\u1EDBng, Ph\xE1\
+        t hi\u1EC7n \u0110\xE8n giao th\xF4ng, ETS2LA Lite, '\u0111\u1ED3ng s\u1EDF\
+        \ h\u1EEFu'"
+    about.kofi_description: "\u2022 N\u1EBFu b\u1EA1n th\xEDch d\u1EF1 \xE1n v\xE0\
+        \ mu\u1ED1n h\u1ED7 tr\u1EE3 ph\xE1t tri\u1EC3n, b\u1EA1n c\xF3 th\u1EC3 l\xE0\
+        m \u0111i\u1EC1u \u0111\xF3 b\u1EB1ng c\xE1ch \u1EE7ng h\u1ED9 qua Ko-Fi."
+    about.lookatyourskill.description: "S\u1EEDa l\u1ED7i."
+    about.lun.description: "D\u1ECBch thu\u1EADt ti\u1EBFng Trung, s\u1EEDa l\u1ED7\
+        i."
+    about.mimi89999.description: "Nh\xE0 ph\xE1t tri\u1EC3n scs-sdk-controller."
+    about.mruiaw.description: "D\u1ECBch thu\u1EADt ti\u1EBFng Trung, s\u1EEDa l\u1ED7\
+        i."
+    about.no_credits: "Ng\xF4n ng\u1EEF n\xE0y kh\xF4ng c\xF3 t\xEDn d\u1EE5ng."
+    about.piotrke.description: Game hooks.
+    about.roccovax.description: "Nh\xE0 ph\xE1t tri\u1EC3n SDK b\xEAn game ETS2LA.\
+        \ D\u1EEF li\u1EC7u Xe, \u0110\xE8n giao th\xF4ng, d\u1EEF li\u1EC7u Camera\
+        \ v\xE0 nhi\u1EC1u h\u01A1n n\u1EEFa tr\u1EF1c ti\u1EBFp t\u1EEB game."
+    about.romansonnik.description: "S\u1EEDa l\u1ED7i."
+    about.statistics: "Th\u1ED1ng k\xEA"
+    about.statistics.anonymous_user_id: "M\xE3 ng\u01B0\u1EDDi d\xF9ng \u1EA9n danh\
+        \ c\u1EE7a b\u1EA1n l\xE0: {0}"
+    about.statistics.logged_in: "B\u1EA1n \u0111\xE3 \u0111\u0103ng nh\u1EADp."
+    about.statistics.not_logged_in: "B\u1EA1n ch\u01B0a \u0111\u0103ng nh\u1EADp."
+    about.statistics.past_24h: "24 gi\u1EDD qua:"
+    about.statistics.past_24h_value: "{0} ng\u01B0\u1EDDi d\xF9ng duy nh\u1EA5t"
+    about.statistics.usage_time: "Th\u1EDDi gian s\u1EED d\u1EE5ng c\u1EE7a b\u1EA1\
+        n:"
+    about.statistics.usage_time_value_hour: "{0} gi\u1EDD"
+    about.statistics.usage_time_value_hour_and_minute: "{0} gi\u1EDD v\xE0 {1} ph\xFA\
+        t"
+    about.statistics.usage_time_value_minute: "{0} ph\xFAt"
+    about.statistics.users_online: "Ng\u01B0\u1EDDi d\xF9ng tr\u1EF1c tuy\u1EBFn:"
+    about.statistics.users_online_value: "{0} ng\u01B0\u1EDDi d\xF9ng"
+    about.statistics.welcome: "Ch\xE0o m\u1EEBng tr\u1EDF l\u1EA1i, {0}!"
+    about.support_development: "H\u1ED7 tr\u1EE3 ph\xE1t tri\u1EC3n"
+    about.translate_description: "\u2022 N\u1EBFu b\u1EA1n mu\u1ED1n tham gia v\xE0\
+        o vi\u1EC7c d\u1ECBch thu\u1EADt, b\u1EA1n c\xF3 th\u1EC3 l\xE0m \u0111i\u1EC1\
+        u \u0111\xF3 b\u1EB1ng c\xE1ch tham gia Discord."
+    about.translation_credits: "T\xEDn d\u1EE5ng D\u1ECBch thu\u1EADt"
+    about.truckersmudgeon.description: "Tr\xEDch xu\u1EA5t v\xE0 x\u1EED l\xFD d\u1EEF\
+        \ li\u1EC7u game."
+    about.tumppi066.description: "Nh\xE0 ph\xE1t tri\u1EC3n ch\xEDnh v\xE0 ng\u01B0\
+        \u1EDDi s\xE1ng l\u1EADp ETS2LA, backend & frontend."
+    about.viszke.description: "S\u1EEDa l\u1ED7i."
+    about.whytrevorwhy.description: "Gi\xFAp \u0111\u1EE1 v\u1EDBi \u0110i\u1EC1u\
+        \ h\u01B0\u1EDBng tr\xEAn ETS2LA & B\u1EA3n \u0111\u1ED3."
+    about.zhaoyj.description: "M\xF4 h\xECnh 3D cho h\xECnh \u1EA3nh h\xF3a."
+    about.ziakhan4505.description: "H\u1ED7 tr\u1EE3 C++, C\u1ED5ng Linux & Unix,\
+        \ s\u1EEDa l\u1ED7i."
+    acc.settings.1.description: "\u0110i\u1EC1u n\xE0y s\u1EBD \u1EA3nh h\u01B0\u1EDF\
+        ng \u0111\u1EBFn c\xE1ch \u1EE9ng d\u1EE5ng ph\u1EA3n h\u1ED3i v\u1EDBi c\xE1\
+        c ph\u01B0\u01A1ng ti\u1EC7n kh\xE1c."
+    acc.settings.1.title: "C\xE0i \u0111\u1EB7t ki\u1EC3m so\xE1t h\xE0nh tr\xECnh\
+        \ th\xEDch \u1EE9ng"
+    acc.settings.2.description: "Ch\xFAng ta n\xEAn \u0111i sau xe ph\xEDa tr\u01B0\
+        \u1EDBc bao nhi\xEAu gi\xE2y."
+    acc.settings.2.name: "Th\u1EDDi gian theo sau"
+    acc.settings.3.description: "L\xE1i xe v\u01B0\u1EE3t qu\xE1 t\u1ED1c \u0111\u1ED9\
+        \ gi\u1EDBi h\u1EA1n n\xE0y."
+    acc.settings.3.name: "B\xF9 tr\u1EEB t\u1ED1c \u0111\u1ED9"
+    acc.settings.4.description: "\u1EE8ng d\u1EE5ng n\xEAn gi\u1EEF kho\u1EA3ng c\xE1\
+        ch v\u1EDBi v\u1EADt th\u1EC3 ph\xEDa tr\u01B0\u1EDBc bao xa."
+    acc.settings.4.name: "Kho\u1EA3ng c\xE1ch"
+    acc.settings.5.description: "Ch\xFAng ta n\xEAn l\xE1i xe nhanh h\u01A1n t\u1ED1\
+        c \u0111\u1ED9 gi\u1EDBi h\u1EA1n m\u1ED9t ph\u1EA7n tr\u0103m hay t\u0103\
+        ng th\xEAm m\u1ED9t kho\u1EA3ng th\u1EDDi gian nh\u1EA5t \u0111\u1ECBnh?"
+    acc.settings.5.name: "Lo\u1EA1i b\xF9 tr\u1EEB t\u1ED1c \u0111\u1ED9"
+    acc.settings.6.description: "Hi\u1EC3n th\u1ECB c\u1EEDa s\u1ED5 b\u1EADt l\xEA\
+        n khi \u1EE9ng d\u1EE5ng ch\u1EADm l\u1EA1i do b\u1EA5t k\u1EF3 v\u1EADt c\u1EA3\
+        n n\xE0o."
+    acc.settings.6.name: "Hi\u1EC3n th\u1ECB th\xF4ng b\xE1o"
+    acc.settings.7.description: "T\u1ED1c \u0111\u1ED9 s\u1EBD \u0111\u01B0\u1EE3\
+        c \u0111i\u1EC1u khi\u1EC3n khi API \u0111\u1ECDc gi\u1EDBi h\u1EA1n t\u1ED1\
+        c \u0111\u1ED9 l\xE0 0 ho\u1EB7c th\u1EA5p h\u01A1n."
+    acc.settings.7.name: "T\u1ED1c \u0111\u1ED9 khi gi\u1EDBi h\u1EA1n t\u1ED1c \u0111\
+        \u1ED9 API l\xE0 0"
+    cancel: "H\u1EE7y"
+    clear: "X\xF3a"
+    confirm: "X\xE1c nh\u1EADn"
+    continue: "Ti\u1EBFp t\u1EE5c"
+    controls.listener_started: "B\u1ED9 l\u1EAFng nghe \u0111i\u1EC1u khi\u1EC3n \u0111\
+        \xE3 kh\u1EDFi \u0111\u1ED9ng."
+    core.backend_started: "Backend ETS2LA \u0111\xE3 kh\u1EDFi \u0111\u1ED9ng th\xE0\
+        nh c\xF4ng."
+    done: "Ho\xE0n t\u1EA5t!"
+    download: "T\u1EA3i xu\u1ED1ng"
+    downloading: "\u0110ang t\u1EA3i xu\u1ED1ng {0}..."
+    error: "L\u1ED7i"
+    events.vehicle_change.vehicle_change: "Ph\xE1t hi\u1EC7n thay \u0111\u1ED5i ph\u01B0\
+        \u01A1ng ti\u1EC7n."
+    events.vehicle_change.vehicle_change_description: "Ch\xFAng t\xF4i \u0111\xE3\
+        \ ph\xE1t hi\u1EC7n m\u1ED9t ph\u01B0\u01A1ng ti\u1EC7n m\u1EDBi. H\xE3y nh\u1EA5\
+        n F4 trong ch\u1EBF \u0111\u1ED9 cabin, m\u1EDF c\xE0i \u0111\u1EB7t gh\u1EBF\
+        \ v\xE0 nh\u1EADp gi\xE1 tr\u1ECB FOV m\u1EDBi c\u1EE7a b\u1EA1n."
+    frontend.404.button: "Menu ch\xEDnh"
+    frontend.404.message: "D\xF9 sao th\xEC, nh\u1EA5n v\xE0o n\xFAt b\xEAn d\u01B0\
+        \u1EDBi \u0111\u1EC3 quay l\u1EA1i m\xE0n h\xECnh ch\xEDnh, v\xE0 h\xE3y cho\
+        \ ch\xFAng t\xF4i bi\u1EBFt l\xE0m th\u1EBF n\xE0o b\u1EA1n \u0111\u1EBFn\
+        \ \u0111\u01B0\u1EE3c \u0111\xE2y?"
+    frontend.404.title: "T\u1EA1i sao b\u1EA1n l\u1EA1i \u1EDF \u0111\xE2y? N\xF3\
+        \ ch\u1EA3 c\xF3 g\xEC \u1EDF \u0111\xE2y c\u1EA3!"
+    frontend.dialog.not_supported: "{0} kh\xF4ng \u0111\u01B0\u1EE3c h\u1ED7 tr\u1EE3\
+        \ trong m\u1ED9t h\u1ED9p tho\u1EA1i."
+    frontend.disclaimer.description.line1: "ETS2LA kh\xF4ng ch\u1ECBu tr\xE1ch nhi\u1EC7\
+        m v\u1EC1 b\u1EA5t k\u1EF3 h\u1EADu qu\u1EA3 ti\xEAu c\u1EF1c ho\u1EB7c thi\u1EC7\
+        t h\u1EA1i n\xE0o ph\xE1t sinh t\u1EEB vi\u1EC7c s\u1EED d\u1EE5ng b\u1EA5\
+        t k\u1EF3 t\xEDnh n\u0103ng n\xE0o trong ph\u1EA7n m\u1EC1m n\xE0y. Vui l\xF2\
+        ng s\u1EED d\u1EE5ng ph\u1EA7n m\u1EC1m v\u1EDBi s\u1EF1 c\u1EA9n tr\u1ECD\
+        ng v\xE0 ch\u1EA5p nh\u1EADn r\u1EE7i ro c\u1EE7a ri\xEAng b\u1EA1n."
+    frontend.disclaimer.description.line2: "Vi\u1EC7c s\u1EED d\u1EE5ng ETS2LA trong\
+        \ TruckersMP \u0111\xE3 \u0111\u01B0\u1EE3c nh\xE2n vi\xEAn TMP cho ph\xE9\
+        p nh\u01B0ng b\u1EA1n v\u1EABn ph\u1EA3i tu\xE2n th\u1EE7 c\xE1c quy t\u1EAF\
+        c c\u1EE7a TruckersMP. B\u1EA1n ph\u1EA3i ch\u1ECBu tr\xE1ch nhi\u1EC7m v\u1EC1\
+        \ m\u1ECDi l\u1EC7nh c\u1EA5m ho\u1EB7c c\u1EA3nh b\xE1o do s\u1EED d\u1EE5\
+        ng ph\u1EA7n m\u1EC1m n\xE0y g\xE2y ra."
+    frontend.disclaimer.dontshowagain: "Kh\xF4ng hi\u1EC7n l\u1EA1i"
+    frontend.disclaimer.dontshowagain.toast: "B\u1EA1n s\u1EBD kh\xF4ng th\u1EA5y\
+        \ th\xF4ng b\xE1o n\xE0y cho \u0111\u1EBFn l\u1EA7n c\u1EADp nh\u1EADt ti\u1EBF\
+        p theo."
+    frontend.disclaimer.ok: "T\xF4i \u0111\xE3 \u0111\u1ECDc v\xE0 hi\u1EC3u"
+    frontend.disclaimer.title: "L\u01B0u \xFD khi d\xF9ng!"
+    frontend.feedback: "Ph\u1EA3n h\u1ED3i"
+    frontend.feedback.description: "Vui l\xF2ng cung c\u1EA5p b\u1EA5t k\u1EF3 ph\u1EA3\
+        n h\u1ED3i n\xE0o b\u1EA1n c\xF3. \u0110i\u1EC1u n\xE0y s\u1EBD \u0111\u01B0\
+        \u1EE3c g\u1EEDi tr\u1EF1c ti\u1EBFp \u0111\u1EBFn m\u1ED9t k\xEAnh ri\xEA\
+        ng t\u01B0 \u0111\u1EC3 c\xE1c nh\xE0 ph\xE1t tri\u1EC3n xem."
+    frontend.feedback.disclaimer: "Xin l\u01B0u \xFD: Kh\xF4ng chia s\u1EBB b\u1EA5\
+        t k\u1EF3 th\xF4ng tin c\xE1 nh\xE2n n\xE0o."
+    frontend.feedback.empty: "Ph\u1EA3n h\u1ED3i tr\u1ED1ng, vui l\xF2ng cung c\u1EA5\
+        p b\u1EA5t k\u1EF3 ph\u1EA3n h\u1ED3i n\xE0o b\u1EA1n c\xF3."
+    frontend.feedback.error_sending: "C\xF3 l\u1ED7i khi g\u1EEDi ph\u1EA3n h\u1ED3\
+        i, th\u1EED l\u1EA1i sau."
+    frontend.feedback.sending: "\u0110ang g\u1EEDi ph\u1EA3n h\u1ED3i..."
+    frontend.feedback.sent: "Ph\u1EA3n h\u1ED3i \u0111\xE3 \u0111\u01B0\u1EE3c g\u1EED\
+        i!"
+    frontend.feedback.submit: "G\u1EEDi"
+    frontend.hello: "Xin ch\xE0o, {0}!"
+    frontend.immediate.checking_updates: "\u0110ang ki\u1EC3m tra c\u1EADp nh\u1EAD\
+        t..."
+    frontend.immediate.close: "\u0110\xF3ng"
+    frontend.immediate.connected: "\u0110\xE3 k\u1EBFt n\u1ED1i v\u1EDBi backend ETS2LA"
+    frontend.immediate.disable_stay_on_top: "T\u1EAFt lu\xF4n hi\u1EC3n th\u1ECB tr\xEA\
+        n c\xF9ng"
+    frontend.immediate.disable_transparent: "T\u1EAFt ch\u1EBF \u0111\u1ED9 trong\
+        \ su\u1ED1t"
+    frontend.immediate.disconnected: "M\u1EA5t k\u1EBFt n\u1ED1i v\u1EDBi backend\
+        \ ETS2LA"
+    frontend.immediate.enable_stay_on_top: "B\u1EADt lu\xF4n hi\u1EC3n th\u1ECB tr\xEA\
+        n c\xF9ng"
+    frontend.immediate.enable_transparent: "B\u1EADt ch\u1EBF \u0111\u1ED9 trong su\u1ED1\
+        t"
+    frontend.immediate.minimize: "Thu nh\u1ECF"
+    frontend.immediate.no_updates: "Kh\xF4ng c\xF3 c\u1EADp nh\u1EADt n\xE0o."
+    frontend.immediate.socket_connected: "\u0110\xE3 k\u1EBFt n\u1ED1i, ch\xFAc b\u1EA1\
+        n ch\u01A1i vui v\u1EBB!"
+    frontend.immediate.socket_disconnected: "M\u1EA5t k\u1EBFt n\u1ED1i, h\xE3y ki\u1EC3\
+        m tra l\u1EA1i k\u1EBFt n\u1ED1i m\u1EA1ng c\u1EE7a b\u1EA1n v\xE0 l\xE0m\
+        \ m\u1EDBi trang."
+    frontend.immediate.up_to_date: "\u0110ang s\u1EED d\u1EE5ng phi\xEAn b\u1EA3n\
+        \ m\u1EDBi nh\u1EA5t."
+    frontend.immediate.update_available: "B\u1EA1n \u0111ang ch\u1EADm {0} b\u1EA3\
+        n c\u1EADp nh\u1EADt"
+    frontend.immediate.update_check_error: "L\u1ED7i: {0}"
+    frontend.logged_out: "\u0110\xE3 \u0111\u0103ng xu\u1EA5t."
+    frontend.login: "\u0110\u0103ng nh\u1EADp"
+    frontend.login.already_logged_in: "L\u01AFU \xDD: B\u1EA1n \u0111\xE3 \u0111\u0103\
+        ng nh\u1EADp, b\u1EA1n c\xF3 th\u1EC3 ghi \u0111\xE8 b\u1EB1ng c\xE1ch \u0111\
+        \u0103ng nh\u1EADp l\u1EA1i."
+    frontend.login.disclaimer: "Ch\xFAng t\xF4i hi\u1EC7n ch\u1EC9 h\u1ED7 tr\u1EE3\
+        \ \u0111\u0103ng nh\u1EADp qua discord, \u0111i\u1EC1u n\xE0y \u0111\u1EC3\
+        \ ch\xFAng t\xF4i kh\xF4ng ph\u1EA3i l\u01B0u tr\u1EEF b\u1EA5t k\u1EF3 th\xF4\
+        ng tin nh\u1EA1y c\u1EA3m n\xE0o nh\u01B0 m\u1EADt kh\u1EA9u."
+    frontend.login.discord: "\u0110\u0103ng nh\u1EADp v\u1EDBi Discord"
+    frontend.login.privacy_policy: "Ch\xEDnh s\xE1ch b\u1EA3o m\u1EADt"
+    frontend.login.successful: "\u0110\u0103ng nh\u1EADp th\xE0nh c\xF4ng!"
+    frontend.login.successful_description: "\u0110\u0103ng xu\u1EA5t b\u1EB1ng c\xE1\
+        ch s\u1EED d\u1EE5ng menu ng\u1EEF c\u1EA3nh d\u01B0\u1EDBi t\xEAn ng\u01B0\
+        \u1EDDi d\xF9ng c\u1EE7a b\u1EA1n \u1EDF g\xF3c d\u01B0\u1EDBi b\xEAn tr\xE1\
+        i."
+    frontend.plugins.authors: "T\xE1c gi\u1EA3"
+    frontend.plugins.disabled_all_plugins: "\u0110\xE3 t\u1EAFt t\u1EA5t c\u1EA3 c\xE1\
+        c plugin"
+    frontend.plugins.disabled_plugin: "\u0110\xE3 t\u1EAFt {0}"
+    frontend.plugins.disabling_all_plugins: "\u0110ang t\u1EAFt t\u1EA5t c\u1EA3 c\xE1\
+        c plugin..."
+    frontend.plugins.disabling_plugin: "\u0110ang t\u1EAFt {0}"
+    frontend.plugins.enabled_all_plugins: "\u0110\xE3 b\u1EADt t\u1EA5t c\u1EA3 c\xE1\
+        c plugin"
+    frontend.plugins.enabled_plugin: "\u0110\xE3 b\u1EADt {0}"
+    frontend.plugins.enabling_all_plugins: "\u0110ang b\u1EADt t\u1EA5t c\u1EA3 c\xE1\
+        c plugin..."
+    frontend.plugins.enabling_plugin: "\u0110ang b\u1EADt {0}"
+    frontend.plugins.end_list: "\u0110\xE2y l\xE0 cu\u1ED1i danh s\xE1ch"
+    frontend.plugins.error_disabling_plugin: "L\u1ED7i khi t\u1EAFt {0}"
+    frontend.plugins.error_enabling_plugin: "L\u1ED7i khi b\u1EADt {0}"
+    frontend.plugins.hidden: "{0} plugin(s) b\u1ECB \u1EA9n"
+    frontend.plugins.name: "T\xEAn"
+    frontend.plugins.select_authors: "T\xECm ki\u1EBFm T\xE1c gi\u1EA3"
+    frontend.plugins.select_tags: "T\xECm ki\u1EBFm Th\u1EBB"
+    frontend.plugins.selected_authors: "{0} t\xE1c gi\u1EA3 \u0111\xE3 ch\u1ECDn"
+    frontend.plugins.selected_tags: "{0} th\u1EBB \u0111\xE3 ch\u1ECDn"
+    frontend.plugins.tags: "Th\u1EBB"
+    frontend.settings: "C\xE0i \u0111\u1EB7t"
+    frontend.settings.array.add: "Th\xEAm ph\u1EA7n t\u1EED"
+    frontend.settings.array.added_element: "\u0110\xE3 th\xEAm ph\u1EA7n t\u1EED m\u1EA3\
+        ng"
+    frontend.settings.array.remove: "X\xF3a"
+    frontend.settings.array.removed_element: "\u0110\xE3 x\xF3a ph\u1EA7n t\u1EED\
+        \ m\u1EA3ng"
+    frontend.settings.array.updated_element: "\u0110\xE3 c\u1EADp nh\u1EADt ph\u1EA7\
+        n t\u1EED m\u1EA3ng"
+    frontend.settings.backend_no_data: "Kh\xF4ng nh\u1EADn \u0111\u01B0\u1EE3c d\u1EEF\
+        \ li\u1EC7u t\u1EEB backend."
+    frontend.settings.boolean.updated: "\u0110\xE3 c\u1EADp nh\u1EADt c\xE0i \u0111\
+        \u1EB7t"
+    frontend.settings.controls: "\u0110i\u1EC1u khi\u1EC3n"
+    frontend.settings.data_missing: "D\u1EEF li\u1EC7u plugin kh\xF4ng h\u1EE3p l\u1EC7\
+        \ ho\u1EB7c b\u1ECB thi\u1EBFu."
+    frontend.settings.enum.no_enum: "Kh\xF4ng c\xF3 gi\xE1 tr\u1ECB enum n\xE0o \u0111\
+        \u01B0\u1EE3c cung c\u1EA5p."
+    frontend.settings.enum.updated: "\u0110\xE3 c\u1EADp nh\u1EADt c\xE0i \u0111\u1EB7\
+        t"
+    frontend.settings.error: "L\u1ED7i: {0}"
+    frontend.settings.global: Chung
+    frontend.settings.global_info: "Danh s\xE1ch n\xE0y ch\u1EC9 bao g\u1ED3m c\xE1\
+        c plugin h\u1ED7 tr\u1EE3 t\u1EC7p c\xE0i \u0111\u1EB7t to\xE0n c\u1EA7u."
+    frontend.settings.needs_restart: "Plugin c\u1EA7n kh\u1EDFi \u0111\u1ED9ng l\u1EA1\
+        i \u0111\u1EC3 c\u1EADp nh\u1EADt c\xE0i \u0111\u1EB7t."
+    frontend.settings.number.updated: "\u0110\xE3 c\u1EADp nh\u1EADt c\xE0i \u0111\
+        \u1EB7t"
+    frontend.settings.restarted: "Kh\u1EDFi \u0111\u1ED9ng l\u1EA1i th\xE0nh c\xF4\
+        ng"
+    frontend.settings.string.updated: "\u0110\xE3 c\u1EADp nh\u1EADt c\xE0i \u0111\
+        \u1EB7t"
+    frontend.settings.unknown_data_type: "Lo\u1EA1i d\u1EEF li\u1EC7u kh\xF4ng x\xE1\
+        c \u0111\u1ECBnh: {0}"
+    frontend.sidebar.account: "T\xE0i kho\u1EA3n"
+    frontend.sidebar.anonymous: "\u1EA8n danh"
+    frontend.sidebar.chat: "Tr\xF2 chuy\u1EC7n"
+    frontend.sidebar.dashboard: "B\u1EA3ng \u0111i\u1EC1u khi\u1EC3n"
+    frontend.sidebar.help: "Tr\u1EE3 gi\xFAp"
+    frontend.sidebar.main: "Ch\xEDnh"
+    frontend.sidebar.manager: "Qu\u1EA3n l\xFD"
+    frontend.sidebar.performance: "Hi\u1EC7u su\u1EA5t"
+    frontend.sidebar.plugins: Plugin
+    frontend.sidebar.settings: "C\xE0i \u0111\u1EB7t"
+    frontend.sidebar.sign_in: "\u0110\u0103ng nh\u1EADp"
+    frontend.sidebar.sign_out: "\u0110\u0103ng xu\u1EA5t"
+    frontend.sidebar.sign_out_description: "B\u1EA1n c\xF3 th\u1EC3 \u0111\u0103ng\
+        \ nh\u1EADp l\u1EA1i b\u1EA5t c\u1EE9 l\xFAc n\xE0o."
+    frontend.sidebar.sign_out_successful: "\u0110\u0103ng xu\u1EA5t th\xE0nh c\xF4\
+        ng."
+    frontend.sidebar.updates_available: "C\xF3 c\u1EADp nh\u1EADt"
+    frontend.sidebar.visualization: "Hi\u1EC3n th\u1ECB"
+    frontend.sidebar.wiki: Wiki
+    frontend.states.complete: "Ho\xE0n t\u1EA5t!"
+    frontend.theme.dark: "T\u1ED1i"
+    frontend.theme.light: "S\xE1ng"
+    global.settings.1.description: "\u0110\xE2y ch\u1EE7 y\u1EBFu l\xE0 nh\u1EEFng\
+        \ c\xE0i \u0111\u1EB7t \u1EA3nh h\u01B0\u1EDFng \u0111\u1EBFn to\xE0n b\u1ED9\
+        \ \u1EE9ng d\u1EE5ng."
+    global.settings.1.title: "C\xE0i \u0111\u1EB7t chung"
+    global.settings.10.description: "Chi\u1EC1u r\u1ED9ng c\u1EE7a c\u1EEDa s\u1ED5\
+        ."
+    global.settings.10.name: "Chi\u1EC1u r\u1ED9ng C\u1EEDa s\u1ED5"
+    global.settings.11.description: "Chi\u1EC1u cao c\u1EE7a c\u1EEDa s\u1ED5."
+    global.settings.11.name: "Chi\u1EC1u cao C\u1EEDa s\u1ED5"
+    global.settings.12.description: "\u0110\u1ED9 trong su\u1ED1t c\u1EE7a c\u1EED\
+        a s\u1ED5 trong ch\u1EBF \u0111\u1ED9 trong su\u1ED1t. 1 = ho\xE0n to\xE0\
+        n kh\xF4ng trong su\u1ED1t, 0 = ho\xE0n to\xE0n trong su\u1ED1t."
+    global.settings.12.name: "Ch\u1EBF \u0111\u1ED9 Trong su\u1ED1t Alpha"
+    global.settings.13.description: "ID c\u1EE7a m\xE0n h\xECnh s\u1EED d\u1EE5ng\
+        \ cho c\xE1c \u1EE9ng d\u1EE5ng t\u1EA7m nh\xECn (Ph\xE1t hi\u1EC7n \u0111\
+        \u1ED1i t\u01B0\u1EE3ng, v.v.). C\xE1i n\xE0y n\xEAn \u0111\u01B0\u1EE3c \u0111\
+        \u1EB7t v\xE0o m\xE0n h\xECnh m\xE0 ETS2 \u0111ang ch\u1EA1y. C\u1EA7n kh\u1EDF\
+        i \u0111\u1ED9ng l\u1EA1i \u0111\u1EC3 \xE1p d\u1EE5ng thay \u0111\u1ED5i!"
+    global.settings.13.name: "Hi\u1EC3n th\u1ECB ID"
+    global.settings.14.description: "B\u1EA1n v\u1EEBa qu\xEAn ho\u1EB7c b\u1ECF l\u1EE1\
+        \ popup \u01B0? \u0110\u1EEBng lo, v\xEC b\u1EA1n c\xF3 th\u1EC3 thay \u0111\
+        \u1ED5i FOV c\u1EE7a b\u1EA1n \u1EDF \u0111\xE2y."
+    global.settings.14.name: FOV
+    global.settings.15.description: "B\u1EA1n mu\u1ED1n tuy\u1EBFt r\u01A1i \u01B0\
+        ! V\u1EADy ch\u1EBF \u0111\u1ED9 n\xE0y c\xF3 th\u1EC3 gi\xFAp b\u1EA1n tr\u1EA3\
+        i nghi\u1EC7m ch\xFAng."
+    global.settings.15.name: "Tuy\u1EBFt"
+    global.settings.16.description: "B\u1EA1n mu\u1ED1n ph\xE1o hoa kh\xF4ng? V\u1EAD\
+        y ch\u1EBF \u0111\u1ED9 n\xE0y c\xF3 th\u1EC3 gi\xFAp b\u1EA1n tr\u1EA3i nghi\u1EC7\
+        m ch\xFAng."
+    global.settings.16.name: "Ph\xE1o hoa"
+    global.settings.2.description: "G\xF3i \xE2m thanh \u0111\u1EC3 s\u1EED d\u1EE5\
+        ng. Nh\u1EEFng \xE2m thanh n\xE0y s\u1EBD thay \u0111\u1ED5i t\u1EA5t c\u1EA3\
+        \ \xE2m thanh c\u1EE7a \u1EE9ng d\u1EE5ng."
+    global.settings.2.name: "G\xF3i \xE2m thanh"
+    global.settings.3.description: "\xC2m l\u01B0\u1EE3ng c\u1EE7a \u1EE9ng d\u1EE5\
+        ng."
+    global.settings.3.name: "\xC2m l\u01B0\u1EE3ng"
+    global.settings.4.description: "C\u1ED5ng giao di\u1EC7n m\xE0 \u1EE9ng d\u1EE5\
+        ng \u0111ang ch\u1EA1y."
+    global.settings.4.name: "C\u1ED5ng giao di\u1EC7n ng\u01B0\u1EDDi d\xF9ng"
+    global.settings.5.description: "B\u1EA1n mu\u1ED1n ch\xFAng t\xF4i ghi v\u1EBF\
+        t l\u1ED7i tinh t\u1EBF h\u01A1n kh\xF4ng?"
+    global.settings.5.name: "Ghi v\u1EBFt L\u1ED7i Tinh t\u1EBF"
+    global.settings.6.description: "C\xF3 g\u1EEDi b\xE1o c\xE1o s\u1EF1 c\u1ED1 cho\
+        \ c\xE1c nh\xE0 ph\xE1t tri\u1EC3n hay kh\xF4ng.."
+    global.settings.6.name: "G\u1EEDi B\xE1o c\xE1o L\u1ED7i"
+    global.settings.7.description: "C\xF3 b\u1EADt ch\u1EBF \u0111\u1ED9 g\u1EE1 l\u1ED7\
+        i kh\xF4ng."
+    global.settings.7.name: "Ch\u1EBF \u0111\u1ED9 G\u1EE1 l\u1ED7i"
+    global.settings.8.description: "Ng\xF4n ng\u1EEF s\u1EED d\u1EE5ng cho \u1EE9\
+        ng d\u1EE5ng. C\u1EA7n kh\u1EDFi \u0111\u1ED9ng l\u1EA1i \u0111\u1EC3 \xE1\
+        p d\u1EE5ng thay \u0111\u1ED5i!"
+    global.settings.8.name: "Ng\xF4n ng\u1EEF"
+    global.settings.9.description: "C\xF3 s\u1EED d\u1EE5ng c\u1EEDa s\u1ED5 kh\xF4\
+        ng khung cho \u1EE9ng d\u1EE5ng kh\xF4ng. C\u1EA7n kh\u1EDFi \u0111\u1ED9\
+        ng l\u1EA1i \u0111\u1EA7y \u0111\u1EE7 \u0111\u1EC3 \xE1p d\u1EE5ng thay \u0111\
+        \u1ED5i! S\u1EBD s\u1EEDa l\u1ED7i v\u1EC1 vi\u1EC7c di chuy\u1EC3n c\u1EED\
+        a s\u1ED5 \u1EE9ng d\u1EE5ng xung quanh. C\u0169ng k\xEDch ho\u1EA1t t\u1EF7\
+        \ l\u1EC7."
+    global.settings.9.name: "C\u1EEDa s\u1ED5 kh\xF4ng khung"
+    global.settings.audio: "\xC2m thanh"
+    global.settings.misc: Linh tinh
+    global.settings.ui: "Gi\xE1o di\u1EC7n ng\u01B0\u1EDDi d\xF9ng"
+    global.settings.variables: "Bi\u1EBFn"
+    godot.server_started: "Godot \u0111ang ph\u1EE5c v\u1EE5 tr\xEAn c\u1ED5ng {0}"
+    immediate.empty_page: "\u0110\xE3 c\u1ED1 g\u1EEDi m\u1ED9t trang tr\u1ED1ng."
+    immediate.message_error: "\u0110\xE3 x\u1EA3y ra l\u1ED7i khi x\u1EED l\xFD tin\
+        \ nh\u1EAFn."
+    immediate.websocket_started: "Websocket \u0111\xE3 kh\u1EDFi \u0111\u1ED9ng."
+    install: "C\xE0i \u0111\u1EB7t"
+    loading: "\u0110ang t\u1EA3i..."
+    logging.delete_log_error: "Kh\xF4ng th\u1EC3 x\xF3a t\u1EC7p nh\u1EADt k\xFD."
+    logging.logger_initialized: "Tr\xECnh ghi nh\u1EADt k\xFD \u0111\xE3 kh\u1EDF\
+        i t\u1EA1o."
+    main.closed: "ETS2LA \u0111\xE3 \u0111\xF3ng."
+    main.crashed: "ETS2LA \u0111\xE3 g\u1EB7p s\u1EF1 c\u1ED1 v\u1EDBi l\u1ED7i:"
+    main.development_mode: "\u0110ang ch\u1EA1y ETS2LA \u1EDF ch\u1EBF \u0111\u1ED9\
+        \ ph\xE1t tri\u1EC3n."
+    main.errors: "L\u1ED7i:"
+    main.errors_and_warnings: "L\u1ED7i v\xE0 c\u1EA3nh b\xE1o trong t\u1EC7p nh\u1EAD\
+        t k\xFD:"
+    main.legacy_traceback: "\u0110\xE3 s\u1EED d\u1EE5ng ph\u01B0\u01A1ng ph\xE1p\
+        \ ghi v\u1EBFt l\u1ED7i c\u0169."
+    main.no_errors_or_warnings: "Kh\xF4ng t\xECm th\u1EA5y l\u1ED7i ho\u1EB7c c\u1EA3\
+        nh b\xE1o n\xE0o c\u1EA3."
+    main.overseer_started: "ETS2LA Overseer \u0111\xE3 kh\u1EDFi \u0111\u1ED9ng!!"
+    main.press_enter: "Nh\u1EA5n Enter \u0111\u1EC3 tho\xE1t..."
+    main.restarting: "ETS2LA \u0111ang kh\u1EDFi \u0111\u1ED9ng l\u1EA1i..."
+    main.send_report: "G\u1EEDi b\xE1o c\xE1o l\u1ED7i tr\xEAn \u0111\u1EBFn nh\xE0\
+        \ ph\xE1t tri\u1EC3n."
+    main.update_done: "C\u1EADp nh\u1EADt ho\xE0n t\u1EA5t!"
+    main.updating: "ETS2LA \u0111ang c\u1EADp nh\u1EADt..."
+    main.warnings: "C\u1EA3nh b\xE1o:"
+    map.extracting_data: "\u0110ang gi\u1EA3i n\xE9n GameData.zip, vui l\xF2ng ch\u1EDD\
+        ..."
+    map.json_not_found: "Kh\xF4ng t\xECm th\u1EA5y t\u1EC7p JSON trong th\u01B0 m\u1EE5\
+        c GameData, vui l\xF2ng gi\u1EA3i n\xE9n t\u1EC7p GameData.zip."
+    map.loading.ferries: "B\u1EA3n \u0111\u1ED3 \u0111ang t\u1EA3i c\xE1c ph\xE0..."
+    map.loading.final_calculations: "B\u1EA3n \u0111\u1ED3 \u0111ang th\u1EF1c hi\u1EC7\
+        n c\xE1c t\xEDnh to\xE1n cu\u1ED1i c\xF9ng..."
+    map.loading.nodes: "B\u1EA3n \u0111\u1ED3 \u0111ang t\u1EA3i c\xE1c n\xFAt..."
+    map.loading.prefab_data: "B\u1EA3n \u0111\u1ED3 \u0111ang t\u1EA3i d\u1EEF li\u1EC7\
+        u prefab..."
+    map.loading.prefabs: "B\u1EA3n \u0111\u1ED3 \u0111ang t\u1EA3i c\xE1c prefab..."
+    map.loading.preparing: "B\u1EA3n \u0111\u1ED3 \u0111ang chu\u1EA9n b\u1ECB \u0111\
+        \u1EC3 t\u1EA3i d\u1EEF li\u1EC7u..."
+    map.loading.roads: "B\u1EA3n \u0111\u1ED3 \u0111ang t\u1EA3i c\xE1c con \u0111\
+        \u01B0\u1EDDng..."
+    map.settings.1.description: "L\u01B0u \xFD n\xF3 ch\u1EC9 \u1EA3nh h\u01B0\u1EDF\
+        ng \u0111\u1EBFn plugin B\u1EA3n \u0111\u1ED3."
+    map.settings.1.title: "C\xE0i \u0111\u1EB7t B\u1EA3n \u0111\u1ED3"
+    map.settings.10.title: "C\xE0i \u0111\u1EB7t L\xE1i xe"
+    map.settings.11.description: "S\u1ED1 gi\xE2y \u0111\u1EC3 l\xE0m cho tay l\xE1\
+        i m\u01B0\u1EE3t m\xE0 h\u01A1n. Gi\xE1 tr\u1ECB 0 s\u1EBD c\u1EF1c k\u1EF3\
+        \ nh\u1EA1y, trong khi gi\xE1 tr\u1ECB tr\xEAn 0,5 c\xF3 th\u1EC3 l\u1EAF\
+        c sang tr\xE1i v\xE0 ph\u1EA3i."
+    map.settings.11.name: "\u0110i\u1EC1u khi\u1EC3n m\u01B0\u1EE3t h\u01A1n"
+    map.settings.12.description: "S\u1EBD t\xEDnh to\xE1n l\u1ED9 tr\xECnh c\u1EA7\
+        n thi\u1EBFt \u0111\u1EC3 theo d\xF5i l\u1ED9 tr\xECnh \u0111\u1EBFn \u0111\
+        i\u1EC3m \u0111\u1EBFn c\u1EE7a b\u1EA1n. L\u01B0u \xFD: L\u1ED9 tr\xECnh\
+        \ n\xE0y kh\xF4ng \u0111\u1EA3m b\u1EA3o l\xE0 nhanh nh\u1EA5t!"
+    map.settings.12.name: "\u0110i\u1EC1u h\u01B0\u1EDBng tr\xEAn ETS2LA"
+    map.settings.2.description: "\u0110i\u1EC1u n\xE0y s\u1EBD t\xEDnh to\xE1n t\u1EA5\
+        t c\u1EA3 c\xE1c gi\xE1 tr\u1ECB c\u1EA7n thi\u1EBFt \u0111\u1EC3 b\u1EA3\
+        n \u0111\u1ED3 \u0111i\u1EC1u khi\u1EC3n xe t\u1EA3i."
+    map.settings.2.name: "T\xEDnh to\xE1n l\xE1i xe"
+    map.settings.3.description: "\u0110i\u1EC1u n\xE0y s\u1EBD cho ph\xE9p c\xE1c\
+        \ plugin kh\xE1c s\u1EED d\u1EE5ng d\u1EEF li\u1EC7u c\u1EE7a B\u1EA3n \u0111\
+        \u1ED3. Xin l\u01B0u \xFD r\u1EB1ng h\xECnh \u1EA3nh h\xF3a s\u1EBD kh\xF4\
+        ng ho\u1EA1t \u0111\u1ED9ng n\u1EBFu kh\xF4ng b\u1EADt t\xF9y ch\u1ECDn n\xE0\
+        y. T\xF9y ch\u1ECDn n\xE0y c\xF3 th\u1EC3 v\xE0 s\u1EBD c\u1EA3i thi\u1EC7\
+        n hi\u1EC7u su\u1EA5t nh\u1EB9 (m\u1ED9t ph\u1EA7n n\xE0o \u0111\xF3)."
+    map.settings.3.name: "G\u1EEDi D\u1EEF li\u1EC7u"
+    map.settings.4.title: "Tr\u1EF1c quan h\xF3a n\u1ED9i b\u1ED9"
+    map.settings.5.description: "Ki\u1EC3m so\xE1t m\u1EE9c \u0111\u1ED9 thu ph\xF3\
+        ng c\u1EE7a h\xECnh \u1EA3nh tr\u1EF1c quan b\xEAn trong."
+    map.settings.5.name: "M\u1EE9c Ph\xF3ng to"
+    map.settings.6.description: "C\xF3 n\xEAn hi\u1EC3n th\u1ECB h\xECnh \u1EA3nh\
+        \ tr\u1EF1c quan b\xEAn trong c\u1EE7a b\u1EA3n \u0111\u1ED3 hay kh\xF4ng.\
+        \ H\u1EEFu \xEDch n\u1EBFu b\u1EA1n kh\xF4ng g\u1EEDi d\u1EEF li\u1EC7u b\xEA\
+        n ngo\xE0i."
+    map.settings.6.name: "B\u1EADt Tr\u1EF1c quan h\xF3a n\u1ED9i b\u1ED9"
+    map.settings.7.title: "Tr\u1EF1c quan h\xF3a b\xEAn ngo\xE0i"
+    map.settings.8.description: "\u0110i\u1EC1u n\xE0y s\u1EBD thi\u1EBFt l\u1EAD\
+        p kho\u1EA3ng c\xE1ch t\u1ED1i \u0111a c\u1EE7a d\u1EEF li\u1EC7u g\u1EED\
+        i \u0111\u1EBFn c\xE1c plugin kh\xE1c. Gi\u1EA3 s\u1EED \u0111i\u1EC1u \u0111\
+        \xF3 \u0111\u01B0\u1EE3c ph\xE9p b\u1EDFi plugin."
+    map.settings.8.name: "Kho\u1EA3ng c\xE1ch k\u1EBFt xu\u1EA5t"
+    map.settings.9.description: "\u0110i\u1EC1u n\xE0y s\u1EBD hi\u1EC3n th\u1ECB\
+        \ c\xE1c con \u0111\u01B0\u1EDDng l\xEAn tr\xF2 ch\u01A1i c\u1EE7a b\u1EA1\
+        n, nh\u01B0ng b\u1EA1n c\u1EA7n ph\u1EA3i b\u1EADt plugin AR n\u1EEFa n\xF3\
+        \ m\u1EDBi ch\u1EA1y."
+    map.settings.9.name: "Hi\u1EC3n th\u1ECB d\u1EEF li\u1EC7u AR"
+    map.visualisation.prefabs.curves: "\u0110\u01B0\u1EDDng cong: {0}"
+    map.visualisation.prefabs.prefabs: "Prefab: {0}, \xD4: {1}"
+    map.visualisation.roads.text: "\u0110\u01B0\u1EDDng: {0}, \xD4: {1}, \u0110ang\
+        \ t\u1EA3i: {2}"
+    'no': "Kh\xF4ng"
+    object_detection.connection_failed.1: "Kh\xF4ng th\u1EC3 k\u1EBFt n\u1ED1i \u0111\
+        \u1EBFn m\xE1y ch\u1EE7 t\u1EA1i Hugging Face."
+    object_detection.connection_failed.2: "Vui l\xF2ng ki\u1EC3m tra k\u1EBFt n\u1ED1\
+        i internet c\u1EE7a b\u1EA1n."
+    object_detection.connection_failed.3: "L\u01AFU \xDD: \u1EDE m\u1ED9t s\u1ED1\
+        \ qu\u1ED1c gia nh\u01B0 Trung Qu\u1ED1c, m\xE1y ch\u1EE7 c\xF3 th\u1EC3 b\u1ECB\
+        \ ch\u1EB7n."
+    object_detection.connection_failed.4: "Trong tr\u01B0\u1EDDng h\u1EE3p n\xE0y,\
+        \ b\u1EA1n n\xEAn h\u1ECFi trong Discord \u0111\u1EC3 \u0111\u01B0\u1EE3c\
+        \ gi\xFAp \u0111\u1EE1."
+    object_detection.loaded_model: "M\xF4 h\xECnh Ph\xE1t hi\u1EC7n \u0110\u1ED1i\
+        \ t\u01B0\u1EE3ng \u0111\xE3 \u0111\u01B0\u1EE3c t\u1EA3i tr\xEAn {0}"
+    object_detection.loading_model: "\u0110ang t\u1EA3i M\xF4 h\xECnh Ph\xE1t hi\u1EC7\
+        n \u0110\u1ED1i t\u01B0\u1EE3ng..."
+    object_detection.not_found.1: "M\xF4 h\xECnh \u0111\u01B0\u1EE3c y\xEAu c\u1EA7\
+        u b\xEAn d\u01B0\u1EDBi ch\u01B0a \u0111\u01B0\u1EE3c t\u1EA3i xu\u1ED1ng."
+    object_detection.not_found.2: "Nh\u1EA5p v\xE0o n\xFAt b\xEAn d\u01B0\u1EDBi \u0111\
+        \u1EC3 t\u1EA3i m\xF4 h\xECnh t\u1EEB"
+    object_detection.processing_error: "L\u1ED7i trong qu\xE1 tr\xECnh x\u1EED l\xFD\
+        \ d\u1EEF li\u1EC7u ph\u01B0\u01A1ng ti\u1EC7n"
+    object_detection.screen_capture_profile: "Ph\xE1t hi\u1EC7n \u0110\u1ED1i t\u01B0\
+        \u1EE3ng \u0111ang s\u1EED d\u1EE5ng h\u1ED3 s\u01A1 ch\u1EE5p m\xE0n h\xEC\
+        nh: {0}"
+    object_detection.settings.1.description: "C\xE1c c\xE0i \u0111\u1EB7t n\xE0y s\u1EBD\
+        \ \u1EA3nh h\u01B0\u1EDFng \u0111\u1EBFn ch\u1EA5t l\u01B0\u1EE3ng v\xE0 hi\u1EC7\
+        u su\u1EA5t c\u1EE7a vi\u1EC7c ph\xE1t hi\u1EC7n \u0111\u1ED1i t\u01B0\u1EE3\
+        ng."
+    object_detection.settings.1.title: "C\xE0i \u0111\u1EB7t Ph\xE1t hi\u1EC7n \u0110\
+        \u1ED1i t\u01B0\u1EE3ng"
+    object_detection.settings.2.description: "Thi\u1EBFt b\u1ECB \u0111\u1EC3 ch\u1EA1\
+        y Ph\xE1t hi\u1EC7n \u0111\u1ED1i t\u01B0\u1EE3ng, n\u1EBFu b\u1EA1n s\u1EED\
+        \ d\u1EE5ng t\u1EF1 \u0111\u1ED9ng, n\xF3 s\u1EBD \u0111\u01B0\u1EE3c quy\u1EBF\
+        t \u0111\u1ECBnh d\u1EF1a tr\xEAn h\u1EC7 th\u1ED1ng c\u1EE7a b\u1EA1n. (N\u1EBF\
+        u b\u1EA1n ch\u1ECDn GPU v\xE0 b\u1EA1n kh\xF4ng c\xF3 GPU ho\u1EB7c CUDA\
+        \ kh\xF4ng \u0111\u01B0\u1EE3c c\xE0i \u0111\u1EB7t, n\xF3 s\u1EBD m\u1EB7\
+        c \u0111\u1ECBnh l\xE0 CPU.)"
+    object_detection.settings.2.name: "Thi\u1EBFt b\u1ECB"
+    object_detection.settings.3.description: "Ch\u1EBF \u0111\u1ED9 ph\xE1t hi\u1EC7\
+        n \u0111\u1ED1i t\u01B0\u1EE3ng b\u1EA1n mu\u1ED1n s\u1EED d\u1EE5ng. Xin\
+        \ l\u01B0u \xFD r\u1EB1ng ch\u1EBF \u0111\u1ED9 ch\u1EA5t l\u01B0\u1EE3ng\
+        \ y\xEAu c\u1EA7u PC m\u1EA1nh \u0111\u1EC3 ch\u1EA1y t\u1ED1t."
+    object_detection.settings.3.name: "Ch\u1EBF \u0111\u1ED9"
+    object_detection.settings.4.description: "T\u1ED1c \u0111\u1ED9 l\xE0m m\u1EDB\
+        i c\u1EE7a m\xF4 h\xECnh YOLO. C\xE1c gi\xE1 tr\u1ECB cao h\u01A1n s\u1EBD\
+        \ c\u1EADp nh\u1EADt ph\xE1t hi\u1EC7n nhanh h\u01A1n. \u1EDE ch\u1EBF \u0111\
+        \u1ED9 hi\u1EC7u su\u1EA5t, \u0111\xE2y l\xE0 FPS, ch\u1EBF \u0111\u1ED9 ch\u1EA5\
+        t l\u01B0\u1EE3ng l\xE0 khung h\xECnh gi\u1EEFa c\xE1c l\u1EA7n ph\xE1t hi\u1EC7\
+        n. Xin l\u01B0u \xFD r\u1EB1ng c\xE1c gi\xE1 tr\u1ECB tr\xEAn 2 \u0111\u1ED1\
+        i v\u1EDBi ch\u1EBF \u0111\u1ED9 hi\u1EC7u su\u1EA5t c\xF3 th\u1EC3 kh\xF4\
+        ng ho\u1EA1t \u0111\u1ED9ng nh\u01B0 mong \u0111\u1EE3i."
+    object_detection.settings.4.name: "T\u1ED1c \u0111\u1ED9 YOLO"
+    object_detection.settings.5.description: "Ki\u1EBFn tr\xFAc m\xF4 h\xECnh b\u1EA1\
+        n mu\u1ED1n s\u1EED d\u1EE5ng. Xin l\u01B0u \xFD r\u1EB1ng YoloV7 c\u1EA7\
+        n nhi\u1EC1u n\u0103ng l\u01B0\u1EE3ng h\u01A1n."
+    object_detection.settings.5.name: "Ki\u1EBFn tr\xFAc m\xF4 h\xECnh"
+    object_detection.settings.6.description: "Ph\u1EA7n n\xE0o tr\xEAn m\xE0n h\xEC\
+        nh c\u1EE7a b\u1EA1n \u0111\u1EC3 s\u1EED d\u1EE5ng \u0111\u1EC3 ph\xE1t hi\u1EC7\
+        n \u0111\u1ED1i t\u01B0\u1EE3ng. Ch\u1EC9 s\u1ED1 0 l\xE0 X, ch\u1EC9 s\u1ED1\
+        \ 1 l\xE0 Y, ch\u1EC9 s\u1ED1 2 l\xE0 Chi\u1EC1u r\u1ED9ng, ch\u1EC9 s\u1ED1\
+        \ 3 l\xE0 Chi\u1EC1u cao. C\xE0i \u0111\u1EB7t n\xE0y s\u1EBD t\u1EF1 \u0111\
+        \u1ED9ng \u0111\u01B0\u1EE3c t\u1EA1o sau khi b\u1EA1n kh\u1EDFi \u0111\u1ED9\
+        ng plugin m\u1ED9t l\u1EA7n."
+    object_detection.settings.6.name: "K\xEDch th\u01B0\u1EDBc ch\u1EE5p m\xE0n h\xEC\
+        nh"
+    object_detection.tracking_failed: "Theo d\xF5i th\u1EA5t b\u1EA1i cho {0} v\u1EDB\
+        i \u0111\u1ED9 tin c\u1EADy {1}"
+    plugins.adaptivecruisecontrol: "Ki\u1EC3m so\xE1t T\u1ED1c \u0111\u1ED9 T\u1EF1\
+        \ \u0111\u1ED9ng"
+    plugins.adaptivecruisecontrol.description: "S\u1EBD gi\u1EA3m t\u1ED1c \u0111\u1ED9\
+        \ cho c\xE1c ph\u01B0\u01A1ng ti\u1EC7n ph\xEDa tr\u01B0\u1EDBc (n\u1EBFu\
+        \ m\u1ED9t m\xF4 h\xECnh ph\xE1t hi\u1EC7n \u0111\u1ED1i t\u01B0\u1EE3ng \u0111\
+        \u01B0\u1EE3c k\xEDch ho\u1EA1t). C\u0169ng s\u1EBD gi\u1EA3m t\u1ED1c \u0111\
+        \u1ED9 cho c\xE1c kh\xFAc cua (n\u1EBFu m\u1ED9t plugin xu\u1EA5t th\xF4ng\
+        \ tin n\xE0y \u0111\u01B0\u1EE3c k\xEDch ho\u1EA1t)."
+    plugins.ar: "AR (Th\u1EF1c t\u1EBF T\u0103ng c\u01B0\u1EDDng)"
+    plugins.ar.description: "\u0110ang ph\xE1t tri\u1EC3n... Plugin s\u1EBD v\u1EBD\
+        \ c\xE1c h\xECnh d\u1EA1ng tr\xEAn m\xE0n h\xECnh game c\u1EE7a b\u1EA1n,\
+        \ \u0111\u1EC3 t\u1EA1o c\u1EA3m gi\xE1c nh\u01B0 ch\xFAng \u1EDF trong th\u1EBF\
+        \ gi\u1EDBi game."
+    plugins.cruisecontrol: "Ki\u1EC3m so\xE1t T\u1ED1c \u0111\u1ED9"
+    plugins.cruisecontrol.description: "S\u1EED d\u1EE5ng ch\u1EE9c n\u0103ng ki\u1EC3\
+        m so\xE1t t\u1ED1c \u0111\u1ED9 trong game \u0111\u1EC3 \u0111i\u1EC1u khi\u1EC3\
+        n t\u1ED1c \u0111\u1ED9 v\xE0 gi\u1EEF kho\u1EA3ng c\xE1ch v\u1EDBi c\xE1\
+        c ph\u01B0\u01A1ng ti\u1EC7n ph\xEDa tr\u01B0\u1EDBc. Kh\xF4ng th\u1EC3 ho\u1EA1\
+        t \u0111\u1ED9ng v\u1EDBi plugin ACC!"
+    plugins.datacollection: "Thu th\u1EADp D\u1EEF li\u1EC7u"
+    plugins.datacollection.description: "Thu th\u1EADp d\u1EEF li\u1EC7u cho plugin\
+        \ ph\xE1t hi\u1EC7n ph\u01B0\u01A1ng ti\u1EC7n."
+    plugins.depthprediction: "D\u1EF1 \u0111o\xE1n \u0110\u1ED9 s\xE2u"
+    plugins.depthprediction.description: "Cung c\u1EA5p d\u1EF1 \u0111o\xE1n \u0111\
+        \u1ED9 s\xE2u cho vi\u1EC7c tr\xE1nh \u0111\u1ED1i t\u01B0\u1EE3ng, xin l\u01B0\
+        u \xFD r\u1EB1ng plugin n\xE0y ch\u1EC9 c\xF3 th\u1EC3 ho\u1EA1t \u0111\u1ED9\
+        ng tr\xEAn card \u0111\u1ED3 h\u1ECDa NVIDIA, do y\xEAu c\u1EA7u hi\u1EC7\
+        u su\u1EA5t cao."
+    plugins.discordrichpresence: "Hi\u1EC7n di\u1EC7n Gi\xE0u c\xF3 tr\xEAn Discord"
+    plugins.discordrichpresence.description: "Hi\u1EC7n di\u1EC7n Gi\xE0u c\xF3 tr\xEA\
+        n Discord cho ETS2LA."
+    plugins.map: "B\u1EA3n \u0111\u1ED3"
+    plugins.map.description: "Plugin ph\xE1t hi\u1EC7n b\u1EA3n \u0111\u1ED3."
+    plugins.microcontrollercontrol: "\u0110i\u1EC1u khi\u1EC3n Vi \u0111i\u1EC1u khi\u1EC3\
+        n"
+    plugins.microcontrollercontrol.description: "Cho ph\xE9p b\u1EA1n \u0111i\u1EC1\
+        u khi\u1EC3n ETS2LA v\xE0 ETS2 t\u1EEB m\u1ED9t vi \u0111i\u1EC1u khi\u1EC3\
+        n (\u0111\u01B0\u1EE3c thi\u1EBFt k\u1EBF cho h\u1ED9p n\xFAt)."
+    plugins.navigationdetection: "Ph\xE1t hi\u1EC7n \u0110i\u1EC1u h\u01B0\u1EDBng"
+    plugins.navigationdetection.description: "S\u1EED d\u1EE5ng h\u1EC7 th\u1ED1ng\
+        \ t\u01B0 v\u1EA5n l\u1ED9 tr\xECnh trong game \u0111\u1EC3 theo d\xF5i l\u1ED9\
+        \ tr\xECnh \u0111\xE3 ch\u1ECDn."
+    plugins.objectdetection: "Ph\xE1t hi\u1EC7n \u0110\u1ED1i t\u01B0\u1EE3ng"
+    plugins.objectdetection.description: "Ph\xE1t hi\u1EC7n c\xE1c \u0111\u1ED1i t\u01B0\
+        \u1EE3ng kh\xE1c nhau b\u1EB1ng c\xE1ch s\u1EED d\u1EE5ng th\u1ECB gi\xE1\
+        c m\xE1y t\xEDnh v\xE0 c\xF3 th\u1EC3 hi\u1EC3n th\u1ECB ch\xFAng trong c\u1EED\
+        a s\u1ED5 \u0111\u1EA7u ra v\xE0 h\xECnh \u1EA3nh 3D."
+    plugins.raycastingtest: "Ki\u1EC3m tra Raycasting"
+    plugins.raycastingtest.description: "M\u1ED9t plugin ki\u1EC3m tra cho raycasting.\
+        \ S\u1EBD raycast \u0111\u1EBFn v\u1ECB tr\xED chu\u1ED9t c\u1EE7a b\u1EA1\
+        n."
+    plugins.sockets: Sockets
+    plugins.sockets.description: "Plugin \u0111\u1EC3 t\u1EA1o ra m\u1ED9t socket\
+        \ d\u1EEF li\u1EC7u, ch\u1EE7 y\u1EBFu cho h\xECnh \u1EA3nh h\xF3a t\xEDch\
+        \ h\u1EE3p."
+    plugins.trafficlightdetection: "Ph\xE1t hi\u1EC7n \u0110\xE8n giao th\xF4ng"
+    plugins.trafficlightdetection.description: "Ph\xE1t hi\u1EC7n \u0111\xE8n giao\
+        \ th\xF4ng b\u1EB1ng th\u1ECB gi\xE1c m\xE1y t\xEDnh v\xE0 c\xF3 th\u1EC3\
+        \ hi\u1EC3n th\u1ECB ch\xFAng trong c\u1EEDa s\u1ED5 \u0111\u1EA7u ra. N\xF3\
+        \ giao ti\u1EBFp v\u1EDBi plugin Ki\u1EC3m so\xE1t T\u1ED1c \u0111\u1ED9 \u0111\
+        \u1EC3 d\u1EEBng xe t\u1EA3i t\u1EA1i \u0111\xE8n giao th\xF4ng \u0111\u1ECF\
+        ."
+    plugins.truckstats: "Th\u1ED1ng k\xEA Xe t\u1EA3i"
+    plugins.truckstats.description: "Plugin n\xE0y hi\u1EC3n th\u1ECB m\u1ED9t s\u1ED1\
+        \ th\u1ED1ng k\xEA v\u1EC1 xe t\u1EA3i, l\u1ED9 tr\xECnh v\xE0 game."
+    runner.could_not_import: "Kh\xF4ng th\u1EC3 nh\u1EADp plugin {0}"
+    runner.could_not_load_module: "Kh\xF4ng th\u1EC3 t\u1EA3i m\xF4-\u0111un {0}"
+    runner.error_calling_function: "L\u1ED7i khi g\u1ECDi h\xE0m {0} trong {1}"
+    runner.initialize_error: "L\u1ED7i khi ch\u1EA1y Initialize() cho {0}"
+    runner.plugin_crash: "Plugin {0} \u0111\xE3 g\u1EB7p s\u1EF1 c\u1ED1."
+    sdk_install.description: "Ki\u1EC3m tra xem b\u1EA1n \u0111\xE3 c\xE0i \u0111\u1EB7\
+        t c\xE1c DLL c\u1EA7n thi\u1EBFt \u0111\u1EC3 ch\xFAng t\xF4i c\xF3 th\u1EC3\
+        \ giao ti\u1EBFp v\u1EDBi game hay ch\u01B0a."
+    sdk_install.games: "Ch\xFAng t\xF4i \u0111\xE3 t\xECm th\u1EA5y c\xE1c tr\xF2\
+        \ ch\u01A1i sau tr\xEAn h\u1EC7 th\u1ED1ng c\u1EE7a b\u1EA1n:"
+    sdk_install.install: "C\xE0i \u0111\u1EB7t SDK"
+    sdk_install.install_description: "N\xFAt n\xE0y s\u1EBD c\xE0i \u0111\u1EB7t SDK\
+        \ cho t\u1EA5t c\u1EA3 c\xE1c tr\xF2 ch\u01A1i \u0111\u01B0\u1EE3c li\u1EC7\
+        t k\xEA \u1EDF tr\xEAn. C\xF3 th\u1EC3 m\u1EA5t m\u1ED9t ch\xFAt th\u1EDD\
+        i gian \u0111\u1EC3 l\xE0m m\u1EDBi trang sau khi c\xE0i \u0111\u1EB7t ho\xE0\
+        n t\u1EA5t."
+    sdk_install.installed: "- \u0110\xE3 c\xE0i \u0111\u1EB7t"
+    sdk_install.no_games: "Ch\xFAng t\xF4i kh\xF4ng t\xECm th\u1EA5y b\u1EA5t k\u1EF3\
+        \ tr\xF2 ch\u01A1i SCS n\xE0o tr\xEAn h\u1EC7 th\u1ED1ng c\u1EE7a b\u1EA1\
+        n. Xin l\u01B0u \xFD r\u1EB1ng ETS2LA ch\u1EC9 ho\u1EA1t \u0111\u1ED9ng v\u1EDB\
+        i c\xE1c phi\xEAn b\u1EA3n h\u1EE3p l\u1EC7 \u0111\u01B0\u1EE3c t\u1EA3i xu\u1ED1\
+        ng t\u1EEB Steam."
+    sdk_install.not_installed: "- Ch\u01B0a c\xE0i \u0111\u1EB7t"
+    sdk_install.title: "Thi\u1EBFt l\u1EADp SDK"
+    sdk_install.uninstall: "G\u1EE1 c\xE0i \u0111\u1EB7t SDK"
+    sdk_install.uninstall_description: "N\xFAt n\xE0y s\u1EBD g\u1EE1 c\xE0i \u0111\
+        \u1EB7t SDK cho t\u1EA5t c\u1EA3 c\xE1c tr\xF2 ch\u01A1i \u0111\u01B0\u1EE3\
+        c li\u1EC7t k\xEA \u1EDF tr\xEAn. C\xF3 th\u1EC3 m\u1EA5t m\u1ED9t ch\xFA\
+        t th\u1EDDi gian \u0111\u1EC3 l\xE0m m\u1EDBi trang sau khi g\u1EE1 c\xE0\
+        i \u0111\u1EB7t ho\xE0n t\u1EA5t."
+    search: "T\xECm ki\u1EBFm"
+    set: "\u0110\xE3 thi\u1EBFt l\u1EADp"
+    setting: "T\xF9y ch\u1EC9nh"
+    sounds.invalid_file_type: "G\xF3i \xE2m thanh '{0}' c\xF3 lo\u1EA1i t\u1EC7p kh\xF4\
+        ng h\u1EE3p l\u1EC7 '{1}'"
+    sounds.missing_sound: "G\xF3i \xE2m thanh '{0}' thi\u1EBFu \xE2m thanh y\xEAu\
+        \ c\u1EA7u '{1}'"
+    sounds.sound_not_found_in_soundpack: "\u0110\xE3 c\u1ED1 ph\xE1t \xE2m thanh '{0}',\
+        \ nh\u01B0ng kh\xF4ng t\xECm th\u1EA5y trong g\xF3i \xE2m thanh '{1}'"
+    submit: "G\u1EEDi"
+    success: "Th\xE0nh c\xF4ng"
+    tutorials.main.settings: "B\xE2y gi\u1EDD b\u1EA1n n\xEAn \u0111\u1EBFn trang\
+        \ c\xE0i \u0111\u1EB7t!"
+    tutorials.main.sidebar: "B\u1EA1n c\xF3 th\u1EC3 d\u1EC5 d\xE0ng \u0111i\u1EC1\
+        u h\u01B0\u1EDBng gi\u1EEFa c\xE1c trang c\u1EE7a \u1EE9ng d\u1EE5ng b\u1EB1\
+        ng c\xE1ch s\u1EED d\u1EE5ng thanh b\xEAn. M\u1ED9t s\u1ED1 trang c\xF3 th\xEA\
+        m m\u1EB9o \u0111\u1EC3 gi\xFAp b\u1EA1n l\xE0m quen v\u1EDBi \u1EE9ng d\u1EE5\
+        ng!"
+    tutorials.main.sidebar_collapse: "B\u1EA1n c\xF3 th\u1EC3 nh\u1EA5p v\xE0o c\u1EA1\
+        nh c\u1EE7a thanh b\xEAn \u0111\u1EC3 thu g\u1ECDn n\xF3 v\xE0 chuy\u1EC3\
+        n sang ch\u1EBF \u0111\u1ED9 \"to\xE0n m\xE0n h\xECnh\"."
+    tutorials.main.slide_area: "B\u1EA1n c\xF3 th\u1EC3 di chuy\u1EC3n c\u1EEDa s\u1ED5\
+        \ b\u1EB1ng c\xE1ch k\xE9o khu v\u1EF1c n\xE0y."
+    tutorials.main.window_controls: "\u0110\xE2y l\xE0 c\xE1c \u0111i\u1EC1u khi\u1EC3\
+        n c\u1EEDa s\u1ED5. N\xFAt b\xEAn tr\xE1i nh\u1EA5t \u0111i\u1EC1u khi\u1EC3\
+        n m\u1ED9t s\u1ED1 t\xF9y ch\u1ECDn b\u1ED5 sung. Di chu\u1ED9t qua n\xF3\
+        \ \u0111\u1EC3 xem tooltip! (sau khi ho\xE0n th\xE0nh h\u01B0\u1EDBng d\u1EAB\
+        n)"
+    tutorials.plugins.clear: "S\u1EED d\u1EE5ng n\xFAt n\xE0y \u0111\u1EC3 x\xF3a\
+        \ t\u1EA5t c\u1EA3 c\xE1c t\xF9y ch\u1ECDn t\xECm ki\u1EBFm hi\u1EC7n t\u1EA1\
+        i."
+    tutorials.plugins.enable_all: "B\u1EA1n c\xF3 th\u1EC3 b\u1EADt/t\u1EAFt t\u1EA5\
+        t c\u1EA3 c\xE1c plugin hi\u1EC7n c\xF3 b\u1EB1ng c\xE1ch nh\u1EA5p v\xE0\
+        o h\u1ED9p ki\u1EC3m n\xE0y."
+    tutorials.plugins.list: "\u0110\u1EC3 b\u1EAFt \u0111\u1EA7u, b\u1EA1n c\xF3 th\u1EC3\
+        \ b\u1EADt m\u1ECDi th\u1EE9 ngo\u1EA1i tr\u1EEB c\xE1c plugin \"Thu th\u1EAD\
+        p D\u1EEF li\u1EC7u L\xE1i xe \u0110\u1EA7u-cu\u1ED1i\" v\xE0 \"Ph\xE1t hi\u1EC7\
+        n \u0110i\u1EC1u h\u01B0\u1EDBng\"."
+    tutorials.plugins.options: "B\u1EA1n c\xF3 th\u1EC3 s\u1EED d\u1EE5ng c\xE1c t\xF9\
+        y ch\u1ECDn t\xECm ki\u1EBFm \u0111\u1EC3 d\u1EC5 d\xE0ng t\xECm nh\u1EEF\
+        ng g\xEC b\u1EA1n \u0111ang t\xECm."
+    tutorials.plugins.tags: "Theo m\u1EB7c \u0111\u1ECBnh, th\u1EBB C\u01A1 s\u1EDF\
+        \ \u0111\u01B0\u1EE3c ch\u1ECDn. B\u1EA1n c\xF3 th\u1EC3 th\xEAm nhi\u1EC1\
+        u l\u1EF1a ch\u1ECDn h\u01A1n b\u1EB1ng c\xE1ch nh\u1EA5p v\xE0o c\xE1c th\u1EBB\
+        \ trong danh s\xE1ch plugin ho\u1EB7c m\u1EDF menu th\u1EA3 xu\u1ED1ng \u1EDF\
+        \ \u0111\xE2y."
+    tutorials.settings.global: "Hi\u1EC7n t\u1EA1i b\u1EA1n c\xF3 th\u1EC3 th\u1EA5\
+        y c\xE0i \u0111\u1EB7t To\xE0n c\u1EA7u. Nh\u1EEFng c\xE0i \u0111\u1EB7t n\xE0\
+        y bao g\u1ED3m c\xE0i \u0111\u1EB7t giao di\u1EC7n ng\u01B0\u1EDDi d\xF9ng\
+        \ v\xE0 c\xE1c c\xE0i \u0111\u1EB7t kh\xE1c c\u1EA7n thi\u1EBFt cho \u1EE9\
+        ng d\u1EE5ng t\u1EA1i m\u1ED9t s\u1ED1 th\u1EDDi \u0111i\u1EC3m."
+    tutorials.settings.plugin: "\u0110\xE2y l\xE0 danh s\xE1ch t\u1EA5t c\u1EA3 c\xE1\
+        c plugin c\xF3 trang c\xE0i \u0111\u1EB7t. B\u1EA1n c\xF3 th\u1EC3 nh\u1EA5\
+        p v\xE0o b\u1EA5t k\u1EF3 plugin n\xE0o \u0111\u1EC3 thay \u0111\u1ED5i c\xE0\
+        i \u0111\u1EB7t theo t\u1EEBng plugin."
+    tutorials.settings.sdk: "B\u01B0\u1EDBc cu\u1ED1i c\xF9ng b\u1EA1n n\xEAn m\u1EDF\
+        \ trang c\xE0i \u0111\u1EB7t SDK v\xE0 c\xE0i \u0111\u1EB7t SDK n\u1EBFu b\u1EA1\
+        n ch\u01B0a l\xE0m. Xin l\u01B0u \xFD r\u1EB1ng n\u1EBFu b\u1EA1n \u0111ang\
+        \ chuy\u1EC3n t\u1EEB V1, b\u1EA1n n\xEAn c\xE0i \u0111\u1EB7t l\u1EA1i SDK\
+        \ tr\xEAn trang n\xE0y."
+    tutorials.settings.static: "T\u1EA1i \u0111\xE2y b\u1EA1n c\xF3 th\u1EC3 xem c\xE1\
+        c c\xE0i \u0111\u1EB7t c\u1EA7n thi\u1EBFt cho to\xE0n b\u1ED9 \u1EE9ng d\u1EE5\
+        ng."
+    uninstall: "G\u1EE1 c\xE0i \u0111\u1EB7t"
+    unknown: "Kh\xF4ng x\xE1c \u0111\u1ECBnh"
+    webpage.opened: "ETS2LA UI \u0111\xE3 m\u1EDF."
+    webpage.ui_loading: "Vui l\xF2ng ch\u1EDD trong khi giao di\u1EC7n ng\u01B0\u1EDD\
+        i d\xF9ng \u0111ang kh\u1EDFi t\u1EA1o"
+    webserver.disabling_plugin: "\u0110ang t\u1EAFt plugin {0}"
+    webserver.enabling_plugin: "\u0110ang b\u1EADt plugin {0}"
+    webserver.frontend_started: "Giao di\u1EC7n ng\u01B0\u1EDDi d\xF9ng \u0111\xE3\
+        \ kh\u1EDFi \u0111\u1ED9ng t\u1EA1i: {0} ( {1} )"
+    webserver.webserver_started: "M\xE1y ch\u1EE7 web \u0111\xE3 kh\u1EDFi \u0111\u1ED9\
+        ng t\u1EA1i: {0} ( {1} )"
+    'yes': "C\xF3"
