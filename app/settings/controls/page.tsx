@@ -28,39 +28,62 @@ export default function ControlsPage() {
         controls.push(key)
     }
 
+    const format_name = (name:string) => {
+        if(name == undefined) { return "Unbound" }
+
+        const length = name.length;
+        if (length > 16) {
+            return name.slice(0, 16) + "..."
+        }
+        return name
+    }
+
+    const format_key = (key:string) => {
+        if(key == undefined) { return "Unbound" }
+        if(key.length <= 2) { return key }
+
+        key = key.replace("_", " ")
+        return key.charAt(0).toUpperCase() + key.slice(1)
+    }
+
     return (
         <div className="flex space-x-3 max-w-[calc(60vw-64px)] font-geist">
-            <div className="flex flex-col gap-4 h-full overflow-auto auto-rows-min w-full">
+            <div className="flex flex-col gap-4 h-full overflow-auto auto-rows-min w-full text-left">
                 {controls.map((control:any) => (
-                    <div key={control} id={control} className="flex w-full h-full justify-between border rounded-md p-4 text-left content-center items-center">
-                        <div className="flex flex-col gap-2 w-96">
-                            <h3>{control}</h3>
-                            <p className="pt-3 text-sm text-muted-foreground">{data[control]["description"] == "" && "No description provided" || data[control].description}</p>
+                    <div key={control} id={control} className="flex w-full h-full justify-between border rounded-md p-4 text-left items-start">
+                        
+                        <div className="flex flex-col gap-2 w-full self-center">
+                            <p className="font-semibold text-sm">{data[control]["name"]}</p>
+                            <p className="text-sm text-muted-foreground">{data[control]["description"] == "" && "No description provided" || data[control].description}</p>
                         </div>
-                        <div className="flex flex-col gap-2">
-                            <div className="">
-                                <Badge className="rounded-r-none">Device: </Badge>
-                                <Badge className="rounded-l-none" variant={"secondary"}>{data[control]["deviceGUID"] == 1 && "Keyboard" || data[control]["deviceGUID"] == -1 && "Unbound" || data[control]["deviceGUID"]}</Badge>
+
+                        <div className="self-start items-end w-96 pl-4 pr-2">
+                            <div className="flex flex-col gap-2">
+                                <div className="flex gap-2">
+                                    <Badge className="rounded w-16">Device</Badge>
+                                    <Badge className="rounded" variant={"secondary"}>{data[control]["device"] == "" && "Unbound" || format_name(data[control]["device"])}</Badge>
+                                </div>
+                                <div className="flex gap-2">
+                                    <Badge className="rounded w-16">{data[control]["device"] == "Keyboard" && "Key" || data[control]["type"] == "button" && "Button" || "Axis"}</Badge>
+                                    <Badge className="rounded" variant={"secondary"}>{data[control]["key"] == "" && "Unbound" || format_key(data[control]["key"])}</Badge>
+                                </div>
                             </div>
-                            <div>
-                                <Badge className="rounded-r-none">{data[control]["deviceGUID"] == "1" && "Key: " || "Button: "}</Badge>
-                                <Badge className="rounded-l-none" variant={"secondary"}>{data[control]["buttonIndex"] == -1 && "Unbound" || data[control]["buttonIndex"]}</Badge>
-                            </div>
-                            
                         </div>
+
                         <div className="flex flex-col gap-2">
-                            <Button onClick={() => {
+                            <Button className="text-xs font-semibold h-[22px] rounded-sm" onClick={() => {
                                 toast.promise(TriggerControlChange(control), {
                                     loading: "Changing keybind...",
                                     success: "Keybind changed successfully!",
                                     error: "Failed to change keybind.",
-                                    description: "Remember click the window that popped up.",
+                                    description: data[control]["type"] == "button" && "Please press the key you want to bind this event to." 
+                                                 || "Please move the axis you want to bind this event to.",
                                     duration: 1000,
                                     onAutoClose: () => mutate("controls"),
                                     onDismiss: () => mutate("controls")
                                 })
                             }}>Change</Button>
-                            <Button variant={"secondary"} onClick={() => {
+                            <Button className="text-xs font-semibold h-[22px] rounded-sm" variant={"secondary"} onClick={() => {
                                 toast.promise(UnbindControl(control), {
                                     loading: "Unbinding keybind...",
                                     success: "Keybind unbound successfully!",
@@ -73,8 +96,7 @@ export default function ControlsPage() {
                         </div>
                     </div>
                 ))}
-                <p className="text-muted-foreground text-xs">This page will be updated as plugins send a request for a keybind.</p>
-                <div className="h-10" />
+                <div className="h-20" />
             </div>
         </div>
     )

@@ -123,18 +123,6 @@ export async function PluginFunctionCall(plugin:string, method:string, args:any,
     return data
 }
 
-export async function RelievePlugin(plugin:string, relieveData:any) {
-    const response = await fetch(`http://${ip}:37520/backend/plugins/${plugin}/relieve`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({data: relieveData})
-    })
-    const result = await response.json()
-    return result
-}
-
 export async function GetGitHistory() {
     const response = await fetch(`http://${ip}:37520/api/git/history`, {
         method: "GET",
@@ -249,8 +237,33 @@ export async function GetPages() {
     return data
 }
 
+export async function GetPage(target_page:string) {
+    const response = await fetch(`http://${ip}:37520/api/page`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            page: target_page
+        })
+    })
+    const data = await response.json()
+    return data
+}
+
 export async function GetDevmode() {
     const response = await fetch(`http://${ip}:37520/backend/devmode`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    const data = await response.json()
+    return data
+}
+
+export async function ReloadPlugins() {
+    const response = await fetch(`http://${ip}:37520/api/plugins/reload`, {
         method: "GET",
         headers: {
             'Content-Type': 'application/json'

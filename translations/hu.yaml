@@ -143,6 +143,8 @@ Translations:
   frontend.immediate.update_available: "{0} frissítés(ek) van(nak) még"
   frontend.immediate.update_check_error: "Hiba: {0}"
   # ^ {0} is the error message
+  frontend.plugins.enabling_all_plugins: "Összes plugin engedélyezése..."
+  frontend.plugins.enabled_all_plugins: "Összes plugin engedélyezve."
   frontend.logged_out: "Kijelentkezve."
   frontend.plugins.authors: "Készítők"
   frontend.plugins.end_list: "Ez a lista vége."
@@ -205,14 +207,44 @@ Translations:
   frontend.login.disclaimer: "Jelenleg csak Discoral tudsz bejelentkezni, hogy ne keljen szenzitív adatokat tárolnunk mint például jelszavak."
   frontend.login.discord: "Bejelentkezés Discorddal"
   frontend.login.privacy_policy: "Adatvédelmi irányelvek"
-  frontend.login.already_logged_in: "MEGJEGYZÉS: Te már bejelentkeztél, felül tudod írni azzal, hogy még egyszer bejelentkezel."
+  frontend.login.already_logged_in: "MEGJEGYZÉS: Te már bejelentkeztél, felül tudod írni azzal, ha még egyszer bejelentkezel."
   frontend.login.successful: "Sikeresen bejelentkeztél!"
   frontend.login.successful_description: "Kijelentkezéshez használd a context menüt a felhasználóneved alatt, a bal lenti sarokban."
+  
+  # MARK: Tutorials
+
+  tutorials.main.window_controls: "Ezek az ablak vezérlők. A legbaloldali gombnak vannak plusz funkciói. Vidd rá az egered, hogy megjelenjenek. (A tutorial elvégrése után)"
+  tutorials.main.slide_area: "Tudod mozgatni az ablakot, a gomb lenyomva tartásával."
+  tutorials.main.sidebar_collapse: 'Rá nyomhatsz az oldalsáv szélére az összecsukáshoz és a "teljes képernyős" módba váltáshoz.'
+  tutorials.main.sidebar: "Könnyen navigálhatsz az alkalmazás különböző oldalai között az oldalsáv használatával. Némelyiknek több segítsége is van, hogy segítsen megszokni az alkalmazást!"
+  tutorials.main.settings: "Most menj a beállítások oldalra!"
+  tutorials.settings.static: "Itt láthatod azokat a beállításokat, amelyekre az egész alkalmazásra hatásra van."
+  tutorials.settings.global: "Most láthatod a Globális beállításokat. Ezek tartalmazzák a felhasználói felület beállításait és egyéb különféle beállításokat, amelyekre az alkalmazásnak valamikor szüksége lehet."
+  tutorials.settings.plugin: "Ez az összes plugin listája, amelyeknek van beállítás oldala. Bármelyikre rákattinthatsz, hogy módosítsd a beállításokat plugin-szinten."
+  tutorials.settings.sdk: "Végső lépésként nyisd meg az SDK beállítások oldalát, és telepítsd az SDK-t, ha még nem tetted meg. Kérlek, vedd figyelembe, hogy ha az app V1-es verziójáról jössz, újra kell telepítened az SDK-t ezen az oldalon."
+  tutorials.plugins.options: "A keresési opciókkal könnyen megtaláld, amit keresel."
+  tutorials.plugins.tags: "Alapértelmezetten a Base címke van kiválasztva. További kijelöléseket adhatsz hozzá a plugin listában lévő címkékre kattintva vagy a legördülő menü megnyitásával."
+  tutorials.plugins.clear: 'Használd ezt a gombot, hogy eltávolítsd az összes jelenlegi keresési opciót.'
+  tutorials.plugins.enable_all: "Az összes jelenleg látható plugin bekapcsolásához/kikapcsolásához kattints erre a négyzetre."
+  tutorials.plugins.list: 'A kezdéshez bekapcsolhats mindent, kivéve a "Data Collection End-To-End Driving" és a "Navigation Detection" pluginokat.'
 
   # MARK: About
 
   about.about: "Rólunk"
   about.description: "ETS2LA egy projekt, ami egy egyszerűen kezelhető önvezető megoldást szeretne adni az EST2 és ATS játékokban. Ha tövvet szeretnél megtudni, látogass el a GitHub oldalunkra, vagy a Wikipédiára az oldalsáv segítségével."
+  about.statistics: "Statisztikák"
+  about.statistics.users_online: "Online felhasználó(k):"
+  about.statistics.users_online_value: "{0}"
+  about.statistics.past_24h: "Az elmúlt 24 órában:"
+  about.statistics.past_24h_value: "{0} különleges felhasználó"
+  about.statistics.usage_time: "Ennyi időt használtad az alkalmazást:"
+  about.statistics.usage_time_value_hour: "{0} órát"
+  about.statistics.usage_time_value_minute: "{0} percet"
+  about.statistics.usage_time_value_hour_and_minute: "{0} órát és {1} percet"
+  about.statistics.logged_in: "Be vagy jelentkezve."
+  about.statistics.not_logged_in: "Nincs bejelentkezve."
+  about.statistics.anonymous_user_id: "A te névtelen megkülönböztető számod: {0}"
+  about.statistics.welcome: "Üdv újra, {0}!"
   about.developers: "Fejlesztők / Közreműködők"
   about.translation_credits: "Fordítási kreditek"
   about.no_credits: "Ennek a nyelvnek nincsenek kreditei."
@@ -224,6 +256,7 @@ Translations:
   about.glas42.description: "Navigáció Felismerő, Közlekedési Lámpa Felismerő, ETS2LA Lite, 'Társ-Tulajdonos'"
   about.cloud.description: "Linux & Unix Port, különboző implementációk és hiba javítások"
   about.dyldev.description: "Különböző újítások és javítások, Tárgy Felismerő MI modellek & fejlesztésük"
+  about.roccovax.description: "Az ETS2LA-nak fejlesztett egy SDK-át mely segítségével az alkalmazás látja a járműveket, a jezőlámpákat, a kamera adatokat és még sok mást." 
   about.truckersmudgeon.description: "Játék adatok gyűjtése és elemzése"
   about.mimi89999.description: "scs-sdk-controller fejlesztője"
   about.zhaoyj.description: "3D modellek a megjelenítéshez"
@@ -259,8 +292,6 @@ Translations:
   plugins.microcontrollercontrol.description: "Megengedi hogy irányítsd ETS2 és ETS2LA-t egy mikrokontrollerrel. (Saját felszerelésnek tervezve)"
   plugins.navigationdetection: "Navigáció felismerő"
   plugins.navigationdetection.description: "A játkbeli kistérképet használva követi az előre kiválasztott útvonalat."
-  plugins.objectdetection: "Tárgy felismerés"
-  plugins.objectdetection.description: "Felismer különböző tárgyakat és kijelzi azokat egy külön ablakban, és egy 3D-s megjelenítésben."
   plugins.raycastingtest: "Sugár sugárzás teszt"
   plugins.raycastingtest.description: "Egy teszt plugin sugár sugárzásra. Sugarakat fog báltani az egérmutatódhoz."
   plugins.sockets: "Aljzatok"
@@ -284,6 +315,8 @@ Translations:
   acc.settings.5.description: "A beállított érték százalékával vezetünk a megengedett sebességhatár felett, vagy annyival (km/h) vezetünk a sebbeséghatár felett.?"
   acc.settings.6.name: "Értesítés mutatása"
   acc.settings.6.description: "Az alkalmazás jelenítsen meg egy felugro ablakot mikor lelassít az alkalmazás valami miatt."
+  acc.settings.7.name: "A sebesség mikor a sebesség határ 0."
+  acc.settings.7.description: "A sebesség amivel vezetve lesz, mikor a sebesség határ 0 vagy kevesebb."
   global.settings.1.title: "Globális Beállítások"
   global.settings.1.description: "Ezek elsősorban az alkalmazás egészét érintő beállítások."
   global.settings.2.name: "Hangcsomag"
@@ -315,7 +348,7 @@ Translations:
   global.settings.15.name: "Hó"
   global.settings.15.description: "Télen engedélyezheted a hó szállingózást a képernyődön."
   global.settings.16.name: "Tűzijáték"
-  global.settings.16.description: "Télen engedélyezheted a tűzijátékot a képernyődön to enable fireworks on the screen."
+  global.settings.16.description: "Télen engedélyezheted a tűzijátékot a képernyődön."
   global.settings.ui: "Felhasználói felület"
   global.settings.audio: "Hang"
   global.settings.variables: "Változók"
@@ -341,20 +374,6 @@ Translations:
   map.settings.11.description: "Hány másodperc alatt reagáljon a kormány? A 0 érték azonnali reakciót ad, míg a több, mint 0.5 lehetséges, hogy kacsázáshoz vezet."
   map.settings.12.name: "Navigálás az ETS2LA-n"
   map.settings.12.description: "Kiszámítja a célállomáshoz vezető útvonalat. Felhívás: Ez az útvonal nem garantáltan a leggyorsabb!"
-  object_detection.settings.1.title: "Objektum Detektálási Beállítások"
-  object_detection.settings.1.description: "Ezek a beállítások befolyásolják az objektum detektálás minőségét és teljesítményét."
-  object_detection.settings.2.name: "Eszköz"
-  object_detection.settings.2.description: "Az eszköz, amin az Objektum Detektálás fut, ha automatikus módot használsz, az a rendszered alapján lesz eldöntve. (Ha GPU-t választasz, és nincs, vagy CUDA nincs telepítve, akkor CPU-ra vált.)"
-  # ^ This has three options, CPU, GPU and Automatic. The others are probably self explanatory but if you think people can't understand 'Automatic' then you should explain it here.
-  object_detection.settings.3.name: "Mód"
-  object_detection.settings.3.description: "Az objektum detektálási mód, amit használni szeretnél. Kérlek, vedd figyelembe, hogy a minőségi mód nagy teljesítményű PC-t igényel."
-  # ^ This two options, Performance and Quality. These cannot be translated. If you think people can't understand them then you should explain them here.
-  object_detection.settings.4.name: "YOLO Sebesség"
-  object_detection.settings.4.description: "A YOLO modell frissítési sebessége. Magasabb értékek gyorsabban frissítik a detektálásokat. Teljesítmény módban ez FPS, minőségi módban pedig az észlelések közötti képkockák száma. Kérlek, vedd figyelembe, hogy a teljesítmény módban a 2-nél nagyobb értékek nem működhetnek megfelelően."
-  object_detection.settings.5.name: "Modell Architektúra"
-  object_detection.settings.5.description: "A modell architektúra, amit használni szeretnél. Kérlek, vedd figyelembe, hogy a YoloV7 több teljesítményt igényel."
-  object_detection.settings.6.name: "Képernyő Kép Méretei"
-  object_detection.settings.6.description: "Melyik része a képernyőnek használható az objektum detektáláshoz. Index 0 az X, index 1 az Y, index 2 a Szélesség, index 3 a Magasság. Ez a beállítás automatikusan generálódik, miután egyszer elindítod a plugint."
 
   # MARK: Plugin keys
 
@@ -376,26 +395,10 @@ Translations:
   sdk_install.description: "Ellenőrizd le, hogy minden DLL le van-e töltve megfelelően ahoz hogy kommunikállni tudjun a játékkal."
   sdk_install.games: "Ezeket a játékokat találltuk a számítógépeden:"
   sdk_install.install: "SDK(ák) letöltése"
-  sdk_install.install_description: "Ez a gomb telepíteni fogja az SDK(ak)-at az összes felsorolt játékba. Lehet hogy egy kis időbe gog kerülni hogy frissítsen a web oldal a telepítés után."
+  sdk_install.install_description: "Ez a gomb telepíteni fogja az SDK(ak)-at az összes felsorolt játékba. Lehet hogy egy kis időbe fog kerülni hogy frissítsen a web oldal a telepítés után."
   sdk_install.installed: "- Letöltve"
-  sdk_install.no_games: "Nem találtunk játékot a számítógépeden. Az SDK(ak) manuálisan kell majd letöltened!"
+  sdk_install.no_games: "Mi nem talátunk semmilyen SCS játékot a te rendszereden. Kérünk vedd figylembe, hogy az ETS2LA csak akkor müködik, ha eredeti verzió levan töltve a Steam-ről."
   sdk_install.not_installed: "- Nincs Letöltve"
   sdk_install.title: "SDK Beállítása"
   sdk_install.uninstall: "SDK(ák) eltávolítása"
-  sdk_install.uninstall_description: "Ez a gomb el fogja távolítani az SDK(ak)-at az összes felsorolt játékba. Lehet hogy egy kis időbe gog kerülni hogy frissítsen a web oldal az eltávolítás után."
-  object_detection.connection_failed.1: "Nem sikerült elérni a Hugging Face szervereket."
-  # ^ Don't change Hugging Face
-  object_detection.connection_failed.2: "Kérjük ellenőrize internet kapcsolatát."
-  object_detection.connection_failed.3: "JEGYZET: Országok mint kína a szerver le lehet blokkolva."
-  object_detection.connection_failed.4: "Ebben az esetben kérdezd meg a Discord-ot segítségért."
-  object_detection.loaded_model: "Az Obijektum felismerő betöltött a {0}"
-  object_detection.loading_model: "Betöltjük az Objektum detektáló Modeljét..."
-  object_detection.not_found.1: "Az alább látható szükséges model még nem töltödöt le."
-  # ^ Displayed in the first line of a modal when the selected model is not found, the model name is shown below this message.
-  object_detection.not_found.2: "Kattints a gombra az alábbi model letöltéséhez."
-  # ^ The full sentence will be: {translation} Hugging Face
-  object_detection.processing_error: "Hiba jármű adat feldolgozása közben."
-  object_detection.screen_capture_profile: "Obijektum felismerő megjelenítési profilja: {0}"
-  # ^ {0} is the profile name Example: 'Object Detection is using screen capture profile: 1080p'
-  object_detection.tracking_failed: "{0} Követése sikertelen, {1} Ennyi konfidenciával."
-  # ^ {0} is the class of vehicle that the tracking failed on. {1} is the confidence rating of said vehicle, this is a number from 0 to 1. Example: 'Tracking failed for car with confidence 0.5'
+  sdk_install.uninstall_description: "Ez a gomb el fogja távolítani az SDK(ak)-at az összes felsorolt játékba. Lehet hogy egy kis időbe fog kerülni hogy frissítsen a web oldal az eltávolítás után."

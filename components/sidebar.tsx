@@ -48,12 +48,15 @@ import { useTheme } from "next-themes"
 import { useAuth } from '@/apis/auth'
 import { Button } from "./ui/button"
 import { useEffect } from "react"
+import { GetDevmode, ReloadPlugins } from "@/apis/backend"
 import { toast } from "sonner"
 import useSWR from "swr"
 import RenderPage from "./page/render_page"
+import { useSidebar } from "@/components/ui/sidebar"
 
-export function ETS2LASidebar({toggleSidebar} : {toggleSidebar: () => void}) {
+export function ETS2LASidebar() {
     const { data: update_data } = useSWR("update", CheckForUpdate, { refreshInterval: 60000 })
+    const { data: devmode } = useSWR("devmode", GetDevmode)
     const { data: metadata } = useSWR("metadata", GetMetadata)
     const { token, username, setToken, setUsername } = useAuth()
     const startProgress = useProgress()
@@ -170,11 +173,24 @@ export function ETS2LASidebar({toggleSidebar} : {toggleSidebar: () => void}) {
                         <MessageSquare /> {translate("frontend.sidebar.chat")}
                     </SidebarMenuButton>
                 </SidebarGroup>
+                {devmode && (
+                    <SidebarGroup>
+                        <SidebarGroupLabel className="font-semibold">
+                            Developers
+                        </SidebarGroupLabel>
+                        <SidebarMenuButton className={buttonClassName("/wiki")} onMouseDown={
+                            () => {
+                                ReloadPlugins()
+                                toast.success("Reloaded plugin data")
+                            }
+                        }>
+                            Reload Plugin Data
+                        </SidebarMenuButton>
+                    </SidebarGroup> 
+                )}
             </SidebarContent>
             
-            <SidebarRail className="z-[999]" onMouseDown={() => {
-                toggleSidebar()
-            }} id="sidebar_rail" />
+            <SidebarRail className="z-999" id="sidebar_rail" />
             <SidebarFooter className="bg-sidebarbg pb-10">
                 <div>
                     <SidebarMenuButton className={buttonClassName("/settings")} onMouseDown={
@@ -190,7 +206,7 @@ export function ETS2LASidebar({toggleSidebar} : {toggleSidebar: () => void}) {
                     <SidebarMenu>
                         <SidebarMenuItem>
                             <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
+                                <DropdownMenuTrigger className="w-full">
                                     <SidebarMenuButton className="w-full flex justify-between hover:shadow-md transition-all">
                                         <div className="flex items-center gap-2">
                                             {token == "" ?
@@ -204,7 +220,7 @@ export function ETS2LASidebar({toggleSidebar} : {toggleSidebar: () => void}) {
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent
                                     side="top"
-                                    className="w-[--radix-popper-anchor-width] bg-transparent backdrop-blur-lg backdrop-brightness-75"
+                                    className="bg-transparent backdrop-blur-lg backdrop-brightness-75 w-48"
                                 >
                                     {token == "" ?
                                         <DropdownMenuItem onMouseDown={
@@ -254,7 +270,7 @@ export function ETS2LASidebar({toggleSidebar} : {toggleSidebar: () => void}) {
                             </DropdownMenuTrigger>
                             <DropdownMenuContent
                                 side="top"
-                                className="w-[--radix-popper-anchor-width] bg-transparent backdrop-blur-md backdrop-brightness-90 text-center p-3"
+                                className="w-(--radix-popper-anchor-width) bg-transparent backdrop-blur-md backdrop-brightness-90 text-center p-3"
                             >
                                 <QRCodeSVG value={"https://example.com"} className="justify-self-center pb-1" />
                                 <div className="flex items-center w-full justify-center">

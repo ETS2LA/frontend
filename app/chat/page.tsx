@@ -302,7 +302,7 @@ function SearchBox({searchText, setSearchText, currentMatch, totalMatches, handl
   return (
     <div style={{position: 'absolute', top: '70px', left: 'calc(57.5% - 100px)', width: '250px', zIndex: 1000, backgroundColor: theme === 'dark' ? '#000' : '#fff',}} className={`p-1 rounded-lg shadow-md border border-${theme === 'dark' ? 'white' : 'gray-400'}`}>
       <div className="flex items-center h-6">
-        <input id="searchInput" ref={inputRef} className={`bg-transparent border-none pl-1 ${theme === 'dark' ? 'text-white' : 'text-black'} w-full focus:outline-none h-full text-xs`}
+        <input id="searchInput" ref={inputRef} className={`bg-transparent border-none pl-1 ${theme === 'dark' ? 'text-white' : 'text-black'} w-full focus:outline-hidden h-full text-xs`}
           placeholder="Search messages..." value={searchText} onChange={(e) => setSearchText(e.target.value)} onKeyDown={handleSearchKeyDown} autoComplete="off"/>
         <div style={{width: '1px', height: '20px', backgroundColor: 'transparent', margin: '0 8px',}}></div>
         <div className="flex items-center gap-1"> {searchText && totalMatches > 0 ? ( <span className="text-xs">{`${currentMatch + 1}/${totalMatches}`}</span> ) : searchText ? ( <span className="text-xs">0/0</span> ) : ( '' )}
@@ -625,7 +625,7 @@ export default function Home() {
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel defaultSize={20}>
           <div className="flex flex-col h-full w-full space-y-3 overflow-y-auto max-h-full relative">
-            <div className="absolute bottom-0 right-0 top-0 w-12 bg-gradient-to-l from-background pointer-events-none" />
+            <div className="absolute bottom-0 right-0 top-0 w-12 bg-linear-to-l from-background pointer-events-none" />
             <div className="flex flex-col gap-2">
               <TooltipProvider>
                 <Button variant="secondary" className="items-center justify-start text-sm w-full rounded-r-none" onClick={handleNewConversation}>Create a new conversation</Button>

@@ -39,7 +39,14 @@ export const translate = (key: string, ...values: any[]): string => {
         translation = translations[currentLanguage].default.Language?.[key];
     }
     if (!translation) {
-        return key;
+        // Default to english
+        translation = translations["en"].default.Translations?.[key];
+        if (!translation) {
+            return key;
+        }
+        return translation.replace(/{(\d+)}/g, (match, number) => {
+            return values[number] !== undefined ? values[number] : match;
+        });
     }
 
     return translation.replace(/{(\d+)}/g, (match, number) => {

@@ -30,41 +30,6 @@ import { JoyRideNoSSR } from "@/components/joyride-no-ssr";
 import { ACTIONS, EVENTS, ORIGIN, STATUS, CallBackProps } from 'react-joyride';
 import { useEffect } from "react";
 
-const STEPS = [
-    {
-        target: "#search_options",
-        content: "You can use the search options to easily find what you are looking for.",
-        disableBeacon: true,
-        hideFooter: true,
-    },
-    {
-        target: "#selected_tags",
-        content: "By default the Base tag is selected. You can add more selections by clicking on the tags in the plugin list or by opening the dropdown here.",
-        disableBeacon: true,
-        hideFooter: true,
-    },
-    {
-        target: "#clear_button",
-        content: 'Use the "Clear" button to remove all current search options.',
-        disableBeacon: true,
-        hideFooter: true,
-    },
-    {
-        target: "#enable_all_checkbox",
-        content: 'You can enable/disable all the currently visible plugins by clicking this checkbox.',   
-        placement: "right",
-        disableBeacon: true,
-        hideFooter: true,
-    },
-    {
-        target: "#plugins_list",
-        content: 'To get started you can enable everything but the "Data Collection End-To-End Driving" and "Navigation Detection" plugins. If your PC is less powerful, then you can disable "Object Detection", at the cost of losing any vision.',   
-        placement: "right",
-        disableBeacon: true,
-        hideFooter: true,
-    },
-];
-
 export default function Home() {
     const [ search, setSearch ] = useState<string>("")
     const [ searchTags, setSearchTags ] = useState<string[]>(["Base"])
@@ -72,6 +37,41 @@ export default function Home() {
     const { data, error, isLoading } = useSWR("plugins", () => GetPlugins(), { refreshInterval: 1000 }) as any
     const [hasDonePluginsOnboarding, setHasDonePluginsOnboarding] = useState(false);
     const [stepIndex, setStepIndex] = useState(0);
+
+    const STEPS = [
+        {
+            target: "#search_options",
+            content: translate("tutorials.plugins.options"),
+            disableBeacon: true,
+            hideFooter: true,
+        },
+        {
+            target: "#selected_tags",
+            content: translate("tutorials.plugins.tags"),
+            disableBeacon: true,
+            hideFooter: true,
+        },
+        {
+            target: "#clear_button",
+            content: translate("tutorials.plugins.clear"),
+            disableBeacon: true,
+            hideFooter: true,
+        },
+        {
+            target: "#enable_all_checkbox",
+            content: translate("tutorials.plugins.enable_all"),   
+            placement: "right",
+            disableBeacon: true,
+            hideFooter: true,
+        },
+        {
+            target: "#plugins_list",
+            content: translate("tutorials.plugins.list"),   
+            placement: "right",
+            disableBeacon: true,
+            hideFooter: true,
+        },
+    ];
 
     useEffect(() => {
         if (localStorage.getItem("hasDonePluginsOnboarding") === "true") {
@@ -122,7 +122,6 @@ export default function Home() {
     }
 
     let hidden:number = 0;
-    const visible_plugins:string[] = [];
     const enabled_plugins:string[] = [];
     const disabled_plugins:string[] = [];
     for (const key in data) {
@@ -181,15 +180,46 @@ export default function Home() {
 
     const all_visible_enabled = disabled_plugins.length == 0;
 
+    const EnablePluginLocal = async (plugin:string) => {
+        await EnablePlugin(plugin)
+        enabled_plugins.push(plugin)
+        disabled_plugins.splice(disabled_plugins.indexOf(plugin), 1)
+        // create the data again but update all plugin's enabled state based on enabled_plugins and disabled_plugins
+        const new_data = {}
+        for (const key in data) {
+            if (isNaN(parseInt(key))){
+                // @ts-ignore
+                new_data[key] = { ...data[key], enabled: enabled_plugins.includes(key) }
+            }
+        }
+        mutate("plugins", new_data, false)
+    }
+
+    const DisablePluginLocal = async (plugin:string) => {
+        await DisablePlugin(plugin)
+        disabled_plugins.push(plugin)
+        enabled_plugins.splice(enabled_plugins.indexOf(plugin), 1)
+        mutate("plugins", { ...data, [plugin]: { ...data[plugin], enabled: false } }, false)
+        // create the data again but update all plugin's enabled state based on enabled_plugins and disabled_plugins
+        const new_data = {}
+        for (const key in data) {
+            if (isNaN(parseInt(key))){
+                // @ts-ignore
+                new_data[key] = { ...data[key], enabled: enabled_plugins.includes(key) }
+            }
+        }
+        mutate("plugins", new_data, false)
+    }
+
     const EnableAllVisiblePlugins = async () => {
-        for (const plugin in disabled_plugins) {
-            await EnablePlugin(disabled_plugins[plugin])
+        while (disabled_plugins.length > 0) {
+            await EnablePluginLocal(disabled_plugins[0])
         }
     }
 
     const DisableAllVisiblePlugins = async () => {
-        for (const plugin in enabled_plugins) {
-            await DisablePlugin(enabled_plugins[plugin])
+        while (enabled_plugins.length > 0) {
+            await DisablePluginLocal(enabled_plugins[0])
         }
     }
 
@@ -242,7 +272,7 @@ export default function Home() {
                     <Input placeholder={translate("search")} value={search} onChange={(e) => setSearch(e.target.value)} />
                         <div className="p-0 h-3"></div> {/* Makeshift separator */}
                         <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
+                            <DropdownMenuTrigger>
                                 <Button variant="outline" className="flex text-left items-center justify-start" id="selected_tags">
                                     <p className={searchTags.length > 0 ? "font-normal" : "font-normal text-muted-foreground"}>
                                         {searchTags.length > 0 ? translate("frontend.plugins.selected_tags", searchTags.length) : translate("frontend.plugins.select_tags")}
@@ -264,14 +294,14 @@ export default function Home() {
                         </DropdownMenu>
 
                         <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
+                            <DropdownMenuTrigger>
                                 <Button variant="outline" className="flex text-left items-center justify-start">
                                     <p className={searchAuthors.length > 0 ? "font-normal" : "font-normal text-muted-foreground"}>
                                         {searchAuthors.length > 0 ? translate("frontend.plugins.selected_authors", searchAuthors.length) : translate("frontend.plugins.select_authors")}
                                     </p>
                                 </Button>
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent className="w-56 bg-background font-geist">
+                            <DropdownMenuContent className="w-56 bg-background font-geist text-xs">
                                 {authors.map((author, index) => (
                                     <DropdownMenuCheckboxItem key={index} checked={searchAuthors.includes(author)} onClick={() => {
                                         if(searchAuthors.includes(author)){
@@ -280,7 +310,9 @@ export default function Home() {
                                         else{
                                             setSearchAuthors([...searchAuthors, author])
                                         }
-                                    }}>{author}</DropdownMenuCheckboxItem>
+                                    }}>
+                                        {author}
+                                    </DropdownMenuCheckboxItem>
                                 ))}
                             </DropdownMenuContent>
                         </DropdownMenu>
@@ -341,7 +373,7 @@ export default function Home() {
                                                 <Checkbox checked={data[plugin].enabled} onClick={() => {
                                                     if(data[plugin].enabled){
                                                         toast.promise(
-                                                            DisablePlugin(plugin), 
+                                                            DisablePluginLocal(plugin), 
                                                             {
                                                                 loading: translate("frontend.plugins.disabling_plugin", translate(data[plugin].description.name)),
                                                                 success: translate("frontend.plugins.disabled_plugin", translate(data[plugin].description.name)),
@@ -351,7 +383,7 @@ export default function Home() {
                                                     }
                                                     else{
                                                         toast.promise(
-                                                            EnablePlugin(plugin), 
+                                                            EnablePluginLocal(plugin), 
                                                             {
                                                                 loading: translate("frontend.plugins.enabling_plugin", translate(data[plugin].description.name)),
                                                                 success: translate("frontend.plugins.enabled_plugin", translate(data[plugin].description.name)),
@@ -400,14 +432,14 @@ export default function Home() {
                                                 }</div>
                                                 <div className="absolute right-0 opacity-0 group-hover:opacity-100 transition-all">
                                                     <DropdownMenu>
-                                                        <DropdownMenuTrigger asChild>
+                                                        <DropdownMenuTrigger>
                                                             <Menu size={18} className="opacity-50 hover:opacity-80 mx-3" />
                                                         </DropdownMenuTrigger>
                                                         <DropdownMenuContent className="scale-90">
                                                             { !data[plugin].enabled ?
                                                                 <DropdownMenuItem onClick={() => {
                                                                     toast.promise(
-                                                                        EnablePlugin(plugin), 
+                                                                        EnablePluginLocal(plugin), 
                                                                         {
                                                                             loading: translate("frontend.plugins.enabling_plugin", translate(data[plugin].description.name)),
                                                                             success: translate("frontend.plugins.enabled_plugin", translate(data[plugin].description.name)),
@@ -421,7 +453,7 @@ export default function Home() {
                                                             :
                                                                 <DropdownMenuItem onClick={() => {
                                                                     toast.promise(
-                                                                        DisablePlugin(plugin), 
+                                                                        DisablePluginLocal(plugin), 
                                                                         {
                                                                             loading: translate("frontend.plugins.disabling_plugin", translate(data[plugin].description.name)),
                                                                             success: translate("frontend.plugins.disabled_plugin", translate(data[plugin].description.name)),
@@ -444,7 +476,7 @@ export default function Home() {
                                                 <Checkbox checked={data[plugin].enabled} onClick={() => {
                                                     if(data[plugin].enabled){
                                                         toast.promise(
-                                                            DisablePlugin(plugin), 
+                                                            DisablePluginLocal(plugin), 
                                                             {
                                                                 loading: translate("frontend.plugins.disabling_plugin", translate(data[plugin].description.name)),
                                                                 success: translate("frontend.plugins.disabled_plugin", translate(data[plugin].description.name)),
@@ -454,7 +486,7 @@ export default function Home() {
                                                     }
                                                     else{
                                                         toast.promise(
-                                                            EnablePlugin(plugin), 
+                                                            EnablePluginLocal(plugin), 
                                                             {
                                                                 loading: translate("frontend.plugins.enabling_plugin", translate(data[plugin].description.name)),
                                                                 success: translate("frontend.plugins.enabled_plugin", translate(data[plugin].description.name)),
@@ -496,14 +528,14 @@ export default function Home() {
                                                 }</div>
                                                 <div className="absolute right-0 opacity-0 group-hover:opacity-100 transition-all">
                                                     <DropdownMenu>
-                                                        <DropdownMenuTrigger asChild>
+                                                        <DropdownMenuTrigger>
                                                             <Menu size={18} className="opacity-50 hover:opacity-80 mx-3" />
                                                         </DropdownMenuTrigger>
                                                         <DropdownMenuContent className="scale-90">
                                                             { !data[plugin].enabled ?
                                                                 <DropdownMenuItem onClick={() => {
                                                                     toast.promise(
-                                                                        EnablePlugin(plugin), 
+                                                                        EnablePluginLocal(plugin), 
                                                                         {
                                                                             loading: translate("frontend.plugins.enabling_plugin", translate(data[plugin].description.name)),
                                                                             success: translate("frontend.plugins.enabled_plugin", translate(data[plugin].description.name)),
@@ -517,7 +549,7 @@ export default function Home() {
                                                             :
                                                                 <DropdownMenuItem onClick={() => {
                                                                     toast.promise(
-                                                                        DisablePlugin(plugin), 
+                                                                        DisablePluginLocal(plugin), 
                                                                         {
                                                                             loading: translate("frontend.plugins.disabling_plugin", translate(data[plugin].description.name)),
                                                                             success: translate("frontend.plugins.disabled_plugin", translate(data[plugin].description.name)),

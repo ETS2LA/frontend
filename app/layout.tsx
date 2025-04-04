@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import CSRLayout from "./csr_layout";
 import { AuthProvider } from "@/apis/auth";
-import { CollapsedProvider } from "@/contexts/collapsed";
+import Script from "next/script";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -27,10 +27,9 @@ export default function RootLayout({ children, } : Readonly<{ children: React.Re
                 <link rel="icon" href="/favicon.ico" />
             </head>
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-sidebarbg overflow-hidden`}>
+                <Script src="https://umami.ets2la.com/script.js" data-website-id="ca602362-299b-4222-9ea5-bbd2610488b3" onError={() => {}} />
                 <AuthProvider>
-                    <CollapsedProvider>
-                        <CSRLayout>{children}</CSRLayout>
-                    </CollapsedProvider>
+                    <CSRLayout>{children}</CSRLayout>
                 </AuthProvider>
             </body>
         </html>

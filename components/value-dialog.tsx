@@ -2,17 +2,10 @@
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import useSWR, { mutate } from "swr"
-import { GetPlugins, PluginFunctionCall } from "@/apis/backend"
 import { Separator } from "./ui/separator"
 import { Input } from "./ui/input"
-import { GetSettingsJSON, SetSettingByKey, SetSettingByKeys } from "@/apis/settings"
-import { DisablePlugin, EnablePlugin } from "@/apis/backend"
 import {
 	Select,
 	SelectContent,
@@ -23,41 +16,124 @@ import {
 import { Toggle } from "@/components/ui/toggle"
 import { Switch } from "./ui/switch"
 import { Button } from "./ui/button"
-import { toast } from "sonner"
-import { useEffect } from "react"
 import { Slider } from "./ui/slider"
 import { useState } from "react"
 import { translate } from "@/apis/translation"
-import React, { Component } from 'react';
-import { SkeletonItem } from "./skeleton_item"
+import React from 'react';
 import {
 	Check,
 	X
 } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "./ui/progress"
+import Markdown from "react-markdown"
+// @ts-expect-error
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+// @ts-expect-error
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function ValueDialog({onClose, open, json}: {onClose: any, open: boolean, json: string}) {
     const [returnValue, setReturnValue] = useState({})
     
 	if (!json) return <div />
 
-    const TitleRenderer = (data:string) => {
-		return <h3 className="font-medium">{translate(data)}</h3>
+    const text_sizes = {
+		"xs": "text-xs",
+		"sm": "text-sm",
+		"md": "text-base",
+		"lg": "text-lg",
+		"xl": "text-xl",
+		"2xl": "text-2xl",
 	}
 
-	const DescriptionRenderer = (data:string) => {
-		return <p className="text-sm text-muted-foreground">{translate(data)}</p>
+	// Literal["thin", "light", "normal", "medium", "semibold", "bold"]
+	const weights = {
+		"thin": "font-thin",
+		"light": "font-light",
+		"normal": "font-normal",
+		"medium": "font-medium",
+		"semibold": "font-semibold",
+		"bold": "font-bold"
 	}
 
-	const LabelRenderer = (data:string) => {
-		return <p>{translate(data)}</p>
+	const TitleRenderer = (data: any) => {
+		// @ts-ignore
+		return <p className={weights[data.options.weight] + " " + text_sizes[data.options.size] + " " + data.classname} style={{whiteSpace: "pre-wrap"}}>{translate(data.text)}</p>
+	}
+
+	const DescriptionRenderer = (data: any) => {
+		// @ts-ignore
+		return <p className={weights[data.options.weight] + " text-muted-foreground " + text_sizes[data.options.size] + " " + data.classname} style={{whiteSpace: "pre-wrap"}}>{translate(data.text)}</p>
+	}
+
+	const LabelRenderer = (data: any) => {
+		// @ts-ignore
+		return <p className={weights[data.options.weight] + " " + text_sizes[data.options.size] + " " + data.classname} style={{whiteSpace: "pre-wrap"}}>{translate(data.text)}</p>
+	}
+
+	const LinkRenderer = (data: any) => {
+		// @ts-ignore
+		return <a href={data.url} className={weights[data.options.weight] + " text-accent-foreground " + text_sizes[data.options.size] + " " + data.classname} style={{whiteSpace: "pre-wrap"}} target="_blank">{translate(data.text)}</a>
 	}
 
 	const SeparatorRenderer = () => {
 		return <>
 			<Separator />
 		</>
+	}
+
+	function MarkdownRenderer(data: any, no_padding?: boolean) {
+		return (
+			<Markdown
+				components={{
+				// @ts-expect-error
+				code({node, inline, className, children, ...props}) {
+					const hasLineBreaks = String(children).includes('\n');
+					const match = /language-(\w+)/.exec(className || '');
+					const lang = match ? match[1] : 'json';
+					
+					// For inline code (no line breaks)
+					if (!hasLineBreaks) {
+						return (
+						<code
+							className="rounded-md bg-zinc-800 p-1 font-geist-mono text-xs"
+							{...props}
+						>
+							{children}
+						</code>
+						);
+					}
+				
+					// For code blocks (has line breaks)
+					return (
+						<SyntaxHighlighter
+						language={lang}
+						style={vscDarkPlus}
+						customStyle={{
+							margin: (no_padding ? '0 0' : '1rem 0'),
+							padding: '1rem',
+							borderRadius: '0.5rem',
+							fontSize: '0.75rem',
+							fontFamily: 'var(--font-geist-mono)'
+						}}
+						>
+						{String(children).replace(/\n$/, '')}
+						</SyntaxHighlighter>
+					);
+				},
+				// Custom renderer for images
+				img({node, ...props}) {
+					return (
+						<img
+						{...props}
+						className="rounded-md"
+						/>
+					);
+				},
+			}} className={data.classname}>
+				{data}
+			</Markdown>
+		);
 	}
 
 	const SpaceRenderer = (data:number) => {
@@ -204,11 +280,11 @@ export default function ValueDialog({onClose, open, json}: {onClose: any, open: 
                 </div>
         }
         else{
-            return <div className={"flex justify-between items-center" + GetBorderClassname(data.options.border)}>
-                    <Button variant={"outline"} className="w-full" onClick={() => {
+            return <Button variant={"outline"} className="" onClick={() => {
                         onClose(returnValue)
-                    }}>{translate(data.text)}</Button>
-                </div>
+                    }}>
+						{translate(data.text)}
+					</Button>
         }
 	}
 
@@ -246,13 +322,19 @@ export default function ValueDialog({onClose, open, json}: {onClose: any, open: 
 
 			// Page looks
 			if(key == "title"){
-				result.push(TitleRenderer(key_data.text))
+				result.push(TitleRenderer(key_data))
 			}
 			if(key == "description"){
-				result.push(DescriptionRenderer(key_data.text))
+				result.push(DescriptionRenderer(key_data))
 			}
 			if (key == "label") {
-				result.push(LabelRenderer(key_data.text))
+				result.push(LabelRenderer(key_data))
+			}
+			if (key == "link") {
+				result.push(LinkRenderer(key_data))
+			}
+			if (key == "markdown") {
+				result.push(MarkdownRenderer(key_data.text))
 			}
 			if (key == "separator") {
 				result.push(SeparatorRenderer())
@@ -331,8 +413,8 @@ export default function ValueDialog({onClose, open, json}: {onClose: any, open: 
 
                 </div>
             </DialogTrigger>
-            <DialogContent>
-                <div className="flex flex-col gap-2 font-geist">
+            <DialogContent className="max-h-[80%] overflow-y-scroll overflow-x-hidden max-w-[550px]">
+                <div className="flex flex-col gap-2 font-geist w-[calc(550px-88px)]">
                     {PageRenderer(json)}
                 </div>
             </DialogContent>

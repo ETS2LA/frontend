@@ -28,21 +28,23 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="w-full h-full font-geist pl-28 pr-20 pt-20 flex flex-col gap-6">
+        <div className="font-geist w-full h-full items-center justify-center flex flex-col gap-4">
             <div className="flex flex-col gap-2">
                 <p className="text-xl font-semibold">{translate("frontend.login")}</p>
                 <p className="max-w-96 text-muted-foreground">{translate("frontend.login.disclaimer")}</p>
             </div>
-            <Button className="max-w-96" variant={"outline"} onClick={() =>{
-                open_login_window();
-                setLoading(true);
-            }}>
-                {translate("frontend.login.discord")} {loading && <Loader className="ml-2" />}
-            </Button>
-            <div>
-                <p className="max-w-96 text-muted-foreground text-xs cursor-pointer" onClick={() => {
-                    window.open("https://ets2la.github.io/documentation/privacy-policy/", "_blank");
-                }}>{translate("frontend.login.privacy_policy")}</p>
+            <div className="flex flex-col gap-2 w-96">
+                <Button className="max-w-96" variant={"outline"} onClick={() =>{
+                    open_login_window();
+                    setLoading(true);
+                }}>
+                    {translate("frontend.login.discord")} {loading && <Loader className="ml-2" />}
+                </Button>
+                <div>
+                    <p className="max-w-96 text-muted-foreground text-xs cursor-pointer" onClick={() => {
+                        window.open("https://ets2la.github.io/documentation/privacy-policy/", "_blank");
+                    }}>{translate("frontend.login.privacy_policy")}</p>
+                </div>
             </div>
             {user_id && token && (
                 <div className="flex flex-col gap-1">

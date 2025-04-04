@@ -31,10 +31,11 @@ import {
 	Check,
 	X
 } from "lucide-react"
+import { Checkbox } from "../ui/checkbox"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "../ui/progress"
 import Markdown from "react-markdown"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 // @ts-expect-error
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // @ts-expect-error
@@ -104,8 +105,11 @@ class SliderComponent extends Component<SliderComponentProps, SliderComponentSta
         const suffix = data.options.suffix || "";
 
         return (
-            <div className="flex flex-col gap-2 w-full">
-                <h4>{translate(data.name)}  —  {value}{suffix}{tempSliderValue !== null ? tempSliderValue != value ? ` → ${tempSliderValue}${suffix}` : `` : ``}</h4>
+            <div className="flex flex-col gap-3 w-full rounded-md border p-4 bg-input/10 transition-all">
+				<div className="flex justify-between items-center">
+                	<p className="font-semibold">{translate(data.name)}</p>
+					<p className="text-muted-foreground">{value}{suffix}{tempSliderValue !== null ? tempSliderValue != value ? ` → ${tempSliderValue}${suffix}` : `` : ``}</p>
+				</div>
                 <Slider min={data.options.min} max={data.options.max} defaultValue={[value]} step={step} onValueChange={this.handleValueChange} onValueCommit={this.handleValueCommit} />
                 <p className="text-xs text-muted-foreground">{translate(data.description)}</p>
             </div>
@@ -184,7 +188,7 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 
 	const TitleRenderer = (data: any) => {
 		// @ts-ignore
-		return <p className={weights[data.options.weight] + " " + text_sizes[data.options.size] + " " + data.classname} style={{whiteSpace: "pre-wrap"}}>{translate(data.text)}</p>
+		return <p className={weights[data.options.weight] + " " + text_sizes[data.options.size] + "! " + data.classname} style={{whiteSpace: "pre-wrap"}}>{translate(data.text)}</p>
 	}
 
 	const DescriptionRenderer = (data: any) => {
@@ -216,7 +220,7 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 				if (!hasLineBreaks) {
 					return (
 					<code
-						className="rounded-md bg-zinc-800 p-1 font-geist-mono text-xs"
+						className="rounded-md bg-accent p-1 font-geist-mono text-xs"
 						{...props}
 					>
 						{children}
@@ -293,8 +297,11 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 			else {
 				placeholder = pluginSettings[data.key]
 			}
-			return <div className="flex flex-col gap-2 w-full">
-				<h4>{translate(data.name)}</h4>
+			return <div className="flex gap-4 w-full rounded-md p-4 border justify-between bg-input/10 transition-all">
+				<div className="flex flex-col">
+						<p className="font-semibold">{translate(data.name)}</p>	
+						<p className="text-xs text-muted-foreground">{translate(data.description)}</p>
+				</div>
 				<Input type={type} placeholder={placeholder} onChange={(e) => {
 					SetSettingByKey(plugin, data.key, e.target.value).then(() => {
 						if (data.requires_restart)
@@ -304,16 +311,18 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 							duration: 500
 						})
 					})
-				}} />
-				<p className="text-xs text-muted-foreground">{translate(data.description)}</p>
+				}} className="max-w-xs" />
 			</div>
 		}
 
 		if (data.options.type == "number") {
 			return (
-				<div className="flex flex-col gap-2 w-full">
-					<h4>{translate(data.name)}</h4>	
-					<Input type="number" placeholder={pluginSettings[data.key]} className="font-customMono" onChange={(e) => {
+				<div className="flex gap-4 w-full rounded-md p-4 border justify-between bg-input/10 transition-all">
+					<div className="flex flex-col">
+						<p className="font-semibold">{translate(data.name)}</p>	
+						<p className="text-xs text-muted-foreground">{translate(data.description)}</p>
+					</div>
+					<Input type="number" placeholder={pluginSettings[data.key]} className="font-geist-mono max-w-xs" onChange={(e) => {
 						SetSettingByKey(plugin, data.key, parseFloat(e.target.value)).then(() => {
 							if (data.requires_restart)
 								setNeedsRestart(true)
@@ -323,19 +332,12 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 							});
 						});
 					}} />
-					<p className="text-xs text-muted-foreground">{translate(data.description)}</p>
 				</div>
 			)
 		}
 	}
 
 	const SliderRenderer = (data:any) => {
-		//if(pluginSettings[data.key] == undefined){
-		//	return <div className="flex flex-col gap-2">
-		//		<SkeletonItem />
-		//		<p className="text-muted-foreground/50 text-xs">Stuck? Try and enable the plugin and see if opening the page again fixes this.</p>
-		//	</div>
-		//}
 		return ( // Add return statement here
 			<SliderComponent
 				pluginSettings={pluginSettings}
@@ -361,9 +363,22 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 				pluginSettings[data.key] = false
 			}
 		}
-		return <div className={"flex justify-between p-0 items-center" + GetBorderClassname(data.options.border)}>
+		let classname = "items-center justify-between flex space-x-4 " + GetBorderClassname(data.options.border);
+		if (data.options.border && checked) {
+			classname += " bg-input/30";
+		}
+		return <div className={classname} onClick={() => {
+			SetSettingByKey(plugin, data.key, !checked).then(() => {
+				if (data.requires_restart)
+					setNeedsRestart(true)
+				mutate(plugin + "settings")
+				toast.success(translate("frontend.settings.boolean.updated"), {
+					duration: 500
+				})
+			}
+		)}}>
 				<div className="flex flex-col gap-1 pr-12">
-					<h4 className="font-semibold">{translate(data.name)}</h4>
+					<p className="font-semibold">{translate(data.name)}</p>
 					<p className="text-xs text-muted-foreground">{translate(data.description)}</p>
 				</div>
 				<Switch checked={checked} onCheckedChange={(bool) => {
@@ -389,8 +404,11 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 				pluginSettings[data.key] = data.options.options[0]
 			}
 		}
-		return <div className="flex flex-col gap-2">
-					<h4>{translate(data.name)}</h4>
+		return <div className="flex gap-6 items-center rounded-md border p-4 bg-input/10 transition-all">
+					<div className="flex flex-col">
+						<p className="font-semibold">{translate(data.name)}</p>
+						<p className="text-xs text-muted-foreground">{translate(data.description)}</p>
+					</div>
 					<Select defaultValue={pluginSettings[data.key]} onValueChange={(value) => {
 						SetSettingByKey(plugin, data.key, value).then(() => {
 							if (data.requires_restart)
@@ -401,22 +419,37 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 							})
 						})
 					}} >
-						<SelectTrigger>
+						<SelectTrigger className="grow">
 							<SelectValue placeholder={pluginSettings[data.key]}>{pluginSettings[data.key]}</SelectValue>
 						</SelectTrigger>
-						<SelectContent className="bg-background font-geist">
+						<SelectContent className="bg-input/30 backdrop-blur-md font-geist">
 							{data.options.options.map((value:any) => (
 								<SelectItem key={value} value={value}>{value}</SelectItem>
 							))}
 						</SelectContent>
 					</Select>
-					<p className="text-xs text-muted-foreground">{translate(data.description)}</p>
 				</div>
 	}
 
 	const ToggleRenderer = (data:any) => {
-		return <div className="flex gap-4 w-full items-center">
-				<Toggle pressed={pluginSettings[data.key] && pluginSettings[data.key] || false} onPressedChange={(bool) => {
+		const checked = pluginSettings[data.key] && pluginSettings[data.key] || false;
+		let classname = "items-top flex space-x-4 " + GetBorderClassname(data.options.border);
+		if (data.options.border && checked) {
+			classname += " bg-input/30";
+		}
+		return <div className={classname} onClick={() => {
+			SetSettingByKey(plugin, data.key, !checked).then(() => {
+				if (data.requires_restart)
+					setNeedsRestart(true)
+				mutate(plugin + "settings")
+				toast.success(translate("frontend.settings.boolean.updated"), {
+					duration: 500
+				})
+			})
+		}}>
+			<Checkbox 
+				checked={checked}
+				onCheckedChange={(bool) => {
 					SetSettingByKey(plugin, data.key, bool).then(() => {
 						if (data.requires_restart)
 							setNeedsRestart(true)
@@ -425,32 +458,32 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 							duration: 500
 						})
 					})
-				}} className="w-8 h-8 p-[7px] data-[state=on]:bg-background data-[state=on]:hover:bg-white/10 " variant={"outline"}>
-					{pluginSettings[data.key] && pluginSettings[data.key] ? <Check /> : <X className="text-muted-foreground/40" />}
-				</Toggle>
-				{data.options.separator && <Separator orientation="vertical" />}
-				<div>
-					<h4>{translate(data.name)}</h4>
-					<p className="text-xs text-muted-foreground">{translate(data.description)}</p>
-				</div>
+				}}
+			/>
+			<div className="grid gap-1.5 leading-none">
+				<label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+					{translate(data.name)}
+				</label>
+				<p className="text-muted-foreground text-xs">
+					{translate(data.description)}
+				</p>
 			</div>
+	  </div>
 	}
 
 	const ButtonRenderer = (data:any) => {
 		if (data.title == ""){
-			return <div className={"flex justify-between items-center w-full" + GetBorderClassname(data.options.border)}>
-				<Button variant={"outline"} onClick={() => {
+			return <Button variant={"outline"} onClick={() => {
 					PluginFunctionCall(plugin, data.options.target, [], {}).then(() => {
 						toast.success(translate("Success"), {
 							duration: 500
 						})
 					})
-				}} className={"min-w-32 w-full " + data.classname}>{translate(data.text)}</Button>
-			</div>
+			}} className={"min-w-32 w-full " + data.classname}>{translate(data.text)}</Button>
 		}
 		return <div className={"flex justify-between p-4 items-center" + GetBorderClassname(data.options.border) + " " + data.classname}>
 				<div className="flex flex-col gap-1 pr-12">
-					<h4 className="font-semibold">{translate(data.title)}</h4>
+					<p className="font-semibold">{translate(data.title)}</p>
 					<p className="text-xs text-muted-foreground">{translate(data.description)}</p>
 				</div>
 				<Button variant={"outline"} onClick={() => {
@@ -477,16 +510,16 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 	const EnabledLock = () => {
 		return <div className="flex justify-between p-4 items-center border rounded-md backdrop-blur-md gap-10">
 			<div>
-				<h4>Please enable the plugin.</h4>
-				<p className="text-xs text-muted-foreground">{"This plugin is disabled. Enable it to access the rest of this plugin's settings."}</p>
+				<h4>{translate("please_enable_the_plugin.title")}</h4>
+				<p className="text-xs text-muted-foreground">{translate("please_enable_the_plugin.description")}</p>
 			</div>
 			<Button variant={"outline"} onClick={() => {
 				EnablePlugin(plugin).then(() => {
-					toast.success("Plugin enabled", {
+					toast.success(translate("plugin_enabled"), {
 						duration: 500
 					})
 				})
-			}} className="min-w-32">Enable {plugin}</Button>
+			}} className="min-w-32">{translate("enable_plugin")} {plugin}</Button>
 		</div>
 	}
 
@@ -494,7 +527,7 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 		if(border){
 			return " p-4 border rounded-md"
 		}
-		return " p-4"
+		return ""
 	}
 
     // @ts-ignore
@@ -514,7 +547,7 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 							<div className="absolute inset-0 flex items-center justify-center z-10 w-full">
 								<EnabledLock />
 							</div>
-							<div className="p-3 opacity-50 blur-sm">
+							<div className="p-3 opacity-50 blur-xs">
 								{PageRenderer(key_data.components)}
 							</div>
 						</div>
@@ -552,7 +585,7 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 			if (key == "group") {
 				const direction = key_data.direction
 				if(direction == "horizontal"){
-					result.push(<div className={"flex w-full overflow-x-auto rounded-md items-center text-center" + GetBorderClassname(key_data.border) + " " + key_data.classname} style={{
+					result.push(<div className={"flex w-full overflow-x-auto rounded-md" + GetBorderClassname(key_data.border) + " " + key_data.classname} style={{
 						gap: key_data.gap + "px",
 						padding: key_data.padding + "px"
 					}}>
@@ -571,16 +604,18 @@ export function ETS2LAPage({ data, plugin, enabled, className }: { data: any, pl
 			if (key == "tabview") {
 				result.push(
 					<Tabs className="w-full" defaultValue={key_data.components[0].tab.name}>
-						<TabsList className="w-full bg-transparent border">
+						<TabsList className="w-full bg-transparent p-0">
 							{key_data.components.map((tab:any, index:number) => (
 								<TabsTrigger key={index} value={tab.tab.name}>{translate(tab.tab.name)}</TabsTrigger>
 							))}
 						</TabsList>
-						{key_data.components.map((tab:any, index:number) => (
-							<TabsContent key={index} value={tab.tab.name} className="w-full rounded-md p-2 flex gap-6 flex-col data-[state=inactive]:hidden">
-								{PageRenderer(tab)}
-							</TabsContent>
-						))}
+						<AnimatePresence>
+							{key_data.components.map((tab:any, index:number) => (
+								<TabsContent key={index} value={tab.tab.name} className="w-full rounded-md p-0 pt-4 flex gap-6 flex-col data-[state=inactive]:hidden">
+									{PageRenderer(tab)}
+								</TabsContent>
+							))}
+						</AnimatePresence>
 					</Tabs>
 				)
 			}

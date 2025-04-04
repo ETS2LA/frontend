@@ -8,8 +8,10 @@ import {
 
 import { useState, useEffect } from "react"
 import { toast } from "sonner";
+import {GetSettingByKey} from "@/apis/settings";
+import { useSidebar } from "./ui/sidebar";
 
-export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }) {
+export default function WindowControls() {
     const [lastMousePosition, setLastMousePosition] = useState({ x: 0, y: 0 });
     const [windowPosition, setWindowPosition] = useState({ x: 0, y: 0 });
     const [isMouseInDragArea, setIsMouseInDragArea] = useState(false)
@@ -17,6 +19,9 @@ export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }
     const [transparency, setTransparency] = useState(false);
     const [dragging, setDragging] = useState(false);
     const [overlayRef, setOverlayRef] = useState<HTMLDivElement | null>(null);
+    const {open, isMobile, openMobile} = useSidebar();
+
+    const sidebar_open = !isMobile ? !open : !openMobile;
 
     useEffect(() => {
         const initialWindowPosition = { x: window.screenX, y: window.screenY };
@@ -76,15 +81,25 @@ export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }
         }
     };
 
+    useEffect(() => {
+        GetSettingByKey("global", "stay_on_top", false).then((stayOnTop) => {
+            setStayOnTop(stayOnTop)
+        })
+        GetSettingByKey("global", "transparency", false).then((transparency) => {
+            SetTransparent(transparency).then(()=> {
+                setTransparency(transparency)
+            })
+        })
+    }, []);
 
-    const collapsedContainerClassName = "flex gap-1 absolute h-6 w-[59px] rounded-bl-lg top-0 right-0 items-center justify-center p-0 z-50 bg-sidebar transition-all pywebview-drag-region opacity-75 hover:opacity-100";
-    const containerClassName = "flex gap-1 absolute h-6 w-[59px] rounded-bl-lg top-0 right-0 items-center justify-center p-0 z-50 bg-sidebar transition-all pywebview-drag-region";
+    const collapsedContainerClassName = "flex gap-1 absolute h-6 w-[59px] border rounded-bl-lg top-0 right-0 items-center justify-center p-0 z-50 bg-sidebar transition-transform opacity-75 hover:opacity-100";
+    const containerClassName = "flex gap-1 absolute h-6 w-[59px] rounded-bl-lg top-0 right-0 items-center justify-center p-0 z-50 bg-transparent transition-transform";
 
     return (
         <>
             <div 
                 ref={setOverlayRef}
-                className="fixed top-0 left-[80px] right-0 h-[26px] z-30" // Only cover top 40px
+                className="fixed top-0 left-[80px] right-0 h-[26px] z-30"
                 style={{ backgroundColor: 'transparent' }}
                 onMouseMove={(e) => {
                     setIsMouseInDragArea(true);
@@ -94,11 +109,17 @@ export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }
                 }}
                 id="slide_area"
             />
-            <div className={isCollapsed && collapsedContainerClassName || containerClassName} onMouseDown={handleMouseDown} id="window_controls">
-                {isCollapsed && (
-                    <div className={`absolute right-0 top-0 h-6 flex items-center pl-2.5 pr-12 transition-all bg-sidebar rounded-bl-lg z-[-10] duration-150 ${isMouseInDragArea ? 'w-96 opacity-100' : 'w-0 opacity-0'}`}>
+            {!sidebar_open && (
+                <>
+                    <div className="absolute h-4 w-[50px] rounded-bl-lg border-b border-l top-2 right-2 z-40 transition-all pointer-events-none bg-sidebar" />   
+                    <div className="absolute h-6 w-[59px] rounded-bl-lg top-0 right-0 z-30 bg-sidebar" />   
+                </>
+            )}
+            <div className={sidebar_open && collapsedContainerClassName || containerClassName} onMouseDown={handleMouseDown} id="window_controls">
+                {sidebar_open && (
+                    <div className={`absolute right-0 top-0 h-6 flex items-center border pl-2.5 pr-12 transition-all bg-sidebar rounded-bl-lg z-[-10] duration-150 ${isMouseInDragArea ? 'w-96 opacity-100' : 'w-0 opacity-0'}`}>
                         <div
-                            className="flex-grow h-1 bg-repeat bg-center text-muted font-geist-mono text-[12px] text-center"
+                            className="grow h-1 bg-repeat bg-center text-muted-foreground/30 font-geist-mono text-[12px] text-center"
                             style={{
                                 backgroundImage: "radial-gradient(circle, currentColor 1px, transparent 1px)",
                                 backgroundSize: "10px 10px"
@@ -115,21 +136,23 @@ export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }
                         <TooltipTrigger 
                             onClick={(e) => {
                                 // Left click
-                                setStayOnTop(!stayOnTop)
-                                SetStayOnTop(stayOnTop).then(() => {
-                                    toast.success(`${stayOnTop ? "Window is now on top" : "Window is no longer on top"}`)
+                                const newStayOnTop = !stayOnTop
+                                setStayOnTop(newStayOnTop)
+                                SetStayOnTop(newStayOnTop).then(() => {
+                                    toast.success(`${newStayOnTop ? "Window is now on top" : "Window is no longer on top"}`)
                                 })
                             }}
                             onContextMenu={(e) => {
                                 // Right click
                                 e.preventDefault() // Prevent default context menu
-                                setTransparency(!transparency)
-                                SetTransparent(transparency).then(() => {
-                                    toast.success(`${transparency ? "Window is now transparent" : "Window is no longer transparent"}`)
+                                const newTransparency = !transparency
+                                setTransparency(newTransparency)
+                                SetTransparent(newTransparency).then(() => {
+                                    toast.success(`${newTransparency ? "Window is now transparent" : "Window is no longer transparent"}`)
                                 })
                             }}
                         >
-                            <div className="w-[11px] h-[11px] bg-green-500 rounded-full flex items-center justify-center" />
+                            <div className="w-[11px] h-[11px] bg-green-500 rounded-full flex items-center justify-center cursor-pointer" />
                         </TooltipTrigger>
                         <TooltipContent className="bg-sidebar border text-foreground font-geist">
                             <p className="text-xs"><span className="font-semibold text-muted-foreground">LMB</span> Stay on top</p>
@@ -142,7 +165,7 @@ export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }
                         <TooltipTrigger onClick={() => {
                             MinimizeBackend()
                         }}>
-                            <div className="w-[11px] h-[11px] bg-yellow-500 rounded-full flex items-center justify-center" />
+                            <div className="w-[11px] h-[11px] bg-yellow-500 rounded-full flex items-center justify-center cursor-pointer" />
                         </TooltipTrigger>
                         <TooltipContent className="bg-sidebar border text-white">
                             <p className="text-xs">Minimize</p>
@@ -152,7 +175,7 @@ export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }
                         <TooltipTrigger onClick={() => {
                             CloseBackend()
                         }}>
-                            <div className="w-[11px] h-[11px] bg-red-500 rounded-full flex items-center justify-center" />
+                            <div className="w-[11px] h-[11px] bg-red-500 rounded-full flex items-center justify-center cursor-pointer" />
                         </TooltipTrigger>
                         <TooltipContent className="bg-sidebar border text-white">
                             <p className="text-xs">Close</p>
@@ -160,34 +183,8 @@ export default function WindowControls({ isCollapsed }: { isCollapsed: boolean }
                     </Tooltip>
                 </TooltipProvider>
             </div>
-            {!isCollapsed && (
-                <>
-                    <div className="absolute top-0 right-0 left-[80px] h-6 z-40" onMouseDown={handleMouseDown} />
-                    {/* Bottom side outer rounding */}
-                    <div className="top-0 right-0 absolute z-50 w-4 h-4 my-[16px] mx-[-0.5px]">
-                        <svg viewBox="4 -4 8 8" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <mask id="hole">
-                                    <rect x="0" y="0" width="8" height="8" fill="white" />
-                                    <circle cx="4" cy="4" r="4" fill="black" />
-                                </mask>
-                            </defs>
-                            <rect x="0" y="0" width="8" height="8" fill="#18181b" mask="url(#hole)" />
-                        </svg>
-                    </div>
-                    {/* Left side outer rounding */}
-                    <div className="top-0 right-0 absolute z-50 w-4 h-4 my-[0px] mx-[51px]">
-                        <svg viewBox="4 -4 8 8" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <mask id="hole">
-                                    <rect x="0" y="0" width="8" height="8" fill="white" />
-                                    <circle cx="4" cy="4" r="4" fill="black" />
-                                </mask>
-                            </defs>
-                            <rect x="0" y="0" width="8" height="8" fill="#18181b" mask="url(#hole)" />
-                        </svg>
-                    </div>
-                </>
+            {!sidebar_open && (
+                <div className="absolute top-0 right-0 left-[80px] h-6 z-40" onMouseDown={handleMouseDown} />
             )}
         </>
     )

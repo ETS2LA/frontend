@@ -188,7 +188,7 @@ Translations:
   frontend.sidebar.main: "Olennaiset"
   frontend.sidebar.dashboard: "Päävalikko"
   frontend.sidebar.visualization: "Visualisaatio"
-  frontend.sidebar.plugins: "Laajennukset"
+  frontend.sidebar.plugins: "Lisäosat"
   frontend.sidebar.manager: "Hallitse"
   frontend.sidebar.performance: "Suorityskyky"
   frontend.sidebar.help: "Apuja"
@@ -209,10 +209,40 @@ Translations:
   frontend.login.successful: "Kirjautuminen onnistui!"
   frontend.login.successful_description: "Voit kirjautua ulos painamalla nimeäsi vasemmassa alakulmassa."
 
+  # MARK: Tutorials
+
+  tutorials.main.window_controls: "Täältä löytyy ikkunan hallintapainikkeet. Vasemmanpuoleisimmasta saa lisäasetuksia. Vie hiiri sen päälle nähdäksesi lisätietoja! (ohjeiden jälkeen)"
+  tutorials.main.slide_area: "Voit siirtää ikkunaa vetämällä tätä aluetta."
+  tutorials.main.sidebar_collapse: 'Voit painaa sivupalkin reunaa pienentääksesi sen.'
+  tutorials.main.sidebar: "Sivupalkista pääsee eri sivuille. Joillakin sivuilla on myös tämäntyyppisiä ohjeita."
+  tutorials.main.settings: "Mene asetukset sivulle jatkaaksesi."
+  tutorials.settings.static: "Tästä näet asetukset jotka vaikuttavat koko sovellukseen."
+  tutorials.settings.global: "Tällä hetkellä auki on yleiset asetukset. Näihin sisältyy esimerkiksi käyttöliittymän asetukset."
+  tutorials.settings.plugin: "Tästä löytyy listä lisäosista joilla on asetuksia. Voit avata minkä vaan ja muuttaa näitä asetuksia."
+  tutorials.settings.sdk: "Viimeisenä avaa SDK sivu ja asenna ETS2LA:n SDK jos et ole jo. Huomioi myös että jos olet päivittänyt ensimmäisestä versiosta, sinun täytyy asentaa uudelleen SDK tällä sivulla."
+  tutorials.plugins.options: "Voit käyttää hakuominaisuuksia haluamasi lisäosien etsimiseen.."
+  tutorials.plugins.tags: "Joka kerran kun sivu avataan on Base kategoria valittuna. Voit valita lisää kategorioita painamalla painiketta tai painamalla lisäosien rivillä olevia kategorioita."
+  tutorials.plugins.clear: 'Voit poistaa kaikki käytössä olevat hakuominaisuudet kategoriat tällä napilla.'
+  tutorials.plugins.enable_all: "Voit käynnistää / sammuttaa kaikki sivulla olevat lisäosat täältä."
+  tutorials.plugins.list: 'Aloittaaksesi käynnistä kaikki paitsi "Data Collection End-To-End Driving" ja "Navigaatio ohjaus" lisäosat.'
+
   # MARK: About
 
   about.about: "ETS2LA:sta"
   about.description: "ETS2LA pyrkii tarjoamaan helppokäyttöisen itsestään ajamista tarjoavan sovelluksen ETS2 ja ATS peleille. Jos haluat tietää lisää mene meidän Github sivulle tai paina sivupalkista 'Wiki'!"
+  about.statistics: "Tilastoja"
+  about.statistics.users_online: "Tällä hetkellä on: "
+  about.statistics.users_online_value: "{0} aktiivista käyttäjää"
+  about.statistics.past_24h: "Viimeisen päivän aikana:"
+  about.statistics.past_24h_value: "{0} eri käyttäjää"
+  about.statistics.usage_time: "Olet käyttänyt sovellusta:"
+  about.statistics.usage_time_value_hour: "{0} tuntia"
+  about.statistics.usage_time_value_minute: "{0} minuuttia"
+  about.statistics.usage_time_value_hour_and_minute: "{0} tuntia ja {1} minuuttia"
+  about.statistics.logged_in: "Olet kirjautunut sisään."
+  about.statistics.not_logged_in: "Et ole kirjautunut sisään."
+  about.statistics.anonymous_user_id: "Anonyymi tunnuksesi: {0}"
+  about.statistics.welcome: "Tervetuloa takaisin {0}!"
   about.developers: "Kehittäjät / Avustajat"
   about.translation_credits: "Käännöksien krediitit"
   about.no_credits: "Kielelle ei ole annettu krediittejä."
@@ -224,6 +254,7 @@ Translations:
   about.glas42.description: "Navigaatio ohjaus, liikennevalojen tunnistus, ETS2LA Lite, 'osaomistaja'"
   about.cloud.description: "Linux & Unix tuki, erilaisia parannuksia ja korjauksia"
   about.dyldev.description: "Objektien tunnistuksen AI mallit ja kehitys, erilaisia parannuksia ja korjauksia"
+  about.roccovax.description: "ETS2LA pelipuolen SDKn kehittäjä. Ajoneuvot, liikennevalot, kameran data and muuta suoraan pelistä."
   about.truckersmudgeon.description: "Pelien datan keräys ja prosessointi"
   about.whytrevorwhy.description: "Auttoi 'Navigoi ETS2LA:lla' ja 'Kartta' laajennuksien kanssa."
   about.mimi89999.description: "scs-sdk-controller kehittäjä"
