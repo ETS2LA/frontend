@@ -1,18 +1,98 @@
-"use client"
-import { useState, useEffect, useRef } from 'react';
-import { useTheme } from 'next-themes';
-import { Textarea } from '@/components/ui/textarea';
-import { ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
-import { Badge } from '@/components/ui/badge';
-import { Forward, Reply, ChevronUp, ChevronDown } from 'lucide-react';
-import { toast } from 'sonner';
+"use client";
+import { useState, useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
+import { Textarea } from "@/components/ui/textarea";
+import { ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
+import { Badge } from "@/components/ui/badge";
+import { Forward, Reply, ChevronUp, ChevronDown } from "lucide-react";
+import { toast } from "sonner";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip';
-import { Button } from '@/components/ui/button';
+} from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+
+const url = "https://example.com"; // Replace with your actual URL
+const API_ENDPOINT = `${url}/messages`;
+const CONVERSATION_API_ENDPOINT = `${url}/conversations`;
+const DISCORD_API_ENDPOINT = `${url}/create-discord-channel`;
+const DISCORD_MESSAGE_API_ENDPOINT = `${url}/send-discord-message`;
+const SYNC_ENDPOINT = `${url}/sync`;
+
+const createConversationInAPI = async (conversation: { name: string; id: number; members: string[]; tags: string[] }) => {
+  try {
+    const response = await fetch(`${CONVERSATION_API_ENDPOINT}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(conversation),
+    });
+
+    if (!response.ok) {
+      throw new Error(`API error: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error creating conversation in API:', error);
+    toast.error('Failed to create conversation on the server.');
+  }
+};
+
+const syncMessages = async (conversationId: number) => {
+  try {
+    const response = await fetch(`${SYNC_ENDPOINT}?conversationId=${conversationId}`);
+    if (!response.ok) {
+      throw new Error(`API error: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    if (!data || (Array.isArray(data) && data.length === 0)) {
+      console.log("No messages found. Conversation may be new.");
+      return [];
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Error syncing messages:", error);
+    toast.error("Failed to sync messages from the server.");
+  }
+};
+
+
+type CreateChannelOptions = {
+  name: string;
+  topic?: string;
+  isPrivate?: boolean;
+  categoryId?: string;
+};
+
+const createDiscordChannel = async (options: CreateChannelOptions) => {
+  try {
+    const response = await fetch(DISCORD_API_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(options),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Discord API error: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error creating Discord channel:', error);
+    toast.error('Failed to create Discord channel.');
+  }
+};
+
 
 const convertMarkdownToHTML = (text: string) => {
   return text
@@ -164,8 +244,15 @@ const ChatMessage = ({message, message_index, messages, reply_func, searchText, 
   } text-sm ${isSameSideNext ? 'pb-2' : 'pb-4'} group`;
 
   const messageContentClass = `p-3 rounded-lg relative group ${
-    isRight ? isSameSideNext ? '' : 'rounded-br-none' : isSameSideNext ? '' : 'rounded-bl-none'
-  } bg-gray-200 text-black dark:bg-[#303030] dark:text-foreground`;
+    isRight
+      ? isSameSideNext
+        ? ""
+        : "rounded-br-none"
+      : isSameSideNext
+      ? ""
+      : "rounded-bl-none"
+  } bg-black text-white`;
+  
 
   return (
     <div className={messageContainerClass} id={`message-${message_index}`}>
@@ -253,6 +340,20 @@ export default function Home() {
   const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
+    const syncData = async () => {
+      if (!conversationData?.id) return; // Avoid running sync if no conversationData
+  
+      const messages = await syncMessages(conversationData.id);
+      const updatedConversations = [...conversations];
+      updatedConversations[conversationIndex].messages = messages;
+      setConversations(updatedConversations);
+    };
+  
+    const interval = setInterval(syncData, 1500);
+    return () => clearInterval(interval);
+  }, [conversationIndex, conversations]);
+  
+  useEffect(() => {
     if (!isSearching) {
       scrollToBottom();
     }
@@ -267,19 +368,21 @@ export default function Home() {
     const matches: { messageIndex: number; globalMatchIndex: number }[] = [];
     const newMessageMatchStarts: Record<number, number> = {};
 
-    conversationData.messages.forEach((message, messageIndex) => {
-      newMessageMatchStarts[messageIndex] = globalMatchIndex;
-
-      if (message instanceof Message && searchText) {
-        const matchArray =
-          message.text.match(new RegExp(escapeRegExp(searchText), 'gi')) || [];
-
-        matchArray.forEach(() => {
-          matches.push({ messageIndex, globalMatchIndex });
-          globalMatchIndex++;
-        });
-      }
-    });
+    if (conversationData?.messages) {
+      conversationData.messages.forEach((message, messageIndex) => {
+        newMessageMatchStarts[messageIndex] = globalMatchIndex;
+    
+        if (message instanceof Message && searchText) {
+          const matchArray =
+            message.text.match(new RegExp(escapeRegExp(searchText), "gi")) || [];
+    
+          matchArray.forEach(() => {
+            globalMatchIndex++;
+          });
+        }
+      });
+    }
+    
 
     setMessageMatchStarts(newMessageMatchStarts);
     setTotalMatches(globalMatchIndex);
@@ -349,44 +452,55 @@ export default function Home() {
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTo({
         top: scrollAreaRef.current.scrollHeight,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   };
 
-  const sendMessage = (text: string) => {
+  
+
+  const sendMessage = async (text: string) => {
     const cleanedText = text.trim();
-    if (cleanedText === '') {
-      toast.error('Message cannot be empty!');
+    if (cleanedText === "") {
+      toast.error("Message cannot be empty!");
       return;
     }
-
-    const updatedMessages = [
-      ...conversations[conversationIndex].messages,
-      new Message(conversations[conversationIndex].messages.length + 1, 'You', cleanedText, 'right', replyingTo ? replyingTo.text : undefined),
-    ];
-
-    const updatedConversation = {
-      ...conversations[conversationIndex],
-      messages: updatedMessages,
-    };
-
-    const updatedConversations = [...conversations];
-    updatedConversations[conversationIndex] = updatedConversation;
-
-    setConversations(updatedConversations);
-    setReplyingTo(null);
-    setTextboxText('');
-
-    setTimeout(() => {
-      scrollToBottom();
-    }, 100);
+  
+    const currentConversation = conversations[conversationIndex];
+  
+    if (!currentConversation) {
+      toast.error("No conversation selected.");
+      return;
+    }
+  
+    try {
+      await sendMessageToAPI(currentConversation.id, cleanedText);
+  
+      const messageData = {
+        id: (currentConversation.messages?.length || 0) + 1,
+        text: cleanedText,
+        username: "You",
+        timestamp: new Date().toISOString(),
+      };
+  
+      const updatedMessages = [
+        ...(currentConversation.messages || []),
+        messageData,
+      ];
+  
+      const updatedConversations = [...conversations];
+      updatedConversations[conversationIndex] = {
+        ...currentConversation,
+        messages: updatedMessages,
+      };
+  
+      setConversations(updatedConversations);
+      setTextboxText("");
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   };
-
-  const reply = (message_text: string, username: string) => {
-    setReplyingTo({ text: message_text, username });
-    inputRef.current?.focus();
-  };
+  
 
   const toggleSearchBox = () => {
     if (showSearchBox) {
@@ -396,16 +510,91 @@ export default function Home() {
     }
     setShowSearchBox(!showSearchBox);
   };
-
-  const handleNewConversation = () => {
-    const newConversation = new Conversation('New Conversation', conversations.length + 1, ['You', 'Developer'], [],['Tag']);
+  const sendMessageToAPI = async (conversationId: number, message: string) => {
+    try {
+      const response = await fetch(`${API_ENDPOINT}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          conversationId,
+          message,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`API error: ${response.statusText}`);
+      }
+  
+      const data = await response.json();
+  
+      // Send the message to Discord as well
+      await sendDiscordMessage(conversationId, message);
+  
+      return data;
+    } catch (error) {
+      console.error('Error sending message to API:', error);
+      toast.error('Failed to send message to the server.');
+    }
+  };
+  const sendDiscordMessage = async (conversationId: number, message: string) => {
+    try {
+      const response = await fetch(DISCORD_MESSAGE_API_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          conversationId,
+          message,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Discord API error: ${response.statusText}`);
+      }
+  
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error sending message to Discord:', error);
+      toast.error('Failed to send message to Discord.');
+    }
+  };
+  
+  const handleNewConversation = async () => {
+    const newConversation = new Conversation(
+      'New Conversation',
+      conversations.length + 1,
+      ['You', 'Developer'],
+      [],
+      ['Tag']
+    );
+  
+    await createConversationInAPI({
+      name: newConversation.name,
+      id: newConversation.id,
+      members: newConversation.members,
+      tags: newConversation.tags,
+    });
+  
+    const discordChannel = await createDiscordChannel({
+      name: newConversation.name,
+    });
+  
+    if (discordChannel && discordChannel.channelId) {
+      newConversation.id = discordChannel.channelId;
+    }
+  
     setConversations([...conversations, newConversation]);
     setConversationIndex(conversations.length);
-
+  
     setTimeout(() => {
       scrollToBottom();
     }, 50);
   };
+  
 
   useEffect(() => {
     const handleGlobalKeyDown = (event: any) => {
@@ -428,7 +617,7 @@ export default function Home() {
   }, [showSearchBox]);
 
   return (
-    <div className="flex flex-col w-full h-full overflow-auto rounded-t-md items-center p-4 pt-6 font-geist">
+    <div className="flex flex-col w-full h-full overflow-auto rounded-t-md items-center p-4 pt-6 font-sans">
       {showSearchBox && (
         <SearchBox searchText={searchText} setSearchText={setSearchText} currentMatch={currentMatch} totalMatches={totalMatches} handleNextMatch={handleNextMatch} handlePreviousMatch={handlePreviousMatch} />
       )}
@@ -463,25 +652,21 @@ export default function Home() {
           </div>
         </ResizablePanel>
         <ResizablePanel defaultSize={80}>
-          <div className="w-full pb-2 h-full flex flex-col justify-between relative">
-            <div className="absolute top-0 left-0 w-full h-12 bg-linear-to-b from-background to-transparent pointer-events-none z-50"></div>
-            <div ref={scrollAreaRef} className="flex flex-col gap-1 relative z-0 overflow-y-auto custom-scrollbar">
-              <div className="flex flex-col gap-1 p-2 relative">
-                <p className="h-4"></p>
-                {conversationData.messages.map((message, index) => {
-                  if (message instanceof Message) {
-                    return (
-                      <ChatMessage key={message.id} message={message} message_index={index} messages={conversationData.messages} reply_func={reply} searchText={searchText} globalMatchStartIndex={messageMatchStarts[index] || 0} currentMatch={currentMatch}/>
-                    );
-                  } else if (message instanceof ConversationEvent) {
-                    return <ChatEvent key={message.id} event={message} />;
-                  }
-                  return null;
-                })}
-                <p className="h-4"></p>
-              </div>
+          <div className="w-full pb-2 h-full flex flex-col justify-between relative bg-gray-800">
+            <div className="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-background to-transparent pointer-events-none z-50"></div>
+            <div ref={scrollAreaRef} className="flex flex-col gap-1 relative z-0 overflow-y-auto custom-scrollbar p-4 bg-background rounded-md bg-gray-900">
+              {conversationData?.messages?.length > 0 ? (
+                conversationData.messages.map((message, index) => (
+                  <div key={index} className={`flex ${message.username === "You" ? "justify-end" : "justify-start"} mb-4`}>
+                    <p className="p-2 rounded text-white" style={{ backgroundColor: "#333333" }}>
+                      <strong>{message.username}:</strong> {message.text}
+                    </p>
+                  </div>
+                ))
+              ) : (
+                <p className="text-muted-foreground text-center">No messages to display</p>
+              )}
             </div>
-
             <div className="relative w-full">
               {replyingTo && (
                 <div className={`absolute p-2 rounded-md flex justify-between items-center border bg-background`} style={{width: 'calc(100% - 101px)', top: '-80%', left: '0%', height: '60%'}}>
