@@ -72,8 +72,9 @@ export default function Visualization() {
                                         RAM Usage: ~400mb
                                     </p>
                                     <p className="text-xs text-muted-foreground text-center">
-                                        Please note that loading might take a minute the first time. <br />
+                                        Please note that loading might take a minute the first time. 
                                         The visualization will update once the game is unpaused.
+                                        If your screen isn't sized properly, press "F5" on your keyboard.
                                     </p>
                                 </div>
                             </div>
