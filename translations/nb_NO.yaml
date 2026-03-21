@@ -1,1 +1,117 @@
-{}
+frontend.disclaimer.description.line1: ETS2LA er ikke ansvarlig for eventuelle 
+  negative effekter forårsaket av bruk av noen av funksjonene i denne 
+  programvaren. Vennligst bruk programvaren på egen risiko.
+frontend.immediate.disconnected: Frakoblet fra ETS2LA-backenden
+frontend.immediate.update_available: Du er {0} oppdatering(er) bak
+frontend.settings.array.updated_element: Oppdatert array-element
+frontend.settings.needs_restart: Plugin-modulen må startes på nytt for å 
+  oppdatere innstillingene.
+frontend.feedback.error_sending: Det oppsto en feil under sending av 
+  tilbakemeldingen. Prøv på nytt senere.
+frontend.dialog.not_supported: '{0} støttes ikke i en dialog.'
+frontend.sidebar.sign_out_description: Du kan logge inn igjen når som helst.
+frontend.login.disclaimer: Vi støtter for øyeblikket bare innlogging via 
+  Discord, dette er slik at vi ikke trenger å lagre sensitiv informasjon som 
+  passord.
+frontend.immediate.socket_disconnected: Frakoblet, vennligst oppdater.
+frontend.404.message: Uansett, klikk på knappen nedenfor for å gå tilbake til 
+  startskjermen, og kan du fortelle oss hvordan du kom hit?
+frontend.hello: Hei, {0}!
+frontend.disclaimer.title: Ansvarsfraskrivelse!
+frontend.disclaimer.description.line2: Bruk av ETS2LA i TruckersMP er tillatt av
+  TMP-ansatte, men du er ansvarlig for eventuelle utestengelser eller advarsler 
+  forårsaket av bruk av denne programvaren.
+frontend.disclaimer.ok: Jeg forstår
+frontend.disclaimer.dontshowagain: Ikke vis dette igjen
+frontend.disclaimer.dontshowagain.toast: Du vil ikke se den igjen før neste 
+  oppdatering.
+frontend.logged_out: Logget ut.
+frontend.states.complete: Ferdig!
+frontend.theme.dark: Mørk
+frontend.theme.light: Lys
+frontend.immediate.connected: Koblet til ETS2LA-backende
+frontend.immediate.update_check_error: 'Feil: {0}'
+frontend.immediate.checking_updates: Sjekker etter oppdateringer ...
+frontend.settings.controls: Kontroller
+frontend.settings.global_info: Denne listen inneholder bare programtillegg som 
+  støtter den globale innstillingsfilen.
+frontend.settings.error: 'Feil: {0}'
+frontend.settings.backend_no_data: Fikk ingen data fra backenden.
+frontend.settings.string.updated: Oppdatert innstilling
+frontend.settings.number.updated: Oppdatert innstilling
+frontend.settings.boolean.updated: Oppdatert innstilling
+frontend.settings.array.removed_element: Fjernet array-element
+frontend.settings.array.added_element: Lagt til array-element
+frontend.settings.array.add: Legg til element
+frontend.settings.array.remove: Fjerne
+frontend.settings.enum.no_enum: Ingen enum-verdier oppgitt.
+frontend.settings.enum.updated: Oppdatert innstilling
+frontend.settings.unknown_data_type: 'Ukjent datatype: {0}'
+frontend.settings.restarted: Omstart vellykket
+frontend.feedback: Tilbakemelding
+frontend.feedback.empty: Tilbakemeldingen er tom. Vennligst gi oss 
+  tilbakemeldinger.
+frontend.feedback.sending: Sender tilbakemelding...
+frontend.feedback.sent: Tilbakemelding sendt!
+frontend.feedback.description: Gi gjerne tilbakemeldinger. Disse vil bli sendt 
+  direkte til en privat kanal som utviklere kan se.
+frontend.feedback.disclaimer: Ikke del noen personlig informasjon.
+frontend.feedback.submit: Send inn
+frontend.plugins.name: Navn
+frontend.immediate.no_updates: Ingen oppdateringer tilgjengelig.
+frontend.immediate.up_to_date: Oppdatert
+frontend.immediate.socket_connected: Tilkoblet
+frontend.immediate.enable_stay_on_top: Aktiver å holde seg på topp
+frontend.immediate.disable_stay_on_top: Deaktiver hold deg på toppen
+frontend.immediate.enable_transparent: Aktiver gjennomsiktighet
+frontend.immediate.disable_transparent: Deaktiver gjennomsiktighet
+frontend.immediate.minimize: Minimer
+frontend.immediate.close: Lukke
+frontend.404.title: Hvorfor er vi her ... bare for å lide?
+frontend.404.button: Hovedmeny
+frontend.settings.data_missing: Plugin-dataene er ikke gyldige eller mangler.
+frontend.settings: Innstillinger
+frontend.settings.global: Global
+frontend.plugins.authors: Forfattere
+frontend.plugins.tags: Tagger
+frontend.plugins.select_tags: Søkekoder
+frontend.plugins.select_authors: Søk forfattere
+frontend.plugins.selected_tags: '{0} tag(er) valgt'
+frontend.plugins.selected_authors: '{0} forfatter(e) valgt'
+frontend.plugins.end_list: Dette er slutten på listen
+frontend.plugins.enabling_plugin: Aktiverer {0}
+frontend.plugins.enabled_plugin: Aktivert {0}
+frontend.plugins.error_enabling_plugin: Feil ved aktivering av {0}
+frontend.plugins.enabling_all_plugins: Aktiverer alle programtillegg ...
+frontend.plugins.enabled_all_plugins: Aktiverte alle programtillegg
+frontend.plugins.disabling_plugin: Deaktiverer {0}
+frontend.plugins.disabled_plugin: Deaktivert {0}
+frontend.plugins.error_disabling_plugin: Feil ved deaktivering av {0}
+frontend.plugins.disabling_all_plugins: Deaktiverer alle programtillegg...
+frontend.plugins.disabled_all_plugins: Deaktiverte alle programtillegg
+frontend.plugins.hidden: '{0} programtillegg (s) skjult'
+frontend.sidebar.updates_available: Tilgjengelige oppdateringer
+frontend.sidebar.main: Hoved
+frontend.sidebar.dashboard: Dashbord
+frontend.sidebar.visualization: Visualisering
+frontend.sidebar.plugins: Programtillegg
+frontend.sidebar.manager: Leder
+frontend.sidebar.performance: Ytelse
+frontend.sidebar.help: Hjelp
+frontend.sidebar.wiki: Uke
+frontend.sidebar.chat: Chat
+frontend.sidebar.settings: Innstillinger
+frontend.sidebar.anonymous: Anonym
+frontend.sidebar.account: Konto
+frontend.sidebar.sign_out: Logg ut
+frontend.sidebar.sign_out_successful: Utlogging vellykket.
+frontend.login: Logg inn
+frontend.sidebar.sign_in: Sign In
+frontend.login.discord: Logg inn med Discord
+frontend.login.privacy_policy: Personvernerklæring
+frontend.login.already_logged_in: 'MERK: Du er allerede logget inn, du kan overstyre
+  den ved å logge inn på nytt.'
+frontend.login.successful: Vellykket innlogging!
+frontend.login.successful_description: Logg ut ved hjelp av hurtigmenyen under 
+  brukernavnet ditt nederst til venstre.
+frontend.support_development: Støtteutvikling

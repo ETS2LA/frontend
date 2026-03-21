@@ -1,8 +1,13 @@
 frontend.hello: "Привіт, {0}!"
 # ^ {0} is the name of the user Example: 'Hello, Tumppi066'
 frontend.disclaimer.title: "Відмова від відповідальності!"
-frontend.disclaimer.description.line1: "ETS2LA не несе відповідальності за будь-які негативні наслідки, спричинені використанням будь-яких функцій, наданих цим програмним забезпеченням. Будь ласка, використовуйте програмне забезпечення на свій страх і ризик."
-frontend.disclaimer.description.line2: "Використання ETS2LA в TruckersMP дозволено персоналом TMP, але ви несете відповідальність за будь-які бани або попередження, спричинені використанням цього програмного забезпечення."
+frontend.disclaimer.description.line1: "ETS2LA не несе відповідальності за будь-які
+  негативні наслідки, спричинені використанням будь-яких функцій, наданих цим програмним
+  забезпеченням. Будь ласка, використовуйте програмне забезпечення на свій страх і
+  ризик."
+frontend.disclaimer.description.line2: "Використання ETS2LA в TruckersMP дозволено
+  персоналом TMP, але ви несете відповідальність за будь-які бани або попередження,
+  спричинені використанням цього програмного забезпечення."
 frontend.disclaimer.ok: "Я розумію"
 frontend.disclaimer.dontshowagain: "Більше не показувати"
 frontend.disclaimer.dontshowagain.toast: "Ви не побачите це знову до наступного оновлення."
@@ -28,7 +33,8 @@ frontend.immediate.minimize: "Згорнути"
 frontend.immediate.close: "Закрити"
 frontend.404.title: "Чому ми тут... просто страждати?"
 # ^ You can go wild here, I'd like to see some fun jokes in the 404 page!
-frontend.404.message: "У будь-якому випадку, натисніть кнопку нижче, щоб повернутися на головний екран, і чи можете ви, будь ласка, розповісти нам, як ви сюди потрапили?"
+frontend.404.message: "У будь-якому випадку, натисніть кнопку нижче, щоб повернутися
+  на головний екран, і чи можете ви, будь ласка, розповісти нам, як ви сюди потрапили?"
 # ^ You can go wild here, I'd like to see some fun jokes in the 404 page!
 frontend.404.button: "Головне меню"
 # ^ You can go wild here, I'd like to see some fun jokes in the 404 page! (at least make this something about the main menu)
@@ -36,7 +42,8 @@ frontend.settings.data_missing: "Дані плагіна недійсні або
 frontend.settings: "Налаштування"
 frontend.settings.global: "Глобальні"
 frontend.settings.controls: "Елементи керування"
-frontend.settings.global_info: "Цей список включає лише плагіни, які підтримують глобальний файл налаштувань."
+frontend.settings.global_info: "Цей список включає лише плагіни, які підтримують глобальний
+  файл налаштувань."
 frontend.settings.error: "Помилка: {0}"
 # ^ {0} is the error message that happened.
 frontend.settings.backend_no_data: "Немає даних від бекенду."
@@ -55,11 +62,14 @@ frontend.settings.unknown_data_type: "Невідомий тип даних: {0}"
 frontend.settings.needs_restart: "Плагін потребує перезапуску для оновлення налаштувань."
 frontend.settings.restarted: "Перезапуск успішний"
 frontend.feedback: "Зворотний зв'язок"
-frontend.feedback.empty: "Відгук порожній, будь ласка, надайте будь-який відгук, який у вас є."
+frontend.feedback.empty: "Відгук порожній, будь ласка, надайте будь-який відгук, який
+  у вас є."
 frontend.feedback.sending: "Відправлення відгуку..."
 frontend.feedback.sent: "Відгук надіслано!"
-frontend.feedback.error_sending: "Сталася помилка під час надсилання відгуку, спробуйте пізніше."
-frontend.feedback.description: "Будь ласка, надайте будь-який відгук, який у вас є. Це буде надіслано безпосередньо в приватний канал для розробників."
+frontend.feedback.error_sending: "Сталася помилка під час надсилання відгуку, спробуйте
+  пізніше."
+frontend.feedback.description: "Будь ласка, надайте будь-який відгук, який у вас є.
+  Це буде надіслано безпосередньо в приватний канал для розробників."
 frontend.feedback.disclaimer: "Не діліться жодною особистою інформацією."
 frontend.feedback.submit: "Надіслати"
 frontend.plugins.name: "Назва"
@@ -101,9 +111,13 @@ frontend.sidebar.sign_out_successful: "Вихід успішний."
 frontend.sidebar.sign_out_description: "Ви можете знову увійти в будь-який час."
 frontend.sidebar.sign_in: "Увійти"
 frontend.login: "Вхід"
-frontend.login.disclaimer: "Наразі ми підтримуємо вхід лише через Discord, щоб нам не потрібно було зберігати конфіденційну інформацію, як-от паролі."
+frontend.login.disclaimer: "Наразі ми підтримуємо вхід лише через Discord, щоб нам
+  не потрібно було зберігати конфіденційну інформацію, як-от паролі."
 frontend.login.discord: "Увійти через Discord"
 frontend.login.privacy_policy: "Політика конфіденційності"
-frontend.login.already_logged_in: "ПРИМІТКА: Ви вже увійшли, ви можете перевизначити це, увійшовши знову."
+frontend.login.already_logged_in: "ПРИМІТКА: Ви вже увійшли, ви можете перевизначити
+  це, увійшовши знову."
 frontend.login.successful: "Успішний вхід!"
-frontend.login.successful_description: "Вийдіть за допомогою контекстного меню під вашим ім'ям користувача в лівому нижньому куті."
+frontend.login.successful_description: "Вийдіть за допомогою контекстного меню під
+  вашим ім'ям користувача в лівому нижньому куті."
+frontend.support_development: Підтримати розробку

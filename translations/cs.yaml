@@ -84,3 +84,33 @@ frontend.settings.enum.no_enum: Nebyly zadány žádné hodnoty výčtu.
 frontend.feedback.description: Prosím řekni nám zpěnou vazbu, bude to odesláno 
   přímo k developerům.
 frontend.plugins.disabling_all_plugins: Vypínám všechny pluginy...
+frontend.dialog.not_supported: '{0} není v dialogovém okně podporováno.'
+frontend.sidebar.updates_available: Je možné updatovat
+frontend.sidebar.main: Hlavní
+frontend.sidebar.dashboard: Palubní deska
+frontend.sidebar.visualization: Vizualizace
+frontend.sidebar.plugins: Pluginy
+frontend.sidebar.manager: Manažer
+frontend.sidebar.performance: Výkon
+frontend.sidebar.help: Pomoc
+frontend.sidebar.wiki: Wikipedia
+frontend.sidebar.chat: Chat
+frontend.sidebar.settings: Nastavení
+frontend.sidebar.anonymous: Anonymní
+frontend.sidebar.account: Účet
+frontend.sidebar.sign_out: Odhlásit se
+frontend.sidebar.sign_out_successful: Odhlášení úspěšné.
+frontend.sidebar.sign_out_description: Můžeš se znovu přihlásit kdykoliv.
+frontend.sidebar.sign_in: Přihlásit se
+frontend.login: Přihlášení
+frontend.login.disclaimer: V současné době podporujeme pouze přihlášení přes 
+  Discord, aby nám nebylo nutné ukládat žádné citlivé informace, jako jsou 
+  hesla.
+frontend.login.discord: Přihlásit se pomocí discordu
+frontend.login.privacy_policy: Zásady ochrany osobních údajů
+frontend.login.already_logged_in: 'POZNÁMKA: Již jste přihlášeni, můžeš to přepsat
+  tím, že se přihlásíš znovu.'
+frontend.login.successful: Úspěšně přihlášeno!
+frontend.login.successful_description: Odhlaste se pomocí kontextového menu pod 
+  svým uživatelským jménem v levém dolním rohu.
+frontend.support_development: Podpoř vývoj
